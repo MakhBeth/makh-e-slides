@@ -1,37 +1,28 @@
-import { highlight, languages } from "prismjs";
-import "prismjs/components/prism-css";
-import "prismjs/components/prism-markup";
-import "prismjs/components/prism-typescript";
-import "prismjs/components/prism-javascript";
-import { match } from "ts-pattern";
+import hljs from "highlight.js";
 
-class CodeHighlight extends HTMLElement {
-	connectedCallback() {
-		this.render();
-	}
-
-	render() {
-		const code = this.textContent || "";
-		const language = this.getAttribute("language") || "javascript";
-		const highlightedCode = this.highlightCode(code, language);
-
-		this.innerHTML = `
-      <pre><code class="language-${language}">${highlightedCode}</code></pre>
-    `;
-	}
-
+export const CodeHighlight = {
 	highlightCode(code: string, language: string): string {
-		return match(language)
-			.with("css", () => highlight(code, languages.css, "css"))
-			.with("html", () => highlight(code, languages.markup, "markup"))
-			.with("typescript", () =>
-				highlight(code, languages.typescript, "typescript"),
-			)
-			.otherwise(() => highlight(code, languages.javascript, "javascript"));
-	}
-}
+		return hljs.highlight(code, { language }).value;
+	},
 
-customElements.define("code-highlight", CodeHighlight);
+	render(code: string, language = "javascript"): string {
+		const highlightedCode = this.highlightCode(code, language);
+		return `<pre><code class="hljs language-${language}">${highlightedCode}</code></pre>`;
+	},
+};
+
+// Only define the custom element in the browser
+if (typeof window !== "undefined") {
+	class CodeHighlightElement extends HTMLElement {
+		connectedCallback() {
+			const code = this.innerHTML || "";
+			const language = this.getAttribute("language") || "javascript";
+			this.innerHTML = CodeHighlight.render(code, language);
+		}
+	}
+
+	customElements.define("code-highlight", CodeHighlightElement);
+}
 
 // Usage example:
 // <code-highlight language="typescript">

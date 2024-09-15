@@ -1,6 +1,5 @@
 @import "normalize.css";
 @import "variables.css";
-@import url("https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/themes/prism-okaidia.min.css");
 
 @view-transition {
 	navigation: auto;
@@ -10,21 +9,21 @@
 
 @keyframes move-out {
 	from {
-		transform: translateY(0%);
+		transform: translateX(0%);
 	}
 
 	to {
-		transform: translateY(-100%);
+		transform: translateX(-100%);
 	}
 }
 
 @keyframes move-in {
 	from {
-		transform: translateY(100%);
+		transform: translateX(100%);
 	}
 
 	to {
-		transform: translateY(0%);
+		transform: translateX(0%);
 	}
 }
 
@@ -58,7 +57,6 @@ body {
 	--s: 100px; /* control the size*/
 	--c1: #999;
 	--c2: var(--color-background);
-	max-width: 50dvw;
 
 	--_g: #9990 90deg, var(--c1) 0;
 	background: conic-gradient(from 90deg at 2px 2px, var(--_g)),
@@ -85,9 +83,4 @@ section {
 pre {
 	text-align: left;
 	overflow-x: auto;
-	padding: 0 1em !important;
-}
-
-code {
-	line-height: 0 !important;
 }

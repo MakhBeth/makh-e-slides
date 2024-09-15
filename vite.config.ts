@@ -1,7 +1,8 @@
 import { defineConfig } from "vite";
 import path from "node:path";
 import fs from "node:fs";
-import htmlTemplateWrapper from "./htmlTemplate";
+import htmlTemplateWrapper from "./plugins/htmlTemplate";
+import { ssrCodeHighlight } from "./plugins/ssrCodeHighlight";
 
 const slidesDir = path.join(__dirname, "src", "slides");
 const slideFiles = Object.fromEntries(
@@ -27,5 +28,8 @@ export default defineConfig({
 		},
 		assetsInlineLimit: 0, // Ensure all assets are processed by Vite
 	},
-	plugins: [htmlTemplateWrapper(path.resolve(__dirname, "src/template.html"))],
+	plugins: [
+		htmlTemplateWrapper(path.resolve(__dirname, "src/template.html")),
+		ssrCodeHighlight(),
+	],
 });

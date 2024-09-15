@@ -10,13 +10,13 @@
 	},
 	"devDependencies": {
 		"@types/jsdom": "^21.1.7",
-		"@types/prismjs": "^1.26.4",
+		"@types/highlight.js": "^10.1.0",
 		"typescript": "^5.5.3",
 		"vite": "^5.4.1"
 	},
 	"dependencies": {
+		"highlight.js": "^11.8.0",
 		"jsdom": "^25.0.0",
-		"prismjs": "^1.29.0",
 		"ts-pattern": "^5.3.1"
 	}
 }
