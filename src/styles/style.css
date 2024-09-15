@@ -1,7 +1,44 @@
 @import "normalize.css";
 @import "variables.css";
+@import url("https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/themes/prism-okaidia.min.css");
 
-html::before {
+@view-transition {
+	navigation: auto;
+}
+
+/* Create a custom animation */
+
+@keyframes move-out {
+	from {
+		transform: translateY(0%);
+	}
+
+	to {
+		transform: translateY(-100%);
+	}
+}
+
+@keyframes move-in {
+	from {
+		transform: translateY(100%);
+	}
+
+	to {
+		transform: translateY(0%);
+	}
+}
+
+/* Apply the custom animation to the old and new page states */
+
+::view-transition-old(root) {
+	animation: 0.4s ease-in both move-out;
+}
+
+::view-transition-new(root) {
+	animation: 0.4s ease-in both move-in;
+}
+
+body::before {
 	position: fixed;
 	inset: 0;
 	width: 100%;
@@ -17,10 +54,11 @@ html::before {
 	opacity: 1;
 }
 
-html {
+body {
 	--s: 100px; /* control the size*/
 	--c1: #999;
 	--c2: var(--color-background);
+	max-width: 50dvw;
 
 	--_g: #9990 90deg, var(--c1) 0;
 	background: conic-gradient(from 90deg at 2px 2px, var(--_g)),
@@ -29,4 +67,27 @@ html {
 
 	color: var(--color-text);
 	font-family: var(--font-family-primary);
+	font-size: var(--font-size-md);
+	text-align: center;
+}
+
+section {
+	min-height: 100dvh;
+	width: 100dvw;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	flex: 0 0 100vw;
+	scroll-snap-align: start;
+}
+
+pre {
+	text-align: left;
+	overflow-x: auto;
+	padding: 0 1em !important;
+}
+
+code {
+	line-height: 0 !important;
 }

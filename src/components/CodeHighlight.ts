@@ -6,30 +6,16 @@ import "prismjs/components/prism-javascript";
 import { match } from "ts-pattern";
 
 class CodeHighlight extends HTMLElement {
-	constructor() {
-		super();
-		this.attachShadow({ mode: "open" });
-	}
-
 	connectedCallback() {
 		this.render();
 	}
 
 	render() {
-		const code = this.innerHTML || "";
+		const code = this.textContent || "";
 		const language = this.getAttribute("language") || "javascript";
 		const highlightedCode = this.highlightCode(code, language);
 
-		if (!this.shadowRoot) return;
-		this.shadowRoot.innerHTML = `
-      <style>
-        @import url('https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/themes/prism-okaidia.min.css');
-        pre {
-          padding: 1em;
-          border-radius: 5px;
-          overflow-x: auto;
-        }
-      </style>
+		this.innerHTML = `
       <pre><code class="language-${language}">${highlightedCode}</code></pre>
     `;
 	}
