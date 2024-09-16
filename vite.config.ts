@@ -32,4 +32,9 @@ export default defineConfig({
 		htmlTemplateWrapper(path.resolve(__dirname, "src/template.html")),
 		ssrCodeHighlight(),
 	],
+	server: {
+		hmr: {
+			host: "localhost",
+		},
+	},
 });
