@@ -23,6 +23,7 @@ export default defineConfig({
 	appType: "mpa",
 	root: path.resolve(__dirname, "src"),
 	build: {
+		modulePreload: false,
 		rollupOptions: {
 			input,
 		},
