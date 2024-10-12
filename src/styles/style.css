@@ -130,6 +130,23 @@ body {
 	--fragment-count: 0;
 }
 
+a {
+	color: var(--color-primary);
+
+	&:hover {
+		color: var(--color-accent);
+	}
+
+	&:focus,
+	&:focus-visible {
+		color: var(--color-accent);
+		outline: solid;
+		outline-offset: 4px;
+		outline-color: var(--color-accent);
+		text-decoration: none;
+	}
+}
+
 body:has(:nth-child(1 of .fragment)) {
 	--fragment-count: 1;
 }
