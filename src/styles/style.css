@@ -70,13 +70,14 @@ body {
 	background-color: var(--color-background);
 	color: var(--color-text);
 	font-family: var(--font-family-primary);
-	font-size: var(--font-size-md);
+	font-size: 150%;
 	text-align: center;
 }
 
 section {
-	min-height: 100dvh;
-	width: 100dvw;
+	min-height: calc(100vh - 4rem);
+	box-sizing: border-box;
+	width: 100%;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
@@ -103,8 +104,8 @@ pre {
 	opacity: 0;
 	animation: fadeIn 1s ease-out forwards;
 	animation-timeline: scroll(root);
-	animation-range: calc((var(--fragment-count) - 1) * 100vh)
-		calc(var(--fragment-count) * 100vh);
+	animation-range: calc((var(--fragment-count) - 1) * 100dvh)
+		calc(var(--fragment-count) * 100dvh);
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -115,15 +116,18 @@ pre {
 }
 
 main {
-	height: 100vh;
+	height: calc(100vh - 2rem);
 	overflow: auto;
 	position: fixed;
 	top: 0;
 	width: 100%;
+	padding: 1rem;
+	font-size: var(--font-size-md);
 }
 
 body {
-	height: calc(100vh * (1 + var(--fragment-count, 0)));
+	height: calc(100dvh * (1 + var(--fragment-count, 0)));
+	box-sizing: border-box;
 }
 
 :root {
@@ -177,4 +181,84 @@ body:has(:nth-child(5 of .fragment)) {
 }
 :nth-child(5 of .fragment) {
 	--fragment-count: 5;
+}
+
+nav-component {
+	position: fixed;
+	right: 0;
+	bottom: 0;
+}
+
+header, footer {
+	position: fixed;
+	font-size: var(--font-size-xxs);
+	width: 100%;
+	opacity: 0.8;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	left: 0;
+	padding: 0.25rem 1rem;
+}
+
+header {
+		width: 100%;
+	top:0;
+}
+
+footer {
+	width: 50%;
+	bottom: 0;
+}
+
+.accent {
+	color: var(--color-accent);
+}
+
+.light {
+	color: var(--color-text-light);
+}
+
+dl {
+	display: flex;
+	justify-content: center;
+	flex-wrap: wrap;
+	flex-direction: row;
+	gap: 0.5em;
+}
+
+dt, dd {
+	flex: 1 0 calc(50% - 0.5em);
+
+	&:where(dt) {
+		text-align: right;
+		font-weight: bold;
+		color: var(--color-text-light);
+	}
+	&:where(dd) {
+		text-align: left;
+	}
+}
+
+blockquote {
+	text-align: start;
+	display: inline-block;
+	padding: 1rem;
+	border-radius: 1rem;
+	background-color: var(--color-background);
+	color: var(--color-text-light);
+	font-family: 'Courier New', Courier, monospace;
+	width: min(50rem, 100%);
+	margin: 0 auto;
+	&::before {
+		content: '”';
+		transform: scale(2);
+		display: inline-block;
+	}
+
+	cite {
+		font-weight: 900;
+		display: block;
+		text-align: end;
+	}
 }

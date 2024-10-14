@@ -22,6 +22,27 @@ dd {
 	padding: 0;
 }
 
+h1 {
+	font-size: var(--font-size-3xl);
+}
+h2 {
+	font-size: var(--font-size-xxl);
+}
+h3 {
+	font-size: var(--font-size-xl);
+}
+h4 {
+	font-size: var(--font-size-lg);
+}
+
+p {
+	margin-bottom: 0.5em;
+}
+
+small {
+	font-size: var(--font-size-sm);
+}
+
 /* Set core root defaults */
 html:focus-within {
 	scroll-behavior: smooth;
@@ -29,7 +50,7 @@ html:focus-within {
 
 /* Set core body defaults */
 body {
-	min-height: 100vh;
+	min-height: 100dvh;
 	text-rendering: optimizeSpeed;
 	line-height: 1.5;
 }

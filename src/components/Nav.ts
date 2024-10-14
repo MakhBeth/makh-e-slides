@@ -5,8 +5,7 @@
  * <nav-component to="/next-page.html"></nav-component>
  */
 class Nav extends HTMLElement {
-	private leftChevron: HTMLAnchorElement;
-	private rightChevron: HTMLAnchorElement;
+	private leftChevron: HTMLAnchorElement | null = null;
 
 	constructor() {
 		super();
@@ -23,19 +22,31 @@ class Nav extends HTMLElement {
 		if (this.shadowRoot) {
 			this.shadowRoot.innerHTML = `
         <style>
+          @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+          }
+          :host {
+            animation: fadeIn 0.25s ease-out;
+          }
           :host {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 10px;
+						padding: 0 0.5rem;
+						gap: 0.5rem;
           }
           button, a {
+						all: unset;
+						display: block;
             background: none;
             border: none;
             cursor: pointer;
-            font-size: 24px;
+            font-size: 1rem;
             text-decoration: none;
             color: inherit;
+						line-height: 1;
+						font-size: 3rem;
           }
         </style>
         <button class="left-chevron">&#8249;</button>
@@ -45,13 +56,11 @@ class Nav extends HTMLElement {
 			this.leftChevron = this.shadowRoot.querySelector(
 				".left-chevron",
 			) as HTMLAnchorElement;
-			this.rightChevron = this.shadowRoot.querySelector(
-				".right-chevron",
-			) as HTMLAnchorElement;
 		}
 	}
 
 	addEventListeners() {
+		if(!this.leftChevron) return
 		this.leftChevron.addEventListener("click", () => {
 			window.history.back();
 		});

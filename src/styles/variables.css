@@ -2,10 +2,10 @@
 	/* Color Palette using OKLCH */
 	--color-primary: oklch(60% 0.2 240); /* Blue */
 	--color-secondary: oklch(70% 0.2 140); /* Green */
-	--color-accent: oklch(65% 0.25 30); /* Red */
+	--color-accent: oklch(0.87 0.21 110.35);
 	--color-background: oklch(9% 0 0); /* Dark Gray */
 	--color-text: oklch(90% 0 0); /* Light Gray */
-	--color-text-light: oklch(50% 0 0); /* Medium Gray */
+	--color-text-light: oklch(0.83 0 0); /* Medium Gray */
 	/* Modern Gradient */
 	--gradient-primary: linear-gradient(
 		135deg,
@@ -31,13 +31,14 @@
 	--font-family-secondary: "Open Sans", sans-serif;
 
 	/* Font sizes using clamp for responsive scaling */
-	--font-size-xs: clamp(0.75rem, 1.5vw, 0.875rem);
-	--font-size-sm: clamp(0.875rem, 1.75vw, 1rem);
-	--font-size-md: clamp(1rem, 2vw, 1.125rem);
-	--font-size-lg: clamp(1.125rem, 2.25vw, 1.25rem);
-	--font-size-xl: clamp(1.25rem, 2.5vw, 1.5rem);
-	--font-size-2xl: clamp(1.5rem, 3vw, 2rem);
-	--font-size-3xl: clamp(2rem, 4vw, 2.5rem);
+	--font-size-xxs: clamp(0.5rem, calc(2 * 1vw), 0.75rem);
+	--font-size-xs: clamp(0.75rem, calc(2 * 1.5vw), 0.875rem);
+	--font-size-sm: clamp(0.875rem, calc(2 * 1.75vw), 1rem);
+	--font-size-md: clamp(1rem, calc(2 * 2.0vw), 1.125rem);
+	--font-size-lg: clamp(1.25rem, calc(2 * 2.5vw), 1.5rem);
+	--font-size-xl: clamp(1.5rem, calc(2 * 3.0vw), 2rem);
+	--font-size-xxl: clamp(2rem, calc(2 * 4.0vw), 3rem);
+	--font-size-3xl: clamp(3rem, calc(2 * 5.0vw), 5rem);
 
 	--font-weight-light: 300;
 	--font-weight-regular: 400;
