@@ -13,7 +13,7 @@ export function ssrCodeHighlight(): Plugin {
 
 				// Find all code-highlight elements and render them
 				document.querySelectorAll("code-highlight").forEach((element) => {
-					const code = element.innerHTML || "";
+					const code = element.textContent || "";
 					const language = element.getAttribute("language") || "javascript";
 					element.outerHTML = CodeHighlight.render(code, language);
 				});
