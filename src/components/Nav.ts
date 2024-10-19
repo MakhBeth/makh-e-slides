@@ -6,6 +6,7 @@
  */
 class Nav extends HTMLElement {
 	private leftChevron: HTMLAnchorElement | null = null;
+	private rightChevron: HTMLAnchorElement | null = null;
 
 	constructor() {
 		super();
@@ -16,6 +17,11 @@ class Nav extends HTMLElement {
 		this.render();
 		this.addEventListeners();
 		this.addPrefetch();
+	}
+
+	disconnectedCallback() {
+		// Remove the event listener when the component is removed from the DOM
+		document.removeEventListener("keydown", this.handleKeyDown);
 	}
 
 	render() {
@@ -60,10 +66,66 @@ class Nav extends HTMLElement {
 	}
 
 	addEventListeners() {
-		if(!this.leftChevron) return
+		if (!this.leftChevron) return;
 		this.leftChevron.addEventListener("click", () => {
 			window.history.back();
 		});
+
+		// Add keyboard event listener
+		document.addEventListener("keydown", this.handleKeyDown.bind(this));
+	}
+
+	handleKeyDown(event: KeyboardEvent) {
+		const to = this.getAttribute("to");
+		switch (event.key) {
+			case "ArrowLeft":
+				window.history.back();
+				break;
+			case "ArrowRight":
+				if (to) {
+					window.location.href = to;
+				}
+				break;
+			case "ArrowUp":
+				event.preventDefault();
+				this.scrollVertically(-1);
+				break;
+			case "ArrowDown":
+				event.preventDefault();
+				this.scrollVertically(1);
+				break;
+		}
+	}
+
+	scrollVertically(direction: number) {
+		const scrollAmount = window.innerHeight;
+		const currentScroll = window.scrollY;
+		const maxScroll =
+			document.documentElement.scrollHeight - window.innerHeight;
+
+		if (direction > 0 && currentScroll < maxScroll) {
+			// Scroll down
+			window.scrollTo({
+				top: currentScroll + scrollAmount,
+				behavior: "smooth",
+			});
+		} else if (direction < 0 && currentScroll > 0) {
+			// Scroll up
+			window.scrollTo({
+				top: currentScroll - scrollAmount,
+				behavior: "smooth",
+			});
+		} else {
+			// If can't scroll, navigate
+			if (direction < 0) {
+				window.history.back();
+			} else {
+				const to = this.getAttribute("to");
+				if (to) {
+					window.location.href = to;
+				}
+			}
+		}
 	}
 
 	addPrefetch() {
