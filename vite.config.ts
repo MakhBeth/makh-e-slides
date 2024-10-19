@@ -22,6 +22,7 @@ const input = {
 export default defineConfig({
 	appType: "mpa",
 	root: path.resolve(__dirname, "src"),
+	publicDir: path.resolve(__dirname, "public"), // Add this line
 	build: {
 		modulePreload: false,
 		rollupOptions: {
