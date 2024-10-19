@@ -1,8 +1,15 @@
 @import "normalize.css";
 @import "variables.css";
 
-@view-transition {
-	navigation: auto;
+@keyframes fade-in {
+	from {
+		opacity: 0;
+	}
+}
+@keyframes fade-out {
+	to {
+		opacity: 0;
+	}
 }
 
 @keyframes slide-out-to-left {
@@ -25,36 +32,27 @@
   to { transform: translateX(0); }
 }
 
-::view-transition-old(root) {
-	animation: 0.4s ease-in both slide-out-to-left;
+:root {
+	view-transition-name: none;
+}
+section {
+	view-transition-name: content;
 }
 
-::view-transition-new(root) {
-	animation: 0.4s ease-in both slide-in-from-right;
+::view-transition-old(content) {
+	animation-name: slide-out-to-left;
 }
-
-html:active-view-transition-type(forwards, backwards) {
-	:root {
-		view-transition-name: none;
-	}
-}
-
-html:active-view-transition-type(forwards) {
-  &::view-transition-old(root) {
-    animation: 0.4s slide-out-to-left;
-  }
-  &::view-transition-new(root) {
-    animation: 0.4s slide-in-from-right;
-  }
+::view-transition-new(content) {
+	animation-name: slide-in-from-right;
 }
 
 html:active-view-transition-type(backwards) {
-  &::view-transition-old(root) {
-    animation: 0.4s slide-out-to-right;
-  }
-  &::view-transition-new(root) {
-    animation: 0.4s slide-in-from-left;
-  }
+	&::view-transition-old(content) {
+		animation-name: slide-out-to-right;
+	}
+	&::view-transition-new(content) {
+		animation-name: slide-in-from-left;
+	}
 }
 
 

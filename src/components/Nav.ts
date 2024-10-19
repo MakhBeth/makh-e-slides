@@ -5,26 +5,9 @@
  * <nav-component to="/next-page.html"></nav-component>
  */
 
-interface Navigation {
-	activation: {
-		from: { url: string };
-		entry: { url: string };
-	};
-}
-declare const navigation: Navigation;
-
-interface PageSwapEvent extends Event {
-	viewTransition?: {
-		types: Set<string>;
-	};
-	activation: {
-		from: { url: string };
-		entry: { url: string };
-	};
-}
-
 class Nav extends HTMLElement {
 	private leftChevron: HTMLAnchorElement | null = null;
+	private noBack = false;
 
 	constructor() {
 		super();
@@ -32,6 +15,7 @@ class Nav extends HTMLElement {
 	}
 
 	connectedCallback() {
+		this.noBack = this.hasAttribute("no-back");
 		this.render();
 		this.addEventListeners();
 		this.addPrefetch();
@@ -73,7 +57,7 @@ class Nav extends HTMLElement {
 						font-size: 3rem;
           }
         </style>
-        <button class="left-chevron">&#8249;</button>
+        ${this.noBack ? "" : '<button class="left-chevron">&#8249;</button>'}
         <a class="right-chevron" href="${this.getAttribute("to") || "#"}">&#8250;</a>
       `;
 
@@ -82,87 +66,19 @@ class Nav extends HTMLElement {
 			) as HTMLAnchorElement;
 		}
 	}
-	private getFullPath(relativePath: string | null): string {
-		if (!relativePath) return "#";
 
-		const currentUrl = new URL(window.location.href);
-
-		const fullUrl = new URL(relativePath, currentUrl);
-
-		return fullUrl.pathname + fullUrl.search;
-	}
-
-	determineTransitionType(from: string, to: string): string {
-		if (!from || !to) {
-			return "unknown";
-		}
-
-		const toUrl = new URL(to);
-		const fromUrl = new URL(from);
-		const backUrl = new URL(document.referrer || window.location.href);
-
-		const toPath = toUrl.pathname;
-		const fromPath = fromUrl.pathname;
-		const backPath = backUrl.pathname;
-		const forwardPath = this.getFullPath(this.getAttribute("to"));
-
-		if (toPath === forwardPath) {
-			return "forwards";
-		}
-
-		if (toPath === backPath) {
-			return "backwards";
-		}
-
-		if (fromPath === toPath) {
-			return "reload";
-		}
-
-		return "unknown";
+	goBack() {
+		if (this.noBack) return;
+		window.history.back();
 	}
 
 	addEventListeners() {
-		if (!this.leftChevron) return;
-		this.leftChevron.addEventListener("click", () => {
-			window.history.back();
-		});
-
 		// Add keyboard event listener
 		document.addEventListener("keydown", this.handleKeyDown.bind(this));
 
-		// biome-ignore lint/suspicious/noExplicitAny: new API, TODO UPDATE TYPES
-		(window as any).addEventListener("pageswap", async (e: PageSwapEvent) => {
-			if (e.viewTransition) {
-				const transitionType = this.determineTransitionType(
-					e.activation.from?.url,
-					e.activation.entry?.url,
-				);
-				e.viewTransition.types.add(transitionType);
-				if (!navigation) {
-					localStorage.setItem("transitionType", transitionType);
-				}
-			}
-		});
-
-		// biome-ignore lint/suspicious/noExplicitAny: new API, TODO UPDATE TYPES
-		(window as any).addEventListener("pagereveal", async (e: PageSwapEvent) => {
-			if (e.viewTransition) {
-				let transitionType: string;
-				if (!navigation) {
-					transitionType = localStorage.getItem("transitionType") || "unknown";
-				} else {
-					transitionType = this.determineTransitionType(
-						navigation.activation.from.url,
-						navigation.activation.entry.url,
-					);
-				}
-				console.log("pageReveal:", {
-					from: e.activation.from.url,
-					entry: e.activation.entry.url,
-				});
-
-				e.viewTransition.types.add(transitionType);
-			}
+		if (!this.leftChevron) return;
+		this.leftChevron.addEventListener("click", () => {
+			window.history.back();
 		});
 	}
 
@@ -170,7 +86,7 @@ class Nav extends HTMLElement {
 		const to = this.getAttribute("to");
 		switch (event.key) {
 			case "ArrowLeft":
-				window.history.back();
+				this.goBack();
 				break;
 			case "ArrowRight":
 				if (to) {
@@ -209,7 +125,7 @@ class Nav extends HTMLElement {
 		} else {
 			// If can't scroll, navigate
 			if (direction < 0) {
-				window.history.back();
+				this.goBack();
 			} else {
 				const to = this.getAttribute("to");
 				if (to) {
@@ -230,7 +146,7 @@ class Nav extends HTMLElement {
 	}
 
 	static get observedAttributes() {
-		return ["to"];
+		return ["to", "no-back"];
 	}
 
 	attributeChangedCallback(name: string, oldValue: string, newValue: string) {
@@ -242,6 +158,9 @@ class Nav extends HTMLElement {
 				rightChevron.href = newValue || "#";
 			}
 			this.addPrefetch(); // Re-add prefetch when 'to' attribute changes
+		} else if (name === "no-back" && oldValue !== newValue) {
+			this.noBack = this.hasAttribute("no-back");
+			this.render(); // Re-render to update the left chevron visibility
 		}
 	}
 }
