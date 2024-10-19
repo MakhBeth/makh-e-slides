@@ -1,0 +1,37 @@
+<h1 class="accent">Specificity</h1>
+<style>
+  .fragment {background: white; width: auto; margin: 0 auto; display: inline-block; padding: 1rem;}
+  .red {
+    color: red;
+      }
+      .blue {
+        color: blue;
+      }
+      .red.red {
+        color: green;
+      }
+    </style>
+<p>
+  <code-highlight language="css"
+    ><style>
+      .red {
+        color: red;
+      }
+      .blue {
+        color: blue;
+      }
+      .red.red {
+        color: green;
+      }
+    </style>
+  </code-highlight>
+</p>
+<p>
+  <code-highlight language="html">
+    &lt;div class=&quot;red blue&quot;&gt;COLOR ME, SENPAI!&lt;/div&gt;
+  </code-highlight>
+</p>
+
+<div class="fragment red blue">COLOR ME, SENPAI</h1>
+
+<nav-component to="./specificity2.html"></nav-component>
