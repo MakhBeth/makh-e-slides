@@ -73,6 +73,12 @@ picture {
 	display: block;
 }
 
+code-highlight {
+	white-space: pre-wrap;
+	display: block;
+	width: 100%;
+}
+
 /* Inherit fonts for inputs and buttons */
 input,
 button,
@@ -81,6 +87,16 @@ select {
 	font: inherit;
 }
 
+pre {
+	margin: 0;
+	width: min-content;
+	margin: 0 auto;
+
+	code {
+		padding: 0 !important;
+		padding-right: 2em !important;
+	}
+}
 /* Remove all animations, transitions and smooth scroll for people that prefer not to see them */
 @media (prefers-reduced-motion: reduce) {
 	html:focus-within {

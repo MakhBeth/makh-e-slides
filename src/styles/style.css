@@ -35,8 +35,20 @@
 :root {
 	view-transition-name: none;
 }
-section {
+main > section {
 	view-transition-name: content;
+}
+
+nav-component {
+	view-transition-name: nav;
+}
+
+::view-transition-group(*) {
+	animation-duration: 0.5s;
+}
+
+:view-transition-group(nav) {
+	display: none;
 }
 
 ::view-transition-old(content) {
@@ -99,11 +111,7 @@ section {
 	min-height: calc(100vh - 4rem);
 	box-sizing: border-box;
 	width: 100%;
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	justify-content: center;
-	flex: 0 0 100vw;
+	align-content: center;
 	scroll-snap-align: start;
 }
 
@@ -267,6 +275,8 @@ ul {
 
 p {
 	width: min(50rem, 100%);
+	margin-left: auto;
+	margin-right: auto;
 }
 
 blockquote {
@@ -293,8 +303,8 @@ blockquote {
 }
 
 [data-example] {
-	border: 0.5rem solid var(--color-accent);
-	padding: 2rem;
+	border: 1.5rem solid var(--color-accent);
+	padding: 1rem;
 	width: 100%;
 	background-color: var(--color-background);
 	position: relative;
@@ -302,5 +312,14 @@ blockquote {
 
 	&::before {
 		content: attr(data-example);
+		position: absolute;
+		top: -1.4rem;
+		left: -1.4rem;
+		background-color: var(--color-background);
+		padding: 0.125em 0.25em;
+		opacity: 0.8;
+		border-radius: 0.5em;
+		display: block;
+		font-size: var(--font-size-xxs);
 	}
 }

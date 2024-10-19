@@ -1,12 +1,31 @@
-<h1 class="accent">You talk too much, show me the code</h1>
+<h3 class="accent">You talk too much, show me the code</h3>
 
 <style>
-  
+  [data-example='parent'] {
+    min-height: 75vh;
+    align-content: center;
+  }
+
+  [data-example='children'] {
+    width: 75%;
+    margin: 0 auto;
+  }
 </style>
 
-<div data-example="parent">
-  <div data-example="children">Content</div>
+<div data-example="parent" class="fragment">
+  <div data-example="children">
+    <code-highlight language="css">
+      <style>
+        [data-example='parent'] {
+          align-content: center;
+        }
+
+        [data-example='children'] {
+          margin: 0 auto;
+        }
+      </style></code-highlight
+    >
+  </div>
 </div>
 
-
-<nav-component to="./talktoomuch.html"></nav-component>
+<nav-component to="./thatsallfolksfake.html"></nav-component>

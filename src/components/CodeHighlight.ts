@@ -15,7 +15,7 @@ export const CodeHighlight = {
 if (typeof window !== "undefined") {
 	class CodeHighlightElement extends HTMLElement {
 		connectedCallback() {
-			const code = this.innerHTML || "";
+			const code = this.textContent || this.innerHTML || "";
 			const language = this.getAttribute("language") || "javascript";
 			this.innerHTML = CodeHighlight.render(code, language);
 		}
