@@ -25,16 +25,18 @@
   to { transform: translateX(0); }
 }
 
+::view-transition-old(root) {
+	animation: 0.4s ease-in both slide-out-to-left;
+}
+
+::view-transition-new(root) {
+	animation: 0.4s ease-in both slide-in-from-right;
+}
+
 html:active-view-transition-type(forwards, backwards) {
 	:root {
 		view-transition-name: none;
 	}
-}
-
-html:active-view-transition-type(forwards, backwards) {
-  :root {
-    view-transition-name: none;
-  }
 }
 
 html:active-view-transition-type(forwards) {

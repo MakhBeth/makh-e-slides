@@ -4,9 +4,27 @@
  * Example usage:
  * <nav-component to="/next-page.html"></nav-component>
  */
+
+interface Navigation {
+	activation: {
+		from: { url: string };
+		entry: { url: string };
+	};
+}
+declare const navigation: Navigation;
+
+interface PageSwapEvent extends Event {
+	viewTransition?: {
+		types: Set<string>;
+	};
+	activation: {
+		from: { url: string };
+		entry: { url: string };
+	};
+}
+
 class Nav extends HTMLElement {
 	private leftChevron: HTMLAnchorElement | null = null;
-	private rightChevron: HTMLAnchorElement | null = null;
 
 	constructor() {
 		super();
@@ -64,6 +82,44 @@ class Nav extends HTMLElement {
 			) as HTMLAnchorElement;
 		}
 	}
+	private getFullPath(relativePath: string | null): string {
+		if (!relativePath) return "#";
+
+		const currentUrl = new URL(window.location.href);
+
+		const fullUrl = new URL(relativePath, currentUrl);
+
+		return fullUrl.pathname + fullUrl.search;
+	}
+
+	determineTransitionType(from: string, to: string): string {
+		if (!from || !to) {
+			return "unknown";
+		}
+
+		const toUrl = new URL(to);
+		const fromUrl = new URL(from);
+		const backUrl = new URL(document.referrer || window.location.href);
+
+		const toPath = toUrl.pathname;
+		const fromPath = fromUrl.pathname;
+		const backPath = backUrl.pathname;
+		const forwardPath = this.getFullPath(this.getAttribute("to"));
+
+		if (toPath === forwardPath) {
+			return "forwards";
+		}
+
+		if (toPath === backPath) {
+			return "backwards";
+		}
+
+		if (fromPath === toPath) {
+			return "reload";
+		}
+
+		return "unknown";
+	}
 
 	addEventListeners() {
 		if (!this.leftChevron) return;
@@ -73,6 +129,41 @@ class Nav extends HTMLElement {
 
 		// Add keyboard event listener
 		document.addEventListener("keydown", this.handleKeyDown.bind(this));
+
+		// biome-ignore lint/suspicious/noExplicitAny: new API, TODO UPDATE TYPES
+		(window as any).addEventListener("pageswap", async (e: PageSwapEvent) => {
+			if (e.viewTransition) {
+				const transitionType = this.determineTransitionType(
+					e.activation.from?.url,
+					e.activation.entry?.url,
+				);
+				e.viewTransition.types.add(transitionType);
+				if (!navigation) {
+					localStorage.setItem("transitionType", transitionType);
+				}
+			}
+		});
+
+		// biome-ignore lint/suspicious/noExplicitAny: new API, TODO UPDATE TYPES
+		(window as any).addEventListener("pagereveal", async (e: PageSwapEvent) => {
+			if (e.viewTransition) {
+				let transitionType: string;
+				if (!navigation) {
+					transitionType = localStorage.getItem("transitionType") || "unknown";
+				} else {
+					transitionType = this.determineTransitionType(
+						navigation.activation.from.url,
+						navigation.activation.entry.url,
+					);
+				}
+				console.log("pageReveal:", {
+					from: e.activation.from.url,
+					entry: e.activation.entry.url,
+				});
+
+				e.viewTransition.types.add(transitionType);
+			}
+		});
 	}
 
 	handleKeyDown(event: KeyboardEvent) {
