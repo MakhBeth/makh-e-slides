@@ -1,0 +1,19 @@
+<h1 class="accent">:where()</h1>
+<div class="specificity-calc-container">
+  <specificity-calc
+    >ul [data-nav]#primary-nav li.active:not([data-example]):hover
+  </specificity-calc>
+  <code-highlight language="css">
+    ul [data-nav]#primary-nav li.active:not([data-example]):hover
+  </code-highlight>
+</div>
+<div class="specificity-calc-container">
+  <specificity-calc
+    >:where(ul [data-nav]#primary-nav li.active:not([data-example]):hover)
+  </specificity-calc>
+  <code-highlight language="css">
+    :where(ul [data-nav]#primary-nav li.active:not([data-example]):hover)
+  </code-highlight>
+</div>
+
+<nav-component to="./is.html"></nav-component>

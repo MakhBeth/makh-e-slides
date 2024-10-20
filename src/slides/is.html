@@ -1,0 +1,22 @@
+<h1 class="accent">:is()</h1>
+<style>
+  specificity-calc:nth-of-type(2) {
+    left: 0;
+    right: auto;
+  }
+</style>
+<div class="specificity-calc-container">
+  <code-highlight language="css">
+    <code>#mimmo, .amerelli</code>
+  </code-highlight>
+  <specificity-calc>.amerelli</specificity-calc>
+  <specificity-calc>#mimmo</specificity-calc>
+</div>
+<div class="specificity-calc-container">
+  <code-highlight language="css">
+    <code>:is(#mimmo, .amerelli)</code>
+  </code-highlight>
+  <specificity-calc> :is(#mimmo, .amerelli) </specificity-calc>
+</div>
+
+<nav-component to="./has.html"></nav-component>

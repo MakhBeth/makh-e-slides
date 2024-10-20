@@ -108,7 +108,9 @@ class Nav extends HTMLElement {
 		const scrollAmount = window.innerHeight;
 		const currentScroll = window.scrollY;
 		const maxScroll =
-			document.documentElement.scrollHeight - window.innerHeight;
+			document.documentElement.scrollHeight - window.innerHeight - 1;
+
+		console.log({ direction, currentScroll, maxScroll });
 
 		if (direction > 0 && currentScroll < maxScroll) {
 			// Scroll down
@@ -123,7 +125,6 @@ class Nav extends HTMLElement {
 				behavior: "smooth",
 			});
 		} else {
-			// If can't scroll, navigate
 			if (direction < 0) {
 				this.goBack();
 			} else {

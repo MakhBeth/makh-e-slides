@@ -323,3 +323,41 @@ blockquote {
 		font-size: var(--font-size-xxs);
 	}
 }
+
+table {
+	margin: 0 auto;
+	text-align: left;
+	tr {
+		background-color: var(--color-background);
+		margin: 0; padding: 0;
+	}
+	
+	td {
+		padding: 0.5rem;
+		border: 0;
+		tr:not(:last-of-type) & {
+			border-bottom: 1px solid var(--color-text-light);
+		}
+	}
+}
+
+specificity-calc {
+	opacity: 0;
+}
+.specificity-calc-container {
+	isolation: isolate;
+	position: relative;
+	max-width: min-content;
+	margin: 0 auto;
+	margin-bottom: 2rem;
+
+	specificity-calc {
+		position: absolute;
+		right: 0;
+		top: -1em;
+	}
+}
+
+img {
+	margin: 0 auto 1rem;
+}

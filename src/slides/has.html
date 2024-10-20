@@ -1,0 +1,16 @@
+<h1 class="accent">:has()</h1>
+<img src="/giphy-279119643.gif" alt=":has(god)" />
+<div class="specificity-calc-container fragment">
+  <code-highlight language="css">
+    <code>form:has(:focus-visible)</code>
+  </code-highlight>
+  <specificity-calc>form:has(:focus-visible)</specificity-calc>
+</div>
+<div class="specificity-calc-container fragment">
+  <code-highlight language="css">
+    <code>my-element:has(> :nth-child(4))</code>
+  </code-highlight>
+  <specificity-calc>my-element:has(> :nth-child(4))</specificity-calc>
+</div>
+
+<nav-component to="./nth-child.html"></nav-component>

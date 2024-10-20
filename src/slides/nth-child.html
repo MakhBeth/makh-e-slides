@@ -1,0 +1,15 @@
+<h1 class="accent">:nth-child(N of T)</h1>
+<div class="specificity-calc-container">
+  <code-highlight language="css">
+    <code>.element:nth-child(2) { background: red; }</code>
+  </code-highlight>
+  <specificity-calc>.element:nth-child(2)</specificity-calc>
+</div>
+<div class="specificity-calc-container">
+  <code-highlight language="css">
+    <code>:nth-child(2 of .element)</code>
+  </code-highlight>
+  <specificity-calc>:nth-child(2 of .element)</specificity-calc>
+</div>
+
+<nav-component to="./scope.html"></nav-component>

@@ -16,6 +16,7 @@
 	"dependencies": {
 		"highlight.js": "^11.8.0",
 		"jsdom": "^25.0.0",
+		"specificity": "^1.0.0",
 		"ts-pattern": "^5.3.1"
 	}
 }

@@ -1,0 +1,54 @@
+<h1 class="accent">@scope</h1>
+<style>
+  img {
+    max-width: 20rem;
+    margin: 2rem auto;
+  }
+</style>
+<div class="specificity-calc-container">
+  <code-highlight language="html">
+    &lt;body&gt;<br />
+    &nbsp;&nbsp;&lt;article&nbsp;class=&quot;feature&quot;&gt;<br />
+    &nbsp;&nbsp;&nbsp;&nbsp;&lt;section&nbsp;class=&quot;article-hero&quot;&gt;<br />
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;h2&gt;<br />&lt;/h2&gt;<br />
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;img&nbsp;/&gt;<br />
+    &nbsp;&nbsp;&nbsp;&nbsp;&lt;/section&gt;<br />
+    &nbsp;&nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp;&nbsp;&lt;section&nbsp;class=&quot;article-body&quot;&gt;<br />
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;h3&gt;<br />&lt;/h3&gt;<br />
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;p&gt;<br />&lt;/p&gt;<br />
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;img&nbsp;/&gt; <== LOOK AT ME!<br />
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;p&gt;<br />&lt;/p&gt;<br />
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;figure&gt;<br />
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;img&nbsp;/&gt;<br />
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;figcaption&gt;<br />&lt;/figcaption&gt;<br />
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/figure&gt;<br />
+    &nbsp;&nbsp;&nbsp;&nbsp;&lt;/section&gt;<br />
+    &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&lt;footer&gt;<br />
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;p&gt;<br />&lt;/p&gt;<br />
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;img&nbsp;/&gt;<br />
+    &nbsp;&nbsp;&nbsp;&nbsp;&lt;/footer&gt;<br />
+    &nbsp;&nbsp;&lt;/article&gt;<br />
+    &lt;/body&gt;<br />
+  </code-highlight>
+</div>
+<div class="specificity-calc-container">
+  <code-highlight language="css">
+    <code>.feature > .article-body > img</code>
+  </code-highlight>
+  <specificity-calc>.feature > .article-body > img</specificity-calc>
+</div>
+
+<div class="fragment">
+  <code-highlight language="css"
+    >
+      @scope (.article-body) to (figure) {
+        img {
+          border: 5px solid red;
+        }
+      }
+  </code-highlight>
+  <img src="/donut.png" alt="donut scope" />
+</div>
+
+<nav-component to="./scope.html"></nav-component>
