@@ -1,0 +1,16 @@
+@layer base, layout;
+.message {
+	background-color: rebeccapurple;
+	padding: 1rem;
+	color: white;
+}
+@layer layout {
+	.message {
+		border: 10px solid aqua;
+	}
+}
+@layer base {
+	.message {
+		border: 10px solid gold;
+	}
+}

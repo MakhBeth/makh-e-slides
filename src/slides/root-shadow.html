@@ -1,0 +1,51 @@
+<h3 class="accent">Shadow Root</h3>
+<style>
+  [data-example] span {
+    color: red !important;
+  }
+</style>
+<code-highlight language="javascript"
+  ><script>
+    const host = document.querySelector('#jojo')
+    const shadow = host.attachShadow({ mode: 'open' })
+    const span = document.createElement('span')
+    span.textContent = 'ORA ORA ORA!'
+    shadow.appendChild(span)
+  </script></code-highlight
+>
+<br />
+<table>
+  <tr>
+    <td>
+      <code-highlight language="css"
+        ><style>
+  span {
+    color: red !important;
+  }
+        </style></code-highlight
+      >
+    </td>
+    <td><code-highlight language="html">
+  &#60;div data-example&#61;&#34;root-shadow&#34;&#62;
+    &#60;div id&#61;&#34;jojo&#34;&#62;&#60;&#47;div&#62;
+    &#60;span&#62;MUDA&#32;MUDA&#32;MUDA&#33;&#60;&#47;span&#62;
+  &#60;&#47;div&#62;
+  </code-highlight>
+  </td>
+  </tr>
+</table>
+
+<br />
+<div data-example="root-shadow">
+  <div id="jojo"></div>
+  <span>MUDA MUDA MUDA!</span>
+</div>
+<nav-component to="./root-shadow.html"></nav-component>
+
+<script>
+  const _host = document.querySelector('#jojo')
+  const _shadow = _host.attachShadow({ mode: 'open' })
+  const span = document.createElement('span')
+  span.textContent = 'ORA ORA ORA!'
+  _shadow.appendChild(span)
+</script>
