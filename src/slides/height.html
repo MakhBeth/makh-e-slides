@@ -1,0 +1,43 @@
+<h1 class="accent">Animating height</h1>
+<style>
+  section {
+    align-items: start;
+  }
+  p {
+    interpolate-size: allow-keywords;
+    transition: 1s;
+    max-width: 30rem;
+    background-color: var(--color-background);
+    border-radius: 0.5rem;
+    padding: 1rem;
+    margin-top: 1rem;
+    overflow: hidden;
+    text-align: left;
+    border: 1px solid var(--color-text-light);
+    box-sizing: border-box;
+  }
+  p:not(:hover) {
+    height: calc(5lh + 1rem);
+  }
+</style>
+<code-highlight lang="css"
+  ><style>
+    p {
+      interpolate-size: allow-keywords;
+      transition: 1s;
+    }
+    p:not(:hover) {
+      height: 5lh;
+    }
+  </style></code-highlight
+>
+<p>
+  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean venenatis
+  molestie purus. Sed venenatis pulvinar eleifend. Nam facilisis nec lacus et
+  sagittis. Sed eleifend eu risus non aliquet. Morbi volutpat mi et libero
+  pulvinar placerat. Phasellus laoreet sed augue id venenatis. Ut non turpis
+  nisi. Mauris nec varius libero. Donec sed fringilla felis. Morbi placerat nisi
+  id augue viverra fermentum.
+</p>
+
+<nav-component to="./toplayer.html"></nav-component>

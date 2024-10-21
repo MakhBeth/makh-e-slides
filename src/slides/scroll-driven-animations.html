@@ -1,0 +1,20 @@
+<h1 class="accent">Scroll-driven Animations</h1>
+<div class="fragment">This</div>
+<div class="fragment">is</div>
+<div class="fragment">done</div>
+<div class="fragment">with</div>
+<div class="fragment">CSS</div>
+<div class="fragment">
+  <code-highlight lang="css"
+    ><style>
+      .fragment {
+        opacity: 0;
+        animation: fadeIn 1s ease-out forwards;
+        animation-timeline: scroll(root);
+        animation-range: calc((var(--fragment-count) - 1) * 100dvh)
+          calc(var(--fragment-count) * 100dvh);
+      }
+    </style></code-highlight
+  >
+</div>
+<nav-component to="./scroll-driven-animations-2.html"></nav-component>

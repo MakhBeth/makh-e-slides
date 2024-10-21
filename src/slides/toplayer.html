@@ -1,0 +1,76 @@
+<h1 class="accent">Top Layer</h1>
+<style>
+  body {
+    min-height: 300vh;
+  }
+  .mimmo {
+    position: fixed;
+    top: 2rem;
+    margin: 0 auto;
+    padding: var(--spacing-md);
+    background-color: var(--color-accent);
+    color: var(--color-background);
+    border-radius: var(--border-radius-md);
+    border: 1px solid var(--color-text-light);
+    z-index: 999999999;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  dialog {
+    padding: var(--spacing-md);
+    border-radius: var(--border-radius-md);
+    border: 1px solid var(--color-text-light);
+    background-color: var(--color-background);
+    color: var(--color-text);
+  }
+
+  dialog::backdrop {
+    background-color: rgba(0, 0, 0, 0.7);
+  }
+
+  button {
+    background-color: var(--color-primary);
+    color: var(--color-text);
+    border: none;
+    padding: var(--spacing-xs) var(--spacing-sm);
+    border-radius: var(--border-radius-sm);
+    cursor: pointer;
+    transition: var(--transition-fast);
+  }
+
+  button:hover {
+    background-color: var(--color-secondary);
+  }
+</style>
+
+<div class="mimmo">MIMMO!</div>
+
+<button id="openDialog">Open Dialog</button>
+
+<dialog id="myDialog">
+  <h2>Hello World!</h2>
+  <p>This is a dialog in the top layer.</p>
+  <form method="dialog">
+    <button>Close</button>
+  </form>
+</dialog>
+<br />
+<br />
+<code-highlight lang="css"> .mimmo { z-index: 999999999; } </code-highlight>
+
+<script>
+  const dialog = document.getElementById('myDialog')
+  const openButton = document.getElementById('openDialog')
+
+  openButton.addEventListener('click', () => {
+    dialog.showModal()
+  })
+</script>
+
+<nav-component to="./textarea.html"></nav-component>
+<br /><a
+  target="_blank"
+  rel="noopener noreferrer"
+  href="https://developer.mozilla.org/en-US/docs/Glossary/Top_layer"
+  >MDN: Top Layer</a
+>

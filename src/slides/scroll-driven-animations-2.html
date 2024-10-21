@@ -1,0 +1,38 @@
+<h1 class="accent">Scroll-driven Animations</h1>
+<style>
+  @keyframes slide-out-to-left {
+    from {
+      transform: translateX(100%);
+    }
+    to {
+      transform: translateX(-100%);
+    }
+  }
+
+  .element {
+    animation: slide-out-to-left 1s ease-out forwards;
+    animation-timeline: scroll(root);
+    animation-range: 0 100dvh;
+  }
+</style>
+<h2 class="element">Fuck scroll hijacking</h2>
+<code-highlight lang="css"
+  ><style>
+    @keyframes slide-out-to-left {
+      from {
+        transform: translateX(100%);
+      }
+      to {
+        transform: translateX(-100%);
+      }
+    }
+
+    .element {
+      animation: slide-out-to-left 1s ease-out forwards;
+      animation-timeline: scroll(root);
+      animation-range: 0 100dvh;
+    }
+  </style></code-highlight
+>
+<div class="fragment"></div>
+<nav-component to="./anchoring.html"></nav-component>

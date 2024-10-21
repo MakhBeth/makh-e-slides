@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Anchoring</title>
+  </head>
+  <body>
+    <style>
+      .anchor {
+        anchor-name: --myAnchor;
+        position: absolute;
+        top: 60vh;
+        left: 45%;
+      }
+      .infobox {
+        --h: 10px; /* tooltip height */
+        --w: 15px; /* tooltip width */
+        --g: 5px; /* the gap */
+
+        position: fixed;
+        position-anchor: --myAnchor;
+        position-try: most-height --custom-bottom;
+        bottom: anchor(top);
+        margin-block: 0 calc(var(--h) + var(--g));
+        clip-path: inset(0.5px) margin-box;
+        justify-self: anchor-center;
+      }
+      .infobox::before {
+        content: '';
+        position: absolute;
+        z-index: -1;
+        inset: calc(-1 * var(--h)) calc(50% - var(--w));
+        background: black;
+        clip-path: polygon(
+          0 var(--h),
+          50% 0,
+          100% var(--h),
+          100% calc(100% - var(--h)),
+          50% 100%,
+          0 calc(100% - var(--h))
+        );
+      }
+
+      @position-try --custom-bottom {
+        top: anchor(bottom);
+        bottom: unset;
+        margin-block: calc(var(--h) + var(--g)) 0;
+      }
+
+      body {
+        min-height: 200vh;
+      }
+
+      /**/
+      .infobox {
+        color: #fff;
+        background-color: black;
+        padding: 10px;
+        border-radius: 10px;
+        font-size: 1rem;
+        text-align: center;
+      }
+
+      .anchor {
+        font-size: 1.8rem;
+        color: white;
+        text-shadow: 1px 1px 1px black;
+        background-color: hsl(240 100% 75%);
+        width: fit-content;
+        border-radius: 10px;
+        border: 1px solid black;
+        padding: 3px;
+      }
+    </style>
+    <div class="anchor">⚓︎</div>
+
+    <div class="infobox">
+      <p>This is an information box.</p>
+    </div>
+  </body>
+</html>
