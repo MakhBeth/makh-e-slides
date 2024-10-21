@@ -118,6 +118,7 @@ section {
 pre {
 	text-align: left;
 	overflow-x: auto;
+	border-radius: 0.5rem;
 }
 
 @keyframes fadeIn {

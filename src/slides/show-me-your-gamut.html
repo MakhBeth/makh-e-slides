@@ -1,0 +1,28 @@
+<h3 class="accent">Show me your gamut!</h3>
+<style></style>
+<img src="/gamut.png" alt="Gamut" class="gamut" />
+<code-highlight language="css"
+  ><style>
+    @media (color-gamut: p3) {
+      @supports (color: oklch(0 0 0)) {
+        .gamut {
+          --ds-red-700: oklch(62.56% 0.2524 23.03); /* <-- vercel */
+        }
+      }
+    }
+  </style></code-highlight
+>
+
+<a href="https://vercel.com/design/colors" target="_blank"
+  >Vercel Design System</a
+>
+<a
+  href="https://developer.mozilla.org/en-US/docs/Web/CSS/color-gamut"
+  target="_blank"
+  >MDN</a
+>
+<a href="https://www.color.space/p3" target="_blank">Color Space</a>
+<a href="https://www.color.space/oklch" target="_blank">Color Space - OKLCH</a>
+<a href="https://www.wide-gamut.com/test" target="_blank">Wide Gamut Test</a>
+
+<nav-component to="./OKLCH.html"></nav-component>

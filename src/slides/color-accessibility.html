@@ -1,0 +1,52 @@
+<h3 class="accent">Color Accessibility</h3>
+<style>
+  :root {
+    --l-threshold: 0.7;
+    --l: clamp(0, (var(--l-threshold) / l - 1) * infinity, 1);
+  }
+  div:not([data-example]) {
+    color: oklch(from var(--color) var(--l) 0 h);
+    background-color: var(--color);
+  }
+  .zero {
+    --color: black;
+  }
+  .one {
+    --color: white;
+  }
+  input:checked ~ .zero {
+    --color: #6699cc;
+  }
+</style>
+<code-highlight language="css">
+  <style>
+    :root {
+      --l-threshold: 0.7;
+      --l: clamp(0, (var(--l-threshold) / l - 1) * infinity, 1);
+    }
+    div:not([data-example]) {
+      color: oklch(from var(--color) var(--l) 0 h);
+      background-color: var(--color);
+    }
+    .zero {
+      --color: black;
+    }
+    .one {
+      --color: white;
+    }
+    input:checked ~ .zero {
+      --color: #6699cc;
+    }
+  </style></code-highlight
+>
+<div data-example="accessibility">
+  <div>
+    <input type="checkbox" id="zero" label="change color" />
+    <div class="zero">ONE</div>
+    <div class="one">TWO</div>
+  </div>
+</div>
+<a href="https://lea.verou.me/blog/2024/contrast-color/" target="_blank"
+  >contrast color by Lea Verou</a
+>
+<nav-component to="./color-mix.html"></nav-component>

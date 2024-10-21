@@ -1,0 +1,79 @@
+<h3 class="accent">OKLCH</h3>
+<style>
+  :root {
+    --color-neutral-100: oklch(97% 0.01 280);
+    --color-neutral-200: oklch(89% 0.01 280);
+    --color-neutral-300: oklch(80% 0.01 280);
+    --color-neutral-400: oklch(71% 0.01 280);
+    --color-neutral-500: oklch(60% 0.01 280);
+    --color-neutral-600: oklch(49% 0.01 280);
+    --color-neutral-700: oklch(38% 0.01 280);
+    --color-neutral-800: oklch(25% 0.01 280);
+    --color-neutral-900: oklch(12% 0.01 280);
+  }
+  [data-example='oklch'] > div {
+    display: flex;
+    flex-direction: row;
+    border: 1px solid var(--color-neutral-100);
+  }
+  .colors {
+    height: 100px;
+    flex: 1 0 auto;
+  }
+  :nth-child(1 of .colors) {
+    background-color: var(--color-neutral-100);
+  }
+  :nth-child(2 of .colors) {
+    background-color: var(--color-neutral-200);
+  }
+  :nth-child(3 of .colors) {
+    background-color: var(--color-neutral-300);
+  }
+  :nth-child(4 of .colors) {
+    background-color: var(--color-neutral-400);
+  }
+  :nth-child(5 of .colors) {
+    background-color: var(--color-neutral-500);
+  }
+  :nth-child(6 of .colors) {
+    background-color: var(--color-neutral-600);
+  }
+  :nth-child(7 of .colors) {
+    background-color: var(--color-neutral-700);
+  }
+  :nth-child(8 of .colors) {
+    background-color: var(--color-neutral-800);
+  }
+  :nth-child(9 of .colors) {
+    background-color: var(--color-neutral-900);
+  }
+</style>
+<code-highlight language="css">
+  <style>
+    :root {
+      --color-neutral-100: oklch(97% 0.01 280);
+      --color-neutral-200: oklch(89% 0.01 280);
+      --color-neutral-300: oklch(80% 0.01 280);
+      --color-neutral-400: oklch(71% 0.01 280);
+      --color-neutral-500: oklch(60% 0.01 280);
+      --color-neutral-600: oklch(49% 0.01 280);
+      --color-neutral-700: oklch(38% 0.01 280);
+      --color-neutral-800: oklch(25% 0.01 280);
+      --color-neutral-900: oklch(12% 0.01 280);
+    }
+  </style></code-highlight
+>
+<div data-example="oklch">
+  <div>
+    <div class="colors"></div>
+    <div class="colors"></div>
+    <div class="colors"></div>
+    <div class="colors"></div>
+    <div class="colors"></div>
+    <div class="colors"></div>
+    <div class="colors"></div>
+    <div class="colors"></div>
+    <div class="colors"></div>
+  </div>
+</div>
+<nav-component to="./color-accessibility.html"></nav-component>
