@@ -1,0 +1,75 @@
+<h1 class="accent">Container Queries</h1>
+<style>
+  .container {
+    container-type: inline-size;
+    margin-bottom: 10px;
+  }
+
+  .element {
+    background-color: var(--bcg);
+    color: white;
+  }
+  .element {
+    --bcg: rgb(from red r g b / 0.2);
+    border: 3px solid red;
+  }
+
+  @container (width > 5rem) {
+    .element {
+      --bcg: rgb(from green r g b / 0.2);
+      border: 3px solid green;
+    }
+  }
+
+  @container (width > 15rem) {
+    .element {
+      --bcg: rgb(from blue r g b / 0.2);
+      border: 3px solid blue;
+    }
+  }
+
+  :nth-child(1 of .container) {
+    width: 20rem;
+  }
+  :nth-child(2 of .container) {
+    width: 15rem;
+  }
+  :nth-child(3 of .container) {
+    width: 5rem;
+  }
+
+  .row {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin: 0 auto 1rem;
+    justify-content: center;
+    flex-direction: row-reverse;
+  }
+</style>
+
+<div class="row">
+  <div class="container">
+    <div class="element">20rem</div>
+  </div>
+  <div class="container">
+    <div class="element">15rem</div>
+  </div>
+  <div class="container">
+    <div class="element">5rem</div>
+  </div>
+</div>
+
+<code-highlight lang="css">
+  .element { 
+    --bcg: red; 
+    @container (width > 5rem) { 
+      --bcg: #green;
+    } 
+    @container (width > 15rem) {
+      --bcg: blue;
+    } 
+  }
+</code-highlight>
+
+<nav-component to="./misc.html"></nav-component>
