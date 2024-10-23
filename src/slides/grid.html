@@ -1,0 +1,56 @@
+<h4 class="accent">Grid instead of absolute positioning</h4>
+<style>
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    max-width: 300px;
+    margin: 0 auto;
+  }
+
+  .grid > div {
+    border: 1px solid var(--color-accent);
+    padding: 20px;
+    text-align: center;
+    font-weight: bold;
+  }
+
+  .grid > div:nth-child(2) {
+    grid-column: 2 / 3;
+    grid-row: 1 / 2;
+  }
+
+  .grid > div:nth-child(3) {
+    grid-column: 3 / 4;
+    grid-row: 1 / 2;
+  }
+
+  .grid > div:nth-child(4) {
+    grid-column: 2 / 3;
+    grid-row: 1 / 2;
+    background-color: rgba(var(--color-accent-rgb), 0.2);
+    z-index: 1;
+  }
+</style>
+
+<div data-example="grid">
+  <div class="grid">
+    <div>1</div>
+    <div>2</div>
+    <div>3</div>
+    <div>4</div>
+  </div>
+</div>
+
+<code-highlight lang="css">
+  <style>
+    .grid > div:nth-child(4) {
+      grid-column: 2 / 3;
+      grid-row: 1 / 2;
+      background-color: rgba(var(--color-accent-rgb), 0.2);
+      z-index: 1;
+    }
+  </style>
+</code-highlight>
+
+<nav-component to="./clamp.html"></nav-component>

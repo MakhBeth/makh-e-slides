@@ -1,0 +1,61 @@
+<h4 class="accent">Container Queries</h4>
+<style>
+  .code-block {
+    display: flex;
+  }
+  [data-example='display-contents'] {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    text-align: center;
+    margin-bottom: 1rem;
+  }
+  [data-example='display-contents'] div {
+    border: 10px solid red;
+    max-width: 5rem;
+    padding: 1rem;
+    display: flex;
+    gap: 1rem;
+    min-width: max-content;
+    text-align: center;
+    align-items: center;
+    text-align: center;
+    width: 100%;
+    justify-content: center;
+  }
+  .contents.contents {
+    display: contents;
+    align-content: center;
+  }
+</style>
+
+<div data-example="display-contents">
+  <div>
+    <div>1</div>
+    <div>2</div>
+  </div>
+  <div class="contents">
+    <div>1</div>
+    <div>2</div>
+  </div>
+  <div>
+    <div>1</div>
+    <div>2</div>
+  </div>
+</div>
+<div class="code-block">
+  <code-highlight lang="html">
+    &lt;div&gt;&lt;div&gt;1&lt;/div&gt;&lt;div&gt;2&lt;/div&gt;&lt;/div&gt;
+    &lt;div class=&quot;contents&quot;&gt; &lt;div&gt;1&lt;/div&gt;
+    &lt;div&gt;2&lt;/div&gt; &lt;/div&gt;
+    &lt;div&gt;&lt;div&gt;1&lt;/div&gt;&lt;div&gt;2&lt;/div&gt;&lt;/div&gt;
+  </code-highlight>
+  <code-highlight lang="css">
+    <style>
+      .contents {
+        display: contents;
+      }
+    </style>
+  </code-highlight>
+</div>
+<nav-component to="./text-wrap.html"></nav-component>

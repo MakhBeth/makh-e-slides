@@ -1,0 +1,20 @@
+<h4 class="accent">text-wrap</h4>
+<style>
+  .group {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+
+  h5:last-child {
+    text-wrap: balance;
+  }
+</style>
+
+<div data-example="text-wrap">
+  <div class="group">
+    <h5>Lorem ipsum dolor sit amet. Avec the la mayonnaise!</h5>
+    <h5>Lorem ipsum dolor sit amet. Avec the la mayonnaise!</h5>
+  </div>
+</div>
+<nav-component to="./grid.html"></nav-component>

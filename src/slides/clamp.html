@@ -1,0 +1,45 @@
+<h4 class="accent">CSS Clamp with Container Queries</h4>
+<style>
+  [data-example='clamp'] {
+    container-type: inline-size;
+    resize: horizontal;
+    overflow: auto;
+    padding: 1rem;
+    border: 2px dashed #ccc;
+    max-width: 100%;
+  }
+
+  .clamp-text {
+    font-size: clamp(1rem, 4cqw + 0.5rem, 2rem);
+    line-height: 1.5;
+    margin: 0;
+    text-wrap: balance;
+    width: 100%;
+  }
+
+  .clamp-text {
+    font-size: clamp(1rem, 2cqw + 0.5rem, 5rem);
+  }
+
+  .resize-info {
+    text-align: center;
+    font-style: italic;
+    margin-top: 1rem;
+  }
+</style>
+
+<div data-example="clamp">
+  <p class="clamp-text">This text uses CSS clamp() with cqw units</p>
+</div>
+<p class="resize-info">
+  Try resizing the container to see how the text adapts!
+</p>
+<nav-component to="./thanks.html"></nav-component>
+
+<code-highlight
+  ><style>
+    .clamp-text {
+      font-size: clamp(1rem, 2cqw + 0.5rem, 5rem);
+    }
+  </style></code-highlight
+>
