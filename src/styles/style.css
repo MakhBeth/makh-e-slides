@@ -239,6 +239,12 @@ header {
 footer {
 	width: 50%;
 	bottom: 0;
+	display: none;
+
+	@media (min-width: 46em) {
+		display: block;
+		text-align: left;
+	}
 }
 
 .accent {
@@ -361,4 +367,20 @@ specificity-calc {
 
 img {
 	margin: 0 auto 1rem;
+}
+
+baseline-status {
+	padding: 0;
+	margin: 0;
+	align-content: center;
+	text-align: center;
+	border: 0;
+	pointer-events: none;
+	position: fixed;
+	bottom: 0.5rem;
+
+	@media (min-width: 46em) {
+		left: 50%;
+		transform: translateX(-50%);
+	}
 }

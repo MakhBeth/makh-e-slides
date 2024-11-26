@@ -14,6 +14,7 @@
 		"vite": "^5.4.1"
 	},
 	"dependencies": {
+		"baseline-status": "^1.0.8",
 		"highlight.js": "^11.8.0",
 		"jsdom": "^25.0.0",
 		"specificity": "^1.0.0",
