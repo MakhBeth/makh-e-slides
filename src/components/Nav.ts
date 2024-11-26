@@ -108,7 +108,7 @@ class Nav extends HTMLElement {
 		const scrollAmount = window.innerHeight;
 		const currentScroll = window.scrollY;
 		const maxScroll =
-			document.documentElement.scrollHeight - window.innerHeight - 1;
+			document.documentElement.scrollHeight - window.innerHeight - 50;
 
 		console.log({ direction, currentScroll, maxScroll });
 

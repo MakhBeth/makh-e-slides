@@ -11,6 +11,6 @@
 }
 @layer base {
 	.message {
-		border: 10px solid gold;
+		border: 10px solid green;
 	}
 }
