@@ -57,8 +57,8 @@ class Nav extends HTMLElement {
 						font-size: 3rem;
           }
         </style>
-        ${this.noBack ? "" : '<button class="left-chevron">&#8249;</button>'}
-        <a class="right-chevron" href="${this.getAttribute("to") || "#"}">&#8250;</a>
+        ${this.noBack ? "" : '<button class="left-chevron" aria-label="previous slide">&#8249;</button>'}
+        <a class="right-chevron" href="${this.getAttribute("to") || "#"}" aria-label="next slide">&#8250;</a>
       `;
 
 			this.leftChevron = this.shadowRoot.querySelector(
