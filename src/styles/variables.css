@@ -7,24 +7,9 @@
 	--color-text: oklch(90% 0 0); /* Light Gray */
 	--color-text-light: oklch(0.83 0 0); /* Medium Gray */
 	/* Modern Gradient */
-	--gradient-primary: linear-gradient(
-		135deg,
-		oklch(65% 0.2 240) 0%,
-		oklch(70% 0.25 200) 50%,
-		oklch(75% 0.3 160) 100%
-	);
-	--gradient-secondary: linear-gradient(
-		45deg,
-		oklch(60% 0.15 140) 0%,
-		oklch(65% 0.2 120) 50%,
-		oklch(70% 0.25 100) 100%
-	);
-	--gradient-accent: linear-gradient(
-		to right,
-		oklch(60% 0.2 30) 0%,
-		oklch(65% 0.25 60) 50%,
-		oklch(70% 0.3 90) 100%
-	);
+	--gradient-primary: linear-gradient(135deg, oklch(65% 0.2 240) 0%, oklch(70% 0.25 200) 50%, oklch(75% 0.3 160) 100%);
+	--gradient-secondary: linear-gradient(45deg, oklch(60% 0.15 140) 0%, oklch(65% 0.2 120) 50%, oklch(70% 0.25 100) 100%);
+	--gradient-accent: linear-gradient(to right, oklch(60% 0.2 30) 0%, oklch(65% 0.25 60) 50%, oklch(70% 0.3 90) 100%);
 
 	/* Typography */
 	--font-family-primary: "Roboto", sans-serif;
@@ -34,11 +19,11 @@
 	--font-size-xxs: clamp(0.5rem, calc(2 * 1vw), 0.75rem);
 	--font-size-xs: clamp(0.75rem, calc(2 * 1.5vw), 0.875rem);
 	--font-size-sm: clamp(0.875rem, calc(2 * 1.75vw), 1rem);
-	--font-size-md: clamp(1rem, calc(2 * 2.0vw), 1.125rem);
+	--font-size-md: clamp(1rem, calc(2 * 2vw), 1.125rem);
 	--font-size-lg: clamp(1.25rem, calc(2 * 2.5vw), 1.5rem);
-	--font-size-xl: clamp(1.5rem, calc(2 * 3.0vw), 2rem);
-	--font-size-xxl: clamp(2rem, calc(2 * 4.0vw), 3rem);
-	--font-size-3xl: clamp(3rem, calc(2 * 5.0vw), 5rem);
+	--font-size-xl: clamp(1.5rem, calc(2 * 3vw), 2rem);
+	--font-size-xxl: clamp(2rem, calc(2 * 14vw), 3rem);
+	--font-size-3xl: clamp(3rem, calc(2 * 5vw), 5rem);
 
 	--font-weight-light: 300;
 	--font-weight-regular: 400;
@@ -58,11 +43,9 @@
 	--border-radius-lg: clamp(0.5rem, 1vw, 1rem);
 
 	/* Box Shadow */
-	--box-shadow-sm: 0 1px 3px oklch(0% 0 0 / 0.12), 0 1px 2px
-		oklch(0% 0 0 / 0.24);
+	--box-shadow-sm: 0 1px 3px oklch(0% 0 0 / 0.12), 0 1px 2px oklch(0% 0 0 / 0.24);
 	--box-shadow-md: 0 4px 6px oklch(0% 0 0 / 0.1), 0 1px 3px oklch(0% 0 0 / 0.08);
-	--box-shadow-lg: 0 10px 20px oklch(0% 0 0 / 0.1), 0 3px 6px
-		oklch(0% 0 0 / 0.05);
+	--box-shadow-lg: 0 10px 20px oklch(0% 0 0 / 0.1), 0 3px 6px oklch(0% 0 0 / 0.05);
 
 	/* Transitions */
 	--transition-fast: 150ms ease-in-out;

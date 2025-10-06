@@ -1,5 +1,6 @@
 import { defineConfig } from "vite";
 import path from "node:path";
+import { exec } from "node:child_process";
 import fs from "node:fs";
 import htmlTemplateWrapper from "./plugins/htmlTemplate";
 import { ssrCodeHighlight } from "./plugins/ssrCodeHighlight";
@@ -33,6 +34,23 @@ export default defineConfig({
 	plugins: [
 		htmlTemplateWrapper(path.resolve(__dirname, "src/template.html")),
 		ssrCodeHighlight(),
+		{
+			name: "open-in-vscode",
+			configureServer(server) {
+				server.middlewares.use((req, _res, next) => {
+					if (req.method === "GET" && req.url?.startsWith("/slides/")) {
+						const filepath = `/Users/davidedipumpo/Projects/makh-e-slides/src/${req.url}`;
+						exec(
+							`/Applications/Visual\\ Studio\\ Code.app/Contents/Resources/app/bin/code "${filepath}"`,
+							(err) => {
+								if (err) console.error(err);
+							},
+						);
+					}
+					next();
+				});
+			},
+		},
 	],
 	server: {
 		hmr: {

@@ -13,23 +13,39 @@
 }
 
 @keyframes slide-out-to-left {
-  from { transform: translateX(0); }
-  to { transform: translateX(-100%); }
+	from {
+		transform: translateX(0);
+	}
+	to {
+		transform: translateX(-100%);
+	}
 }
 
 @keyframes slide-in-from-right {
-  from { transform: translateX(100%); }
-  to { transform: translateX(0); }
+	from {
+		transform: translateX(100%);
+	}
+	to {
+		transform: translateX(0);
+	}
 }
 
 @keyframes slide-out-to-right {
-  from { transform: translateX(0); }
-  to { transform: translateX(100%); }
+	from {
+		transform: translateX(0);
+	}
+	to {
+		transform: translateX(100%);
+	}
 }
 
 @keyframes slide-in-from-left {
-  from { transform: translateX(-100%); }
-  to { transform: translateX(0); }
+	from {
+		transform: translateX(-100%);
+	}
+	to {
+		transform: translateX(0);
+	}
 }
 
 :root {
@@ -67,7 +83,6 @@ html:active-view-transition-type(backwards) {
 	}
 }
 
-
 body::before,
 body::after {
 	height: 100%;
@@ -86,24 +101,21 @@ body::after {
 	display: block;
 
 	--_g: #9990 90deg, var(--c1) 0;
-	background: conic-gradient(from 90deg at 2px 2px, var(--_g)),
-		conic-gradient(from 90deg at 1px 1px, var(--_g)), var(--c2);
-	background-size: var(--s) var(--s), calc(var(--s) / 5) calc(var(--s) / 5);
+	background: conic-gradient(from 90deg at 2px 2px, var(--_g)), conic-gradient(from 90deg at 1px 1px, var(--_g)), var(--c2);
+	background-size:
+		var(--s) var(--s),
+		calc(var(--s) / 5) calc(var(--s) / 5);
 	background-attachment: fixed;
 }
 
 body::after {
-	background: radial-gradient(
-		oklch(from var(--color-background) l c h / 0.8),
-		oklch(from var(--color-background) l c h / 0.95)
-	);
+	background: radial-gradient(oklch(from var(--color-background) l c h / 0.8), oklch(from var(--color-background) l c h / 0.95));
 }
 
 body {
 	background-color: var(--color-background);
 	color: var(--color-text);
 	font-family: var(--font-family-primary);
-	font-size: 150%;
 	text-align: center;
 }
 
@@ -134,8 +146,7 @@ pre {
 	opacity: 0;
 	animation: fadeIn 1s ease-out forwards;
 	animation-timeline: scroll(root);
-	animation-range: calc((var(--fragment-count) - 1) * 100dvh)
-		calc(var(--fragment-count) * 100dvh);
+	animation-range: calc((var(--fragment-count) - 1) * 100dvh) calc(var(--fragment-count) * 100dvh);
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -219,7 +230,8 @@ nav-component {
 	bottom: 0;
 }
 
-header, footer {
+header,
+footer {
 	position: fixed;
 	font-size: var(--font-size-xxs);
 	width: 100%;
@@ -232,8 +244,8 @@ header, footer {
 }
 
 header {
-		width: 100%;
-	top:0;
+	width: 100%;
+	top: 0;
 }
 
 footer {
@@ -263,7 +275,8 @@ dl {
 	gap: 0.5em;
 }
 
-dt, dd {
+dt,
+dd {
 	flex: 1 0 calc(50% - 0.5em);
 
 	&:where(dt) {
@@ -293,11 +306,11 @@ blockquote {
 	border-radius: 1rem;
 	background-color: var(--color-background);
 	color: var(--color-text-light);
-	font-family: 'Courier New', Courier, monospace;
+	font-family: "Courier New", Courier, monospace;
 	width: min(50rem, 100%);
 	margin: 0 auto;
 	&::before {
-		content: '”';
+		content: "”";
 		transform: scale(2);
 		display: inline-block;
 	}
@@ -336,9 +349,10 @@ table {
 	text-align: left;
 	tr {
 		background-color: var(--color-background);
-		margin: 0; padding: 0;
+		margin: 0;
+		padding: 0;
 	}
-	
+
 	td {
 		padding: 0.5rem;
 		border: 0;
@@ -383,4 +397,13 @@ baseline-status {
 		left: 50%;
 		transform: translateX(-50%);
 	}
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	text-wrap: balance;
 }

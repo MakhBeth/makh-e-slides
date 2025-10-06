@@ -1,20 +1,30 @@
 <style>
-  h1 {
-    font-size: 11vw;
-    display: flex;
-    flex-direction: column;
-    white-space: nowrap;
-    text-align: left;
-    padding: 0 0.5em;
-  }
-  h1 span:nth-child(1) {
-    font-size: 11vw;
-  }
-  h1 span:nth-child(2) {
-    font-size: 12.5vw;
-  }
+	h1 {
+		text-wrap: balance;
+	}
+	s::before,
+	s::after {
+		clip-path: inset(100%);
+		clip: rect(1px, 1px, 1px, 1px);
+		height: 1px;
+		overflow: hidden;
+		position: absolute;
+		white-space: nowrap;
+		width: 1px;
+	}
+	s::before {
+		content: " [start of stricken text] ";
+	}
+	s::after {
+		content: " [end of stricken text] ";
+	}
 </style>
-<h1 class="accent"><span>What you don't</span> <span> know about CSS</span></h1>
-<h2 class="light">Milan, 27 November 2024</h2>
+<h1 class="accent">
+	<span>Let's build an accessible <s>Front-End</s> <mark>component</mark>!</span>
+</h1>
+<h2 class="light">
+	Milan<sup><small>(?)</small></sup
+	>, 14 October 2025
+</h2>
 
-<nav-component to="./agenda.html" no-back></nav-component>
+<nav-component to="./fun-fact.html" no-back></nav-component>
