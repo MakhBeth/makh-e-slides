@@ -35,7 +35,9 @@ h4 {
 	font-size: var(--font-size-lg);
 }
 
-p {
+p,
+blockquote {
+	font-size: var(--font-size-lg);
 	margin-bottom: 0.5em;
 }
 

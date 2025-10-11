@@ -157,8 +157,7 @@ pre {
 }
 
 main {
-	height: calc(100vh - 2rem);
-	overflow: auto;
+	min-height: calc(100vh - 2rem);
 	position: fixed;
 	top: 0;
 	width: 100%;
@@ -230,8 +229,8 @@ nav-component {
 	bottom: 0;
 }
 
-header,
-footer {
+body > header,
+body > footer {
 	position: fixed;
 	font-size: var(--font-size-xxs);
 	width: 100%;
@@ -241,6 +240,10 @@ footer {
 	justify-content: space-between;
 	left: 0;
 	padding: 0.25rem 1rem;
+}
+
+body > footer {
+	max-width: 50%;
 }
 
 header {

@@ -83,6 +83,7 @@ class Nav extends HTMLElement {
 	}
 
 	handleKeyDown(event: KeyboardEvent) {
+		return undefined
 		const to = this.getAttribute("to");
 		switch (event.key) {
 			case "ArrowLeft":
