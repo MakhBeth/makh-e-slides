@@ -1,19 +1,100 @@
-<details name="accordion0">
-	<summary>Accordion Component</summary>
-	<p>Lorem ipsum sit dolet</p>
-</details>
-<details name="accordion0">
-	<summary>Accordion Component</summary>
-	<p>Lorem ipsum sit dolet</p>
-</details>
-<details name="accordion0">
-	<summary>Accordion Component</summary>
-	<p>Lorem ipsum sit dolet</p>
-</details>
+<div class="accordion" id="accordionGroup">
+	<h3>
+		<button type="button" aria-expanded="false" aria-controls="panel1" id="accordion1">
+			<span class="accordion-icon" aria-hidden="true">▶</span>
+			<span>Accordion Component 1</span>
+		</button>
+	</h3>
+	<div id="panel1" role="region" aria-labelledby="accordion1" class="accordion-panel" hidden>
+		<p>Lorem ipsum sit dolet. This is fully accessible content that can be read by screen readers and navigated via keyboard.</p>
+	</div>
+
+	<h3>
+		<button type="button" aria-expanded="false" aria-controls="panel2" id="accordion2">
+			<span class="accordion-icon" aria-hidden="true">▶</span>
+			<span>Accordion Component 2</span>
+		</button>
+	</h3>
+	<div id="panel2" role="region" aria-labelledby="accordion2" class="accordion-panel" hidden>
+		<p>Lorem ipsum sit dolet. Each panel has proper ARIA attributes for maximum accessibility.</p>
+	</div>
+
+	<h3>
+		<button type="button" aria-expanded="false" aria-controls="panel3" id="accordion3">
+			<span class="accordion-icon" aria-hidden="true">▶</span>
+			<span>Accordion Component 3</span>
+		</button>
+	</h3>
+	<div id="panel3" role="region" aria-labelledby="accordion3" class="accordion-panel" hidden>
+		<p>Lorem ipsum sit dolet. Keyboard navigation is fully supported with Space/Enter to toggle panels.</p>
+	</div>
+</div>
 
 <style>
-	details {
-		font-size: 2rem;
+	.accordion h3 {
+		margin: 0;
+		width: 100%;
+	}
+
+	.accordion button {
+		all: unset;
+		color: white;
+		white-space: nowrap;
+		display: block;
+		min-width: 100%;
 		padding: 1em;
+		font-size: 2rem;
+		border: none;
+		cursor: pointer;
+	}
+
+	.accordion span {
+	}
+
+	.accordion-icon {
+		display: inline-block;
+		margin-right: 0.5em;
+		transition: transform 0.2s;
+	}
+
+	.accordion button[aria-expanded="true"] .accordion-icon {
+		transform: rotate(90deg);
+	}
+
+	.accordion-panel {
+		padding: 1em;
+		font-size: 2rem;
+	}
+
+	.accordion-panel[hidden] {
+		display: none;
 	}
 </style>
+
+<script>
+	// Accessible Accordion Implementation
+	document.addEventListener("DOMContentLoaded", () => {
+		const accordionButtons = document.querySelectorAll(".accordion button");
+
+		accordionButtons.forEach((button) => {
+			button.addEventListener("click", toggleAccordion);
+		});
+
+		function toggleAccordion(event) {
+			const button = event.currentTarget;
+			const expanded = button.getAttribute("aria-expanded") === "true";
+			const panelId = button.getAttribute("aria-controls");
+			const panel = document.getElementById(panelId);
+
+			// Toggle the expanded state
+			button.setAttribute("aria-expanded", !expanded);
+
+			// Show/hide the panel
+			if (expanded) {
+				panel.setAttribute("hidden", "");
+			} else {
+				panel.removeAttribute("hidden");
+			}
+		}
+	});
+</script>
