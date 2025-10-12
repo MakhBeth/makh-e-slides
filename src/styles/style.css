@@ -53,6 +53,8 @@
 }
 main > section {
 	view-transition-name: content;
+	overflow: auto;
+	max-height: 100dvh;
 }
 
 nav-component {
@@ -159,6 +161,7 @@ pre {
 main {
 	min-height: calc(100vh - 2rem);
 	position: fixed;
+	overflow: auto;
 	top: 0;
 	width: 100%;
 	padding: 1rem;

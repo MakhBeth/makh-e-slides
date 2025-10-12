@@ -1,0 +1,203 @@
+<div class="tabs-container">
+	<!-- Progressive enhancement: content visible without JS -->
+	<div class="tab-content" data-tab-title="Tab 1">
+		<h2>First Tab Content</h2>
+		<p>This is the content of the first tab. It includes important information that should be accessible even without JavaScript.</p>
+		<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+	</div>
+
+	<div class="tab-content" data-tab-title="Tab 2">
+		<h2>Second Tab Content</h2>
+		<p>This is the content of the second tab. Each tab panel contains different information.</p>
+		<p>Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+	</div>
+
+	<div class="tab-content" data-tab-title="Tab 3">
+		<h2>Third Tab Content</h2>
+		<p>This is the content of the third tab. All content is accessible by default.</p>
+		<p><a href="https://www.w3.org/WAI/ARIA/apg/patterns/tabs/" target="_blank">Learn more about accessible tab patterns</a></p>
+	</div>
+</div>
+
+<style>
+	/* Base styles for no-JS fallback */
+	.tab-content {
+		padding: 1.5em;
+		margin-bottom: 1em;
+		font-size: 1.8rem;
+	}
+
+	.tab-content h2 {
+		color: white;
+		margin-top: 0;
+	}
+
+	/* Styles when JS is enabled */
+	.tabs[role="tablist"] {
+		display: flex;
+		gap: 0.5em;
+		margin-bottom: 1em;
+		border-bottom: 2px solid #444;
+	}
+
+	.tabs button[role="tab"] {
+		all: unset;
+		padding: 1em 1.5em;
+		font-size: 1.8rem;
+		color: white;
+		cursor: pointer;
+		border-bottom: 3px solid transparent;
+		margin-bottom: -2px;
+		transition: border-color 0.2s;
+	}
+
+	.tabs button[role="tab"]:hover {
+		background: rgba(255, 255, 255, 0.1);
+	}
+
+	.tabs button[role="tab"][aria-selected="true"] {
+		border-bottom-color: #4a90e2;
+		font-weight: bold;
+	}
+
+	.tabs button[role="tab"]:focus {
+		outline: 3px solid #4a90e2;
+		outline-offset: 2px;
+		z-index: 1;
+	}
+
+	.tabpanel[role="tabpanel"] {
+		padding: 1.5em;
+		font-size: 1.8rem;
+	}
+
+	.tabpanel[role="tabpanel"][hidden] {
+		display: none;
+	}
+
+	.tabpanel[role="tabpanel"]:focus {
+		outline: 3px solid #4a90e2;
+		outline-offset: -3px;
+	}
+
+	/* Hide original headings when tabs are created */
+	.js-enabled .tabpanel h2 {
+		display: none;
+	}
+</style>
+
+<script>
+	// Progressive Enhancement: Transform content divs into accessible tabs
+	document.addEventListener("DOMContentLoaded", () => {
+		const container = document.querySelector(".tabs-container");
+		if (!container) return;
+
+		// Add class to indicate JS is enabled
+		container.classList.add("js-enabled");
+
+		const contents = container.querySelectorAll(".tab-content");
+
+		// Create tab list
+		const tabList = document.createElement("div");
+		tabList.className = "tabs";
+		tabList.setAttribute("role", "tablist");
+		tabList.setAttribute("aria-label", "Content Tabs");
+
+		// Arrays to store tabs and panels
+		const tabs = [];
+		const panels = [];
+
+		// Transform each content div into tab/panel structure
+		contents.forEach((content, index) => {
+			const tabTitle = content.getAttribute("data-tab-title") || `Tab ${index + 1}`;
+			const tabId = `tab-${index + 1}`;
+			const panelId = `tabpanel-${index + 1}`;
+
+			// Create tab button
+			const tab = document.createElement("button");
+			tab.setAttribute("role", "tab");
+			tab.setAttribute("id", tabId);
+			tab.setAttribute("aria-selected", index === 0 ? "true" : "false");
+			tab.setAttribute("aria-controls", panelId);
+			tab.setAttribute("tabindex", index === 0 ? "0" : "-1");
+			tab.textContent = tabTitle;
+
+			// Transform content div into panel
+			content.setAttribute("role", "tabpanel");
+			content.setAttribute("id", panelId);
+			content.setAttribute("aria-labelledby", tabId);
+			content.setAttribute("tabindex", "0");
+			content.className = "tabpanel";
+
+			// Hide non-active panels
+			if (index !== 0) {
+				content.setAttribute("hidden", "");
+			}
+
+			// Add to arrays
+			tabs.push(tab);
+			panels.push(content);
+			tabList.appendChild(tab);
+		});
+
+		// Insert tab list before first panel
+		container.insertBefore(tabList, container.firstChild);
+
+		// Current tab index
+		let currentTab = 0;
+
+		// Switch to a specific tab
+		function switchToTab(newIndex) {
+			// Update old tab
+			tabs[currentTab].setAttribute("aria-selected", "false");
+			tabs[currentTab].setAttribute("tabindex", "-1");
+			panels[currentTab].setAttribute("hidden", "");
+
+			// Update new tab
+			currentTab = newIndex;
+			tabs[currentTab].setAttribute("aria-selected", "true");
+			tabs[currentTab].setAttribute("tabindex", "0");
+			panels[currentTab].removeAttribute("hidden");
+			tabs[currentTab].focus();
+		}
+
+		// Handle tab clicks
+		tabs.forEach((tab, index) => {
+			tab.addEventListener("click", () => {
+				switchToTab(index);
+			});
+		});
+
+		// Handle keyboard navigation
+		tabList.addEventListener("keydown", (e) => {
+			let newIndex = currentTab;
+
+			switch (e.key) {
+				case "ArrowRight":
+					newIndex = (currentTab + 1) % tabs.length;
+					e.preventDefault();
+					break;
+				case "ArrowLeft":
+					newIndex = (currentTab - 1 + tabs.length) % tabs.length;
+					e.preventDefault();
+					break;
+				case "Home":
+					newIndex = 0;
+					e.preventDefault();
+					break;
+				case "End":
+					newIndex = tabs.length - 1;
+					e.preventDefault();
+					break;
+				default:
+					return;
+			}
+
+			if (newIndex !== currentTab) {
+				switchToTab(newIndex);
+			}
+		});
+	});
+</script>
+
+<nav-component to="last.html"></nav-component>
