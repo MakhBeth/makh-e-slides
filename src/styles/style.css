@@ -65,10 +65,6 @@ nav-component {
 	animation-duration: 0.5s;
 }
 
-:view-transition-group(nav) {
-	display: none;
-}
-
 ::view-transition-old(content) {
 	animation-name: slide-out-to-left;
 }
@@ -159,7 +155,7 @@ pre {
 }
 
 main {
-	min-height: calc(100vh - 2rem);
+	min-height: calc(100vh);
 	position: fixed;
 	overflow: auto;
 	top: 0;
