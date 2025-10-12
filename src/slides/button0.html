@@ -1,5 +1,5 @@
 <button class="btn">AFFORDANCE!</button>
-<div class="btn" role="button">AFFORDANCE!</div>
+<div class="btn" role="button" tabindex="0">AFFORDANCE!</div>
 
 <style>
 	button,
@@ -28,7 +28,7 @@
 		}
 
 		@supports (color: hsl(from hsl(0 0% 100%) h s l)) {
-			&:focus-visible {
+			&:focus {
 				--_focus-ring-color-inner: currentColor;
 				--_focus-ring-color-outer: hsl(from var(--_focus-ring-color-inner) calc(h + 180) s l);
 				box-shadow:
@@ -41,4 +41,29 @@
 		}
 	}
 </style>
-<nav-component to="button0	.html"></nav-component>
+
+<nav-component to="button1.html"></nav-component>
+
+<script>
+	const clickHandler = () => {
+		console.log("Button clicked!");
+	};
+</script>
+
+<script>
+	document.querySelectorAll(".btn").forEach((btn) =>
+		btn.addEventListener("click", (event) => {
+			clickHandler();
+		})
+	);
+</script>
+
+<script>
+	document.querySelectorAll("div.btn").forEach((btn) =>
+		btn.addEventListener("keydown", (event) => {
+			if (event.key === "Enter" || event.key === " ") {
+				clickHandler();
+			}
+		})
+	);
+</script>
