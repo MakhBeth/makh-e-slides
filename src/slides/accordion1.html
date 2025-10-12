@@ -27,6 +27,7 @@
 	</h3>
 	<div id="panel3" role="region" aria-labelledby="accordion3" class="accordion-panel" hidden>
 		<p>Lorem ipsum sit dolet. Keyboard navigation is fully supported with Space/Enter to toggle panels.</p>
+		<p><a href="https://www.w3.org/WAI/ARIA/apg/patterns/accordion/examples/accordion/" target="_blank">With a link to WGAC pattern </a></p>
 	</div>
 </div>
 
@@ -46,6 +47,11 @@
 		font-size: 2rem;
 		border: none;
 		cursor: pointer;
+	}
+
+	.accordion button:focus {
+		outline: 3px solid #4a90e2;
+		outline-offset: 2px;
 	}
 
 	.accordion span {
@@ -98,3 +104,5 @@
 		}
 	});
 </script>
+
+<nav-component to="accordion2.html"></nav-component>

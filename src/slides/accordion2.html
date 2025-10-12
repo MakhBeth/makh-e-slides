@@ -1,0 +1,141 @@
+<div class="accordion" id="accordionGroup">
+	<div class="accordion-item" data-title="Accordion Component 1">
+		<p>Lorem ipsum sit dolet. This is fully accessible content that can be read by screen readers and navigated via keyboard.</p>
+	</div>
+
+	<div class="accordion-item" data-title="Accordion Component 2">
+		<p>Lorem ipsum sit dolet. Each panel has proper ARIA attributes for maximum accessibility.</p>
+	</div>
+
+	<div class="accordion-item" data-title="Accordion Component 3">
+		<p>Lorem ipsum sit dolet. Keyboard navigation is fully supported with Space/Enter to toggle panels.</p>
+		<p><a href="https://www.w3.org/WAI/ARIA/apg/patterns/accordion/examples/accordion/" target="_blank">With a link to WGAC pattern </a></p>
+	</div>
+</div>
+
+<style>
+	/* Base styles for no-JavaScript fallback */
+	.accordion-item {
+		padding: 1em;
+		font-size: 2rem;
+		margin-bottom: 1em;
+	}
+
+	.accordion-item::before {
+		/* content: attr(data-title); */
+		display: block;
+		font-weight: bold;
+		margin-bottom: 0.5em;
+		color: white;
+	}
+
+	/* Styles when JavaScript is enabled */
+	.accordion h3 {
+		margin: 0;
+		width: 100%;
+	}
+
+	.accordion button {
+		all: unset;
+		color: white;
+		white-space: nowrap;
+		display: block;
+		min-width: 100%;
+		padding: 1em;
+		font-size: 2rem;
+		border: none;
+		cursor: pointer;
+	}
+
+	.accordion button:focus {
+		outline: 3px solid #4a90e2;
+		outline-offset: 2px;
+	}
+
+	.accordion-icon {
+		display: inline-block;
+		margin-right: 0.5em;
+		transition: transform 0.2s;
+	}
+
+	.accordion button[aria-expanded="true"] .accordion-icon {
+		transform: rotate(90deg);
+	}
+
+	.accordion-panel {
+		padding: 1em;
+		font-size: 2rem;
+	}
+
+	.accordion-panel[hidden] {
+		display: none;
+	}
+</style>
+
+<script>
+	// Progressive Enhancement: Transform divs into accessible accordion
+	document.addEventListener("DOMContentLoaded", () => {
+		const accordion = document.getElementById("accordionGroup");
+		const items = accordion.querySelectorAll(".accordion-item");
+
+		// Transform each item into an accordion section
+		items.forEach((item, index) => {
+			const title = item.getAttribute("data-title");
+			const panelId = `panel${index + 1}`;
+			const buttonId = `accordion${index + 1}`;
+
+			// Get the content
+			const content = item.innerHTML;
+
+			// Create the heading with button
+			const heading = document.createElement("h3");
+			const button = document.createElement("button");
+			button.type = "button";
+			button.id = buttonId;
+			button.setAttribute("aria-expanded", "false");
+			button.setAttribute("aria-controls", panelId);
+
+			// Add icon and title
+			button.innerHTML = `
+				<span class="accordion-icon" aria-hidden="true">▶</span>
+				<span>${title}</span>
+			`;
+
+			heading.appendChild(button);
+
+			// Create the panel div
+			const panel = document.createElement("div");
+			panel.id = panelId;
+			panel.className = "accordion-panel";
+			panel.setAttribute("role", "region");
+			panel.setAttribute("aria-labelledby", buttonId);
+			panel.setAttribute("hidden", "");
+			panel.innerHTML = content;
+
+			// Replace the original item with the new structure
+			item.replaceWith(heading, panel);
+
+			// Add click event listener
+			button.addEventListener("click", toggleAccordion);
+		});
+
+		function toggleAccordion(event) {
+			const button = event.currentTarget;
+			const expanded = button.getAttribute("aria-expanded") === "true";
+			const panelId = button.getAttribute("aria-controls");
+			const panel = document.getElementById(panelId);
+
+			// Toggle the expanded state
+			button.setAttribute("aria-expanded", !expanded);
+
+			// Show/hide the panel
+			if (expanded) {
+				panel.setAttribute("hidden", "");
+			} else {
+				panel.removeAttribute("hidden");
+			}
+		}
+	});
+</script>
+
+<nav-component to="accordion2.html"></nav-component>
