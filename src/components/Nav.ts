@@ -30,13 +30,6 @@ class Nav extends HTMLElement {
 		if (this.shadowRoot) {
 			this.shadowRoot.innerHTML = `
         <style>
-          @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-          }
-          :host {
-            animation: fadeIn 0.25s ease-out;
-          }
           :host {
             display: flex;
             justify-content: space-between;
@@ -52,9 +45,16 @@ class Nav extends HTMLElement {
             cursor: pointer;
             font-size: 1rem;
             text-decoration: none;
-            color: inherit;
+            color: white;
 						line-height: 1;
 						font-size: 3rem;
+          }
+          button:hover, a:hover {
+            color: #4a90e2;
+          }
+          button:focus, a:focus {
+            outline: 2px solid #4a90e2;
+            outline-offset: 2px;
           }
         </style>
         ${this.noBack ? "" : '<button class="left-chevron" aria-label="previous slide">&#8249;</button>'}
@@ -83,7 +83,6 @@ class Nav extends HTMLElement {
 	}
 
 	handleKeyDown(event: KeyboardEvent) {
-		return undefined
 		const to = this.getAttribute("to");
 		switch (event.key) {
 			case "ArrowLeft":
@@ -96,46 +95,17 @@ class Nav extends HTMLElement {
 				break;
 			case "ArrowUp":
 				event.preventDefault();
-				this.scrollVertically(-1);
+				this.goBack();
 				break;
 			case "ArrowDown":
 				event.preventDefault();
-				this.scrollVertically(1);
+				if (to) {
+					window.location.href = to;
+				}
 				break;
 		}
 	}
 
-	scrollVertically(direction: number) {
-		const scrollAmount = window.innerHeight;
-		const currentScroll = window.scrollY;
-		const maxScroll =
-			document.documentElement.scrollHeight - window.innerHeight - 50;
-
-		console.log({ direction, currentScroll, maxScroll });
-
-		if (direction > 0 && currentScroll < maxScroll) {
-			// Scroll down
-			window.scrollTo({
-				top: currentScroll + scrollAmount,
-				behavior: "smooth",
-			});
-		} else if (direction < 0 && currentScroll > 0) {
-			// Scroll up
-			window.scrollTo({
-				top: currentScroll - scrollAmount,
-				behavior: "smooth",
-			});
-		} else {
-			if (direction < 0) {
-				this.goBack();
-			} else {
-				const to = this.getAttribute("to");
-				if (to) {
-					window.location.href = to;
-				}
-			}
-		}
-	}
 
 	addPrefetch() {
 		const to = this.getAttribute("to");

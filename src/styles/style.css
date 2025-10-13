@@ -65,6 +65,10 @@ nav-component {
 	animation-duration: 0.5s;
 }
 
+:view-transition-group(nav) {
+	display: none;
+}
+
 ::view-transition-old(content) {
 	animation-name: slide-out-to-left;
 }
