@@ -29,10 +29,14 @@
   }
   .details-demo .inner {
     padding: 0.75rem 1rem;
+    background: oklch(from var(--color-background) calc(l + 0.03) c h);
   }
 </style>
 
 <code-highlight language="css">
+  details {
+    interpolate-size: allow-keywords;
+  }
   ::details-content {
     block-size: 0;
     overflow-y: clip;
