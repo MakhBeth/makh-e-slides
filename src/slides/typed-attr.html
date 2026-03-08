@@ -20,6 +20,13 @@
   }
 </style>
 
+<code-highlight language="html">
+  &lt;div class="grid" data-columns="4"&gt;
+    &lt;div data-bg="oklch(60% 0.2 30)"&gt;1&lt;/div&gt;
+    &lt;div data-bg="oklch(60% 0.2 90)"&gt;2&lt;/div&gt;
+  &lt;/div&gt;
+</code-highlight>
+
 <code-highlight language="css">
   .grid {
     grid-template-columns:
@@ -30,7 +37,7 @@
   }
 </code-highlight>
 
-<div class="attr-demo fragment">
+<div class="attr-demo">
   <div class="attr-grid" data-columns="4">
     <div data-bg="oklch(60% 0.2 30)">1</div>
     <div data-bg="oklch(60% 0.2 90)">2</div>
@@ -43,9 +50,14 @@
   </div>
 </div>
 
-<p class="fragment accent">CSS has types now. Meanwhile JavaScript...</p>
-<p class="fragment"><code>"2" + 2 === "22"</code></p>
+<p class="light" style="font-size: var(--font-size-sm); margin: 0.5rem auto; text-align: center;">
+  Available types: <code>&lt;number&gt;</code> <code>&lt;integer&gt;</code> <code>&lt;color&gt;</code> <code>&lt;length&gt;</code> <code>&lt;angle&gt;</code> <code>&lt;percentage&gt;</code> <code>&lt;string&gt;</code>
+</p>
 
-<p class="fragment light">Chrome 133+.</p>
+<div class="fragment">
+  <p class="accent">CSS has types now. Meanwhile JavaScript...</p>
+  <p><code>"2" + 2 === "22"</code></p>
+</div>
 
+<baseline-status featureId="attr"></baseline-status>
 <nav-component to="./css-carousels.html"></nav-component>

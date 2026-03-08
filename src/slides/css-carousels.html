@@ -5,12 +5,26 @@
     margin: 1rem auto;
     overflow-x: auto;
     scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
     display: flex;
     gap: 1rem;
     padding: 1rem;
+    margin-bottom: 1rem;
     border-radius: var(--border-radius-md);
     border: 1px solid var(--color-text-light);
   }
+  .carousel-demo::scroll-button(inline-start),
+  .carousel-demo::scroll-button(inline-end) {
+    background: var(--color-background);
+    color: var(--color-text);
+    border: 1px solid var(--color-text-light);
+    border-radius: var(--border-radius-sm);
+    padding: 0.25rem 0.75rem;
+    cursor: pointer;
+    font-size: var(--font-size-md);
+  }
+  .carousel-demo::scroll-button(inline-start) { content: "<"; }
+  .carousel-demo::scroll-button(inline-end) { content: ">"; }
   .carousel-demo > div {
     flex: 0 0 100%;
     scroll-snap-align: center;
@@ -23,6 +37,16 @@
   .carousel-demo > div:nth-child(2) { --hue-shift: 60; }
   .carousel-demo > div:nth-child(3) { --hue-shift: 120; }
   .carousel-demo > div:nth-child(4) { --hue-shift: 180; }
+  .carousel-demo > div::scroll-marker {
+    content: "";
+    background: var(--color-text-light);
+    border-radius: 50%;
+    width: 0.5rem;
+    height: 0.5rem;
+  }
+  .carousel-demo > div::scroll-marker:target-current {
+    background: var(--color-accent);
+  }
 </style>
 
 <code-highlight language="css">
@@ -45,7 +69,8 @@
   <div>Slide 4</div>
 </div>
 
-<p class="fragment light">Chrome 135+. Zero-JS accessible carousels.</p>
+<p class="fragment light">Zero-JS accessible carousels.</p>
+<baseline-status featureId="scroll-markers"></baseline-status>
 <p class="fragment light">Perfect for content nobody wants to see anyway.</p>
 
 <nav-component to="./strong-additions.html"></nav-component>

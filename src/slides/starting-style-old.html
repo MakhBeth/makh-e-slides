@@ -1,4 +1,4 @@
-<h4 class="accent">@starting-style — the old hack</h4>
+<h4 class="accent">@starting-style:  the old hack</h4>
 <style>
   .old-demo dialog {
     padding: var(--spacing-md);
@@ -38,8 +38,8 @@
   }
 </code-highlight>
 
-<div class="old-demo fragment">
-  <button id="openOld">Try it — open dialog</button>
+<div class="old-demo" style="margin-bottom: 1rem;">
+  <button id="openOld">Try it:  open dialog</button>
   <dialog id="oldDialog">
     <h3>I fade in...</h3>
     <p>But I disappear instantly on close. No reverse animation.</p>
@@ -48,7 +48,7 @@
 </div>
 
 <ul class="fragment" style="max-width: 35rem; margin: 1rem auto;">
-  <li>Not a real transition — no reverse on close</li>
+  <li>Not a real transition:  no reverse on close</li>
   <li><code>animation-fill-mode: forwards</code> is fragile, fights other styles</li>
   <li>No way to animate <code>display: none → block</code></li>
 </ul>

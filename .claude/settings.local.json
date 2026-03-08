@@ -11,7 +11,11 @@
       "WebFetch(domain:css-tricks.com)",
       "WebFetch(domain:www.bram.us)",
       "WebFetch(domain:ishadeed.com)",
-      "Bash(do:*)"
+      "Bash(do:*)",
+      "WebFetch(domain:github.com)",
+      "Bash(gh api:*)",
+      "Bash(gh search:*)",
+      "WebFetch(domain:api.webstatus.dev)"
     ]
   }
 }

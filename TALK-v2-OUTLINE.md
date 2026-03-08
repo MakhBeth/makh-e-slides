@@ -76,7 +76,7 @@
 - No more JS for enter/exit animations on dialogs, popovers, etc.
 - Also kills the old `animation-fill-mode: forwards` hack where you'd use a keyframe animation
   just to fake an entry transition (animate opacity 0→1 and keep it with `forwards`).
-  That was never a real transition — it was a one-shot animation pretending to be one.
+  That was never a real transition:  it was a one-shot animation pretending to be one.
   Now we have the real thing.
 
 **Slide 19a - The old hack (what we used to do):**

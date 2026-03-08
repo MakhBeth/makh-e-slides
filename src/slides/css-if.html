@@ -1,6 +1,6 @@
 <h3 class="accent">CSS if()</h3>
 
-<h4>The space hack — before</h4>
+<h4>The space hack:  before</h4>
 <code-highlight language="css">
   .btn {
     --is-danger: ;
@@ -11,7 +11,7 @@
 </code-highlight>
 
 <div class="fragment">
-  <h4>CSS if() — after</h4>
+  <h4>CSS if():  after</h4>
   <code-highlight language="css">
     .btn {
       background: if(style(--variant: danger): crimson; else: dodgerblue);
@@ -64,6 +64,7 @@
   </div>
 </div>
 
-<p class="fragment light">Chrome 137+. The end of the space hack era.</p>
+<p class="fragment light">The end of the space hack era.</p>
 
+<baseline-status featureId="if"></baseline-status>
 <nav-component to="./musthave.html"></nav-component>
