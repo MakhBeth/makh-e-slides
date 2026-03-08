@@ -1,0 +1,12 @@
+{
+  "permissions": {
+    "allow": [
+      "WebSearch",
+      "WebFetch(domain:lea.verou.me)",
+      "WebFetch(domain:web.dev)",
+      "WebFetch(domain:developer.chrome.com)",
+      "WebFetch(domain:caniuse.com)",
+      "WebFetch(domain:nerdy.dev)"
+    ]
+  }
+}
