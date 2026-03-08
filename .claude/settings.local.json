@@ -10,7 +10,8 @@
       "WebFetch(domain:webkit.org)",
       "WebFetch(domain:css-tricks.com)",
       "WebFetch(domain:www.bram.us)",
-      "WebFetch(domain:ishadeed.com)"
+      "WebFetch(domain:ishadeed.com)",
+      "Bash(do:*)"
     ]
   }
 }
