@@ -1,0 +1,71 @@
+<h4 class="accent">Scroll-State Container Queries</h4>
+<style>
+  .scroll-demo {
+    max-width: 30rem;
+    margin: 1rem auto;
+    height: 15rem;
+    overflow-y: auto;
+    border: 1px solid var(--color-text-light);
+    border-radius: var(--border-radius-md);
+    position: relative;
+  }
+  .scroll-demo .sticky-header {
+    container-type: scroll-state;
+    position: sticky;
+    top: 0;
+    z-index: 1;
+  }
+  .scroll-demo .sticky-header > nav {
+    padding: 0.75rem 1rem;
+    background: var(--color-background);
+    border-bottom: 1px solid transparent;
+    transition: var(--transition-fast);
+    text-align: left;
+    font-weight: bold;
+  }
+  @container scroll-state(stuck: top) {
+    .scroll-demo .sticky-header > nav {
+      background: var(--color-accent);
+      color: var(--color-background);
+      box-shadow: 0 2px 8px oklch(0% 0 0 / 0.3);
+    }
+  }
+  .scroll-demo .content {
+    padding: 1rem;
+    text-align: left;
+  }
+  .scroll-demo p {
+    margin-bottom: 1rem;
+  }
+</style>
+
+<code-highlight language="css">
+  .sticky-header {
+    container-type: scroll-state;
+    position: sticky;
+    top: 0;
+  }
+  @container scroll-state(stuck: top) {
+    .sticky-header > nav {
+      background: var(--accent);
+      box-shadow: 0 2px 8px rgba(0,0,0,.2);
+    }
+  }
+</code-highlight>
+
+<div class="scroll-demo fragment">
+  <div class="sticky-header">
+    <nav>Sticky Header — scroll down!</nav>
+  </div>
+  <div class="content">
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+    <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+    <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+    <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+    <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium.</p>
+  </div>
+</div>
+
+<p class="fragment light">Chrome 133+. Also: <code>scroll-state(snapped: x)</code>, <code>scroll-state(scrollable: bottom)</code></p>
+
+<nav-component to="./worth-a-mention.html"></nav-component>

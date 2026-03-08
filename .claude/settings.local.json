@@ -6,7 +6,11 @@
       "WebFetch(domain:web.dev)",
       "WebFetch(domain:developer.chrome.com)",
       "WebFetch(domain:caniuse.com)",
-      "WebFetch(domain:nerdy.dev)"
+      "WebFetch(domain:nerdy.dev)",
+      "WebFetch(domain:webkit.org)",
+      "WebFetch(domain:css-tricks.com)",
+      "WebFetch(domain:www.bram.us)",
+      "WebFetch(domain:ishadeed.com)"
     ]
   }
 }

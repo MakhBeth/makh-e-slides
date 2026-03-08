@@ -1,0 +1,36 @@
+<h3 class="accent">This is how my 2026 started</h3>
+<style>
+  .linkedin-post {
+    max-width: 30rem;
+    margin: 0 auto 1rem;
+  }
+  .linkedin-post img {
+    width: 100%;
+    border-radius: 0.5rem;
+    border: 1px solid var(--color-text-light);
+  }
+</style>
+
+<div class="linkedin-post">
+  <img src="/linkedin-space-hack.png" alt="LinkedIn post about the var() space hack" />
+</div>
+
+<div class="fragment">
+  <code-highlight language="css">
+    /* The var() space hack — Lea Verou, 2020 */
+    --ON: initial;   /* triggers fallback */
+    --OFF: ;         /* space = valid, fallback skipped */
+
+    button {
+      --is-raised: var(--OFF);
+      border: var(--is-raised, 1px solid #ccc);
+      background: var(--is-raised, linear-gradient(white, #eee)) #f0f0f0;
+      box-shadow: var(--is-raised, 0 2px 4px rgba(0,0,0,.2));
+    }
+    .raised { --is-raised: var(--ON); }
+  </code-highlight>
+</div>
+
+<a href="https://lea.verou.me/blog/2020/10/the-var-space-hack-to-toggle-multiple-values-with-one-custom-property/" target="_blank" rel="noopener noreferrer">The --var: ; hack — Lea Verou, 2020</a>
+
+<nav-component to="./space-hack-demo.html"></nav-component>

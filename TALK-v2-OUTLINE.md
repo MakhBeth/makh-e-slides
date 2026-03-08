@@ -144,7 +144,32 @@
   - This is real CSS I shipped in production. No JS animation library needed.
 
 ### 20. Dialog & Popover upgrades (the top layer miracle)
-- **Top layer** = no z-index wars. Elements stack by open order automatically.
+
+**Slide 20a - The top layer: no more portals, no more z-index wars**
+- Remember React portals? `createPortal(child, document.body)` just to escape
+  a `overflow: hidden` or a stacking context? That's a framework workaround
+  for a platform problem. The platform fixed it.
+- The **top layer** is a browser-native layer that sits above everything in the document.
+  No z-index value can beat it. No stacking context can trap it.
+- `dialog.showModal()` and `[popover]` elements live in the top layer automatically.
+- Multiple top-layer elements stack by open order. Last opened = on top. No z-index needed.
+- Example to stress:
+  ```css
+  .overlay {
+    position: fixed;
+    z-index: 999999999; /* cute */
+  }
+  ```
+  ```html
+  <!-- This dialog will ALWAYS render above .overlay -->
+  <dialog>I win. No z-index needed.</dialog>
+  ```
+- The portal pattern was: "I can't escape my parent's stacking context, so I'll
+  teleport my DOM node to `<body>`." The top layer is: "The browser gives you
+  a layer that's above the entire document. Just use it."
+- **No more portals. No more z-index: 999999. No more DOM teleportation hacks.**
+
+**Slide 20b - closedby, popover="hint", :open**
 - **`closedby` attribute** on `<dialog>` - Chrome 134, Firefox 141
   ```html
   <dialog closedby="any">         <!-- backdrop click OR Esc -->
@@ -283,6 +308,27 @@
 
 34. **Thanks + Have fun!** - keep from v1
 35. **Bibliography / QR code** - update with new references
+
+---
+
+## TODO: Examples to build
+
+Each slide needs a live interactive example in the presentation. Here's what's missing:
+
+- [ ] **if()** - Live toggle between themes or layouts using `if(style(...))`. Show the before (space hack) and after (if()) side by side.
+- [ ] **@starting-style** - Live dialog/popover that fades in and out. Show the old `animation-fill-mode` hack next to the new approach.
+- [ ] **Top layer** - Demo with a `position: fixed; z-index: 999999999` element + a dialog that opens above it effortlessly. Kill the portal myth. Then show `closedby` variants and `popover="hint"` tooltip that doesn't close a dropdown.
+- [ ] **::details-content** - Animated `<details>` expand/collapse with smooth height transition.
+- [ ] **Customizable `<select>`** - Styled dropdown with custom options, icons, colors.
+- [ ] **Typed `attr()`** - Grid that reads column count from `data-columns`. Color from `data-bg`.
+- [ ] **CSS Carousels** - Minimal scroll-marker + scroll-button carousel.
+- [ ] **text-box-trim** - Side-by-side heading with and without trim. Show the whitespace difference.
+- [ ] **sibling-count() / sibling-index()** - Staggered animation on a list. Items fade in one by one, no JS.
+- [ ] **contrast-color()** - Color grid where text auto-adjusts. Callback to v1's manual clamp() approach.
+- [ ] **Trig functions** - Circular menu or clock layout, pure CSS.
+- [ ] **corner-shape** - Card gallery with squircle, scoop, bevel, notch side by side.
+- [ ] **Scroll-state queries** - Sticky header that changes style when stuck. Bonus: snapped state.
+- [ ] **var() space hack** - Interactive toggle showing the ON/OFF pattern.
 
 ---
 

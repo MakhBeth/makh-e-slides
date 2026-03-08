@@ -1,0 +1,65 @@
+<h4 class="accent">closedby, popover="hint", :open</h4>
+<style>
+  .closedby-demo {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin: 1rem 0;
+  }
+  .closedby-demo button {
+    background-color: var(--color-primary);
+    color: var(--color-text);
+    border: none;
+    padding: var(--spacing-xs) var(--spacing-sm);
+    border-radius: var(--border-radius-sm);
+    cursor: pointer;
+  }
+  .closedby-demo dialog {
+    padding: var(--spacing-md);
+    border-radius: var(--border-radius-md);
+    border: 1px solid var(--color-text-light);
+    background-color: var(--color-background);
+    color: var(--color-text);
+  }
+  .closedby-demo dialog::backdrop {
+    background-color: rgba(0, 0, 0, 0.5);
+  }
+</style>
+
+<code-highlight language="html">
+  &lt;dialog closedby="any"&gt;        &lt;!-- backdrop click OR Esc --&gt;
+  &lt;dialog closedby="closerequest"&gt; &lt;!-- Esc only --&gt;
+  &lt;dialog closedby="none"&gt;        &lt;!-- JS only --&gt;
+</code-highlight>
+
+<div class="closedby-demo fragment">
+  <button onclick="document.getElementById('dAny').showModal()">closedby="any"</button>
+  <button onclick="document.getElementById('dClose').showModal()">closedby="closerequest"</button>
+  <button onclick="document.getElementById('dNone').showModal()">closedby="none"</button>
+
+  <dialog id="dAny" closedby="any">
+    <p>Click backdrop or press Esc to close.</p>
+    <form method="dialog"><button>or Close</button></form>
+  </dialog>
+  <dialog id="dClose" closedby="closerequest">
+    <p>Only Esc works. Try clicking backdrop — nothing.</p>
+    <form method="dialog"><button>or Close</button></form>
+  </dialog>
+  <dialog id="dNone" closedby="none">
+    <p>You can only close me with this button.</p>
+    <form method="dialog"><button>Close</button></form>
+  </dialog>
+</div>
+
+<div class="fragment">
+  <h5 class="accent">popover="hint"</h5>
+  <p class="light">A hint popover won't close an auto popover.<br />Your dropdown stays open when a tooltip appears!</p>
+</div>
+
+<div class="fragment">
+  <h5 class="accent">:open pseudo-class</h5>
+  <p class="light">Style open dialogs, details, selects. Interop 2026.</p>
+</div>
+
+<nav-component to="./details-content.html"></nav-component>

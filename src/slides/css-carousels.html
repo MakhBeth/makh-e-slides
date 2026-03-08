@@ -1,0 +1,51 @@
+<h4 class="accent">CSS Carousels</h4>
+<style>
+  .carousel-demo {
+    max-width: 30rem;
+    margin: 1rem auto;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    display: flex;
+    gap: 1rem;
+    padding: 1rem;
+    border-radius: var(--border-radius-md);
+    border: 1px solid var(--color-text-light);
+  }
+  .carousel-demo > div {
+    flex: 0 0 100%;
+    scroll-snap-align: center;
+    padding: 3rem 2rem;
+    border-radius: var(--border-radius-md);
+    background: oklch(from var(--color-primary) l c calc(h + var(--hue-shift, 0)));
+    text-align: center;
+    font-size: var(--font-size-xl);
+  }
+  .carousel-demo > div:nth-child(2) { --hue-shift: 60; }
+  .carousel-demo > div:nth-child(3) { --hue-shift: 120; }
+  .carousel-demo > div:nth-child(4) { --hue-shift: 180; }
+</style>
+
+<code-highlight language="css">
+  .carousel {
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+  }
+  .carousel::scroll-button(inline-start) { content: "&lt;" }
+  .carousel::scroll-button(inline-end) { content: "&gt;" }
+  .carousel > * { scroll-snap-align: center; }
+
+  /* scroll markers auto-generated */
+  .carousel > *::scroll-marker { content: ""; }
+</code-highlight>
+
+<div class="carousel-demo fragment">
+  <div>Slide 1</div>
+  <div>Slide 2</div>
+  <div>Slide 3</div>
+  <div>Slide 4</div>
+</div>
+
+<p class="fragment light">Chrome 135+. Zero-JS accessible carousels.</p>
+<p class="fragment light">Perfect for content nobody wants to see anyway.</p>
+
+<nav-component to="./strong-additions.html"></nav-component>

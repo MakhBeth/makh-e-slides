@@ -1,0 +1,70 @@
+<h4 class="accent">CSS Trigonometry</h4>
+<style>
+  .trig-demo {
+    position: relative;
+    width: 20rem;
+    height: 20rem;
+    margin: 1rem auto;
+  }
+  .trig-demo .center {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 3rem;
+    height: 3rem;
+    margin: -1.5rem;
+    border-radius: 50%;
+    background: var(--color-text-light);
+    display: grid;
+    place-items: center;
+    font-size: var(--font-size-xs);
+  }
+  .trig-demo .dot {
+    --angle: calc(var(--i) * 30deg);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 2.5rem;
+    height: 2.5rem;
+    margin: -1.25rem;
+    border-radius: 50%;
+    background: oklch(from var(--color-accent) l c calc(h + var(--i) * 30));
+    display: grid;
+    place-items: center;
+    font-size: var(--font-size-xs);
+    font-weight: bold;
+    color: var(--color-background);
+    translate:
+      calc(cos(var(--angle)) * 9rem)
+      calc(sin(var(--angle)) * -9rem);
+  }
+</style>
+
+<code-highlight language="css">
+  .dot {
+    --angle: calc(var(--i) * 30deg);
+    translate:
+      calc(cos(var(--angle)) * 9rem)
+      calc(sin(var(--angle)) * -9rem);
+  }
+</code-highlight>
+
+<div class="trig-demo fragment">
+  <div class="center">12h</div>
+  <div class="dot" style="--i: 0">3</div>
+  <div class="dot" style="--i: 1">2</div>
+  <div class="dot" style="--i: 2">1</div>
+  <div class="dot" style="--i: 3">12</div>
+  <div class="dot" style="--i: 4">11</div>
+  <div class="dot" style="--i: 5">10</div>
+  <div class="dot" style="--i: 6">9</div>
+  <div class="dot" style="--i: 7">8</div>
+  <div class="dot" style="--i: 8">7</div>
+  <div class="dot" style="--i: 9">6</div>
+  <div class="dot" style="--i: 10">5</div>
+  <div class="dot" style="--i: 11">4</div>
+</div>
+
+<p class="fragment light">sin(), cos(), tan(), atan2() — <strong>Baseline Widely Available</strong> since 2023.<br />Many people still don't know they exist!</p>
+
+<nav-component to="./corner-shape.html"></nav-component>

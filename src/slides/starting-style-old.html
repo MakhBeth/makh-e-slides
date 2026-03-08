@@ -1,0 +1,62 @@
+<h4 class="accent">@starting-style — the old hack</h4>
+<style>
+  .old-demo dialog {
+    padding: var(--spacing-md);
+    border-radius: var(--border-radius-md);
+    border: 1px solid var(--color-text-light);
+    background-color: var(--color-background);
+    color: var(--color-text);
+  }
+  .old-demo dialog::backdrop {
+    background-color: rgba(0, 0, 0, 0.7);
+  }
+  @keyframes old-fade-in {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+  .old-demo dialog[open] {
+    animation: old-fade-in 0.3s ease forwards;
+  }
+  .old-demo button {
+    background-color: var(--color-primary);
+    color: var(--color-text);
+    border: none;
+    padding: var(--spacing-xs) var(--spacing-sm);
+    border-radius: var(--border-radius-sm);
+    cursor: pointer;
+  }
+</style>
+
+<code-highlight language="css">
+  /* The animation-fill-mode hack */
+  @keyframes fade-in {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+  dialog[open] {
+    animation: fade-in 0.3s ease forwards;
+  }
+</code-highlight>
+
+<div class="old-demo fragment">
+  <button id="openOld">Try it — open dialog</button>
+  <dialog id="oldDialog">
+    <h3>I fade in...</h3>
+    <p>But I disappear instantly on close. No reverse animation.</p>
+    <form method="dialog"><button>Close</button></form>
+  </dialog>
+</div>
+
+<ul class="fragment" style="max-width: 35rem; margin: 1rem auto;">
+  <li>Not a real transition — no reverse on close</li>
+  <li><code>animation-fill-mode: forwards</code> is fragile, fights other styles</li>
+  <li>No way to animate <code>display: none → block</code></li>
+</ul>
+
+<script>
+  document.getElementById('openOld').addEventListener('click', () => {
+    document.getElementById('oldDialog').showModal();
+  });
+</script>
+
+<nav-component to="./starting-style-new.html"></nav-component>

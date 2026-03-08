@@ -1,0 +1,42 @@
+<h4 class="accent">corner-shape</h4>
+<style>
+  .corner-demo {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+    max-width: 35rem;
+    margin: 1rem auto;
+  }
+  .corner-demo > div {
+    aspect-ratio: 1;
+    display: grid;
+    place-items: center;
+    border-radius: 2rem;
+    background: var(--color-accent);
+    color: var(--color-background);
+    font-weight: bold;
+    font-size: var(--font-size-sm);
+  }
+  .corner-demo .squircle { corner-shape: squircle; }
+  .corner-demo .scoop { corner-shape: scoop; }
+  .corner-demo .bevel { corner-shape: bevel; }
+  .corner-demo .notch { corner-shape: notch; }
+</style>
+
+<code-highlight language="css">
+  .card {
+    border-radius: 2rem;
+    corner-shape: squircle; /* or scoop, bevel, notch */
+  }
+</code-highlight>
+
+<div class="corner-demo fragment">
+  <div class="squircle">squircle</div>
+  <div class="scoop">scoop</div>
+  <div class="bevel">bevel</div>
+  <div class="notch">notch</div>
+</div>
+
+<p class="fragment light">Beyond border-radius. Chrome 139+.</p>
+
+<nav-component to="./scroll-state.html"></nav-component>

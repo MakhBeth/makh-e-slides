@@ -1,0 +1,56 @@
+<h4 class="accent">The var() space hack — live</h4>
+<style>
+  .hack-demo {
+    --ON: initial;
+    --OFF: ;
+    --is-raised: var(--OFF);
+  }
+  .hack-demo label {
+    cursor: pointer;
+    font-size: var(--font-size-sm);
+    user-select: none;
+    display: block;
+    margin-bottom: 1rem;
+  }
+  .hack-demo .demo-btn {
+    padding: 0.75rem 1.5rem;
+    font-size: var(--font-size-md);
+    border: var(--is-raised, 2px solid var(--color-accent));
+    background: var(--is-raised, linear-gradient(oklch(30% 0.05 110), oklch(20% 0.05 110)));
+    box-shadow: var(--is-raised, 0 4px 16px oklch(0.87 0.21 110.35 / 0.4));
+    border-radius: var(--border-radius-md);
+    color: var(--color-text);
+    cursor: default;
+    transition: var(--transition-normal);
+  }
+  .hack-demo:has(#hackToggle:checked) {
+    --is-raised: var(--ON);
+  }
+  .demo-row {
+    display: flex;
+    gap: 2rem;
+    justify-content: center;
+    align-items: center;
+    margin: 1rem 0;
+  }
+  .demo-label {
+    font-size: var(--font-size-xs);
+    color: var(--color-text-light);
+    margin-top: 0.5rem;
+  }
+</style>
+
+<div class="hack-demo">
+  <input type="checkbox" id="hackToggle" />
+  <label for="hackToggle">--is-raised: var(--ON)</label>
+  <div class="demo-row">
+    <div>
+      <button class="demo-btn">Button</button>
+      <div class="demo-label">border + background + box-shadow</div>
+    </div>
+  </div>
+</div>
+
+<p class="light fragment">One custom property. Three declarations toggled at once. Pure CSS.</p>
+
+<nav-component to="./if-at-home.html"></nav-component>

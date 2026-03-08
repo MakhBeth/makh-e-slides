@@ -1,0 +1,52 @@
+<h4 class="accent">text-box-trim / text-box</h4>
+<style>
+  .trim-demo {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    max-width: 35rem;
+    margin: 1rem auto;
+  }
+  .trim-demo .card {
+    background: var(--color-background);
+    border: 1px solid var(--color-text-light);
+    border-radius: var(--border-radius-md);
+    padding: 0;
+  }
+  .trim-demo h2 {
+    font-size: var(--font-size-3xl);
+    margin: 0;
+    padding: 0 0.25em;
+    background: oklch(from var(--color-accent) l c h / 0.15);
+  }
+  .trim-demo .trimmed h2 {
+    text-box: trim-both cap alphabetic;
+  }
+  .trim-demo .label {
+    padding: 0.5rem;
+    font-size: var(--font-size-xs);
+    color: var(--color-text-light);
+    border-top: 1px solid var(--color-text-light);
+  }
+</style>
+
+<code-highlight language="css">
+  h2 {
+    text-box: trim-both cap alphabetic;
+  }
+</code-highlight>
+
+<div class="trim-demo fragment">
+  <div class="card">
+    <h2>Ag</h2>
+    <div class="label">default (extra space above/below)</div>
+  </div>
+  <div class="card trimmed">
+    <h2>Ag</h2>
+    <div class="label">text-box: trim-both</div>
+  </div>
+</div>
+
+<p class="fragment light">Chrome 133+. Pixel-perfect vertical text alignment. No more magic numbers.</p>
+
+<nav-component to="./sibling-functions.html"></nav-component>

@@ -1,0 +1,69 @@
+<h3 class="accent">CSS if()</h3>
+
+<h4>The space hack — before</h4>
+<code-highlight language="css">
+  .btn {
+    --is-danger: ;
+    background: var(--is-danger, crimson) dodgerblue;
+    color: var(--is-danger, white) white;
+  }
+  .btn.danger { --is-danger: initial; }
+</code-highlight>
+
+<div class="fragment">
+  <h4>CSS if() — after</h4>
+  <code-highlight language="css">
+    .btn {
+      background: if(style(--variant: danger): crimson; else: dodgerblue);
+      color: white;
+    }
+  </code-highlight>
+</div>
+
+<div class="fragment">
+  <h4>Component variants via style queries</h4>
+  <style>
+    .badge-demo {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      margin: 1rem 0;
+      flex-wrap: wrap;
+    }
+    .badge-demo .badge {
+      padding: 0.5rem 1.25rem;
+      border-radius: var(--border-radius-lg);
+      font-weight: 600;
+      color: white;
+      font-size: 0.95rem;
+      background: if(
+        style(--status: success): seagreen;
+        style(--status: warning): goldenrod;
+        style(--status: error): crimson;
+        else: gray
+      );
+    }
+  </style>
+
+  <code-highlight language="css">
+    .badge {
+      background: if(
+        style(--status: success): seagreen;
+        style(--status: warning): goldenrod;
+        style(--status: error): crimson;
+        else: gray
+      );
+    }
+  </code-highlight>
+
+  <div class="badge-demo">
+    <span class="badge" style="--status: success">Success</span>
+    <span class="badge" style="--status: warning">Warning</span>
+    <span class="badge" style="--status: error">Error</span>
+    <span class="badge">Default</span>
+  </div>
+</div>
+
+<p class="fragment light">Chrome 137+. The end of the space hack era.</p>
+
+<nav-component to="./musthave.html"></nav-component>

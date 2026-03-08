@@ -1,0 +1,74 @@
+<h4 class="accent">@starting-style — the new way</h4>
+<style>
+  .new-demo dialog {
+    padding: var(--spacing-md);
+    border-radius: var(--border-radius-md);
+    border: 1px solid var(--color-text-light);
+    background-color: var(--color-background);
+    color: var(--color-text);
+    opacity: 0;
+    transition:
+      opacity 0.3s ease,
+      display 0.3s ease allow-discrete;
+  }
+  .new-demo dialog[open] {
+    opacity: 1;
+    @starting-style {
+      opacity: 0;
+    }
+  }
+  .new-demo dialog::backdrop {
+    background-color: rgba(0, 0, 0, 0);
+    transition: background-color 0.3s ease, display 0.3s ease allow-discrete;
+  }
+  .new-demo dialog[open]::backdrop {
+    background-color: rgba(0, 0, 0, 0.7);
+    @starting-style {
+      background-color: rgba(0, 0, 0, 0);
+    }
+  }
+  .new-demo button {
+    background-color: var(--color-primary);
+    color: var(--color-text);
+    border: none;
+    padding: var(--spacing-xs) var(--spacing-sm);
+    border-radius: var(--border-radius-sm);
+    cursor: pointer;
+  }
+</style>
+
+<code-highlight language="css">
+  dialog {
+    opacity: 0;
+    transition:
+      opacity 0.3s,
+      display 0.3s allow-discrete;
+  }
+  dialog[open] {
+    opacity: 1;
+    @starting-style { opacity: 0; }
+  }
+</code-highlight>
+
+<div class="new-demo fragment">
+  <button id="openNew">Try it — open dialog</button>
+  <dialog id="newDialog">
+    <h3>I fade in AND out!</h3>
+    <p>Real transitions. Real reverse on close.</p>
+    <form method="dialog"><button>Close</button></form>
+  </dialog>
+</div>
+
+<p class="fragment light">Baseline Newly Available. No more JS animation libraries for this.</p>
+
+<script>
+  document.getElementById('openNew').addEventListener('click', () => {
+    document.getElementById('newDialog').showModal();
+  });
+</script>
+
+<div class="fragment">
+  <baseline-status featureId="starting-style"></baseline-status>
+</div>
+
+<nav-component to="./starting-style-prod.html"></nav-component>

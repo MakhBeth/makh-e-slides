@@ -1,0 +1,40 @@
+<h4 class="accent">contrast-color()</h4>
+<style>
+  .contrast-demo {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0.5rem;
+    max-width: 35rem;
+    margin: 1rem auto;
+  }
+  .contrast-demo > div {
+    padding: 1.5rem 0.5rem;
+    border-radius: var(--border-radius-sm);
+    font-weight: bold;
+    font-size: var(--font-size-sm);
+    background-color: var(--bg);
+    color: contrast-color(var(--bg));
+  }
+</style>
+
+<code-highlight language="css">
+  div {
+    background: var(--brand-color);
+    color: contrast-color(var(--brand-color));
+  }
+</code-highlight>
+
+<div class="contrast-demo fragment">
+  <div style="--bg: oklch(90% 0.15 90)">Light</div>
+  <div style="--bg: oklch(30% 0.15 270)">Dark</div>
+  <div style="--bg: oklch(60% 0.2 30)">Red</div>
+  <div style="--bg: oklch(85% 0.2 90)">Yellow</div>
+  <div style="--bg: oklch(50% 0.2 150)">Green</div>
+  <div style="--bg: oklch(40% 0.2 240)">Blue</div>
+  <div style="--bg: oklch(70% 0.2 330)">Pink</div>
+  <div style="--bg: oklch(95% 0 0)">White</div>
+</div>
+
+<p class="fragment light">Remember the manual <code>clamp() + oklch()</code> hack from v1?<br />This is the native solution. Safari 26+, Firefox.</p>
+
+<nav-component to="./trig-functions.html"></nav-component>
