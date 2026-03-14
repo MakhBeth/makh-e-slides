@@ -4,11 +4,11 @@
 <div class="dialog-demo">
 	<div class="fake-overlay">z-index: 999999999</div>
 	<br /><br /><br />
-	<button id="openDialog">Open dialog (top layer wins)</button>
+	<button commandfor="topLayerDialog" command="show-modal">Open dialog (top layer wins)</button>
 	<dialog id="topLayerDialog" closedby="any">
 		<h3>I win. No z-index needed.</h3>
 		<p>The top layer is above the entire document. Always.</p>
-		<form method="dialog"><button>Close</button></form>
+		<button commandfor="topLayerDialog" command="close">Close</button>
 	</dialog>
 </div>
 
@@ -21,17 +21,11 @@
 	<div>
 		<h5 class="accent">The top layer</h5>
 		<p>"The browser gives you a layer above the entire document. Just use it."</p>
-		<code>&lt;form method="dialog"&gt;</code>
+		<code>command="show-modal"</code>
 	</div>
 </div>
 
 <baseline-status featureId="dialog"></baseline-status>
-
-<script>
-	document.getElementById('openDialog').addEventListener('click', () => {
-		document.getElementById('topLayerDialog').showModal();
-	});
-</script>
 
 <style>
 	.dialog-demo {
@@ -89,4 +83,4 @@
 	}
 </style>
 
-<nav-component to="./zero-js-frameworks.html"></nav-component>
+<nav-component to="./zero-js-frameworks.html"><a href="./zero-js-frameworks.html">›</a></nav-component>

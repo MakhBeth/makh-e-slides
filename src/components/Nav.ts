@@ -95,17 +95,42 @@ class Nav extends HTMLElement {
 				break;
 			case "ArrowUp":
 				event.preventDefault();
-				this.goBack();
+				this.scrollVertically(-1);
 				break;
 			case "ArrowDown":
 				event.preventDefault();
-				if (to) {
-					window.location.href = to;
-				}
+				this.scrollVertically(1);
 				break;
 		}
 	}
 
+	scrollVertically(direction: number) {
+		const scrollAmount = window.innerHeight;
+		const currentScroll = window.scrollY;
+		const maxScroll =
+			document.documentElement.scrollHeight - window.innerHeight - 50;
+
+		if (direction > 0 && currentScroll < maxScroll) {
+			window.scrollTo({
+				top: currentScroll + scrollAmount,
+				behavior: "smooth",
+			});
+		} else if (direction < 0 && currentScroll > 0) {
+			window.scrollTo({
+				top: currentScroll - scrollAmount,
+				behavior: "smooth",
+			});
+		} else {
+			if (direction < 0) {
+				this.goBack();
+			} else {
+				const to = this.getAttribute("to");
+				if (to) {
+					window.location.href = to;
+				}
+			}
+		}
+	}
 
 	addPrefetch() {
 		const to = this.getAttribute("to");

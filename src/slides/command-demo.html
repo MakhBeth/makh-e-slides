@@ -1,0 +1,52 @@
+<h4 class="accent">Invoker Commands API</h4>
+
+<code-highlight language="html">
+&lt;button commandfor="myDialog" command="show-modal"&gt;
+  Open
+&lt;/button&gt;
+
+&lt;dialog id="myDialog" closedby="any"&gt;
+  &lt;p&gt;No JavaScript needed.&lt;/p&gt;
+  &lt;button commandfor="myDialog" command="close"&gt;
+    Close
+  &lt;/button&gt;
+&lt;/dialog&gt;
+</code-highlight>
+
+<div class="command-demo fragment">
+	<button commandfor="commandDialog" command="show-modal">Open dialog</button>
+	<dialog id="commandDialog" closedby="any">
+		<h3>Opened with <code>command="show-modal"</code></h3>
+		<p>No JavaScript. No event listeners. Just HTML.</p>
+		<button commandfor="commandDialog" command="close">Close</button>
+	</dialog>
+</div>
+
+<baseline-status featureId="invoker-commands"></baseline-status>
+
+<style>
+	.command-demo {
+		margin: 1rem auto;
+	}
+	.command-demo button {
+		font-size: var(--font-size-md);
+		padding: 0.5rem 1.5rem;
+		border-radius: var(--border-radius-md);
+		border: 1px solid var(--color-text-light);
+		background: var(--color-primary);
+		color: var(--color-text);
+		cursor: pointer;
+	}
+	.command-demo dialog {
+		padding: var(--spacing-md) var(--spacing-lg);
+		border-radius: var(--border-radius-md);
+		border: 1px solid var(--color-text-light);
+		background-color: var(--color-background);
+		color: var(--color-text);
+	}
+	.command-demo dialog::backdrop {
+		background-color: rgba(0, 0, 0, 0.7);
+	}
+</style>
+
+<nav-component to="./dialog-intro.html"><a href="./dialog-intro.html">›</a></nav-component>

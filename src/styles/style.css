@@ -53,8 +53,6 @@
 }
 main > section {
 	view-transition-name: content;
-	overflow: auto;
-	max-height: 100dvh;
 }
 
 nav-component {
@@ -159,9 +157,9 @@ pre {
 }
 
 main {
-	min-height: calc(100vh);
-	position: fixed;
+	height: calc(100vh - 2rem);
 	overflow: auto;
+	position: fixed;
 	top: 0;
 	width: 100%;
 	padding: 1rem;
@@ -230,6 +228,14 @@ nav-component {
 	position: fixed;
 	right: 0;
 	bottom: 0;
+
+	& > a {
+		font-size: 3rem;
+		text-decoration: none;
+		color: var(--color-text);
+		line-height: 1;
+		padding: 0 0.5rem;
+	}
 }
 
 body > header,
