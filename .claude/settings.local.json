@@ -2,7 +2,9 @@
   "permissions": {
     "allow": [
       "WebFetch(domain:github.com)",
-      "Bash(git ls-tree:*)"
+      "Bash(git ls-tree:*)",
+      "Bash(git checkout:*)",
+      "Bash(git stash:*)"
     ],
     "deny": [],
     "ask": []
