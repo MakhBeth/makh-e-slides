@@ -15,13 +15,22 @@ echo "=== Building branch: $BRANCH -> /$BRANCH ==="
 npx --prefix "$REPO_DIR" vite build --base "/$BRANCH/"
 
 rm -rf "$PAGES_DIR/$BRANCH"
+
+# Flatten: move slides/* to root so URLs are /branch/index.html not /branch/slides/index.html
+mv "$BUILD_OUT/slides/"* "$BUILD_OUT/"
+rmdir "$BUILD_OUT/slides"
+
 cp -r "$BUILD_OUT" "$PAGES_DIR/$BRANCH"
 rm -rf "$BUILD_OUT"
 
 cd "$PAGES_DIR"
 git add -A
-git commit -m "Deploy $BRANCH slides"
-git push
+if git diff --cached --quiet; then
+  echo "No changes to deploy."
+else
+  git commit -m "Deploy $BRANCH slides"
+  git push
+fi
 
 echo ""
 echo "Done! Published:"
