@@ -2,7 +2,12 @@
   "permissions": {
     "allow": [
       "WebFetch(domain:github.com)",
-      "Bash(git ls-tree:*)"
+      "Bash(git ls-tree:*)",
+      "Bash(chmod +x /Users/davidedipumpo/Projects/makh-e-slides/scripts/deploy.sh /Users/davidedipumpo/Projects/makh-e-slides/scripts/serve-dist.sh)",
+      "Bash(git add:*)",
+      "Bash(git commit:*)",
+      "Bash(git checkout:*)",
+      "Bash(git stash:*)"
     ],
     "deny": [],
     "ask": []
