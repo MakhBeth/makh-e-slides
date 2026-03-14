@@ -1,0 +1,92 @@
+<h4 class="accent">The Top Layer Miracle</h4>
+<h5>No more portals. No more z-index wars.</h5>
+
+<div class="dialog-demo">
+	<div class="fake-overlay">z-index: 999999999</div>
+	<br /><br /><br />
+	<button id="openDialog">Open dialog (top layer wins)</button>
+	<dialog id="topLayerDialog" closedby="any">
+		<h3>I win. No z-index needed.</h3>
+		<p>The top layer is above the entire document. Always.</p>
+		<form method="dialog"><button>Close</button></form>
+	</dialog>
+</div>
+
+<div class="comparison fragment">
+	<div class="old">
+		<h5>The portal pattern</h5>
+		<p>"I can't escape my parent's stacking context, so I'll teleport my DOM to &lt;body&gt;"</p>
+		<code>createPortal(child, document.body)</code>
+	</div>
+	<div>
+		<h5 class="accent">The top layer</h5>
+		<p>"The browser gives you a layer above the entire document. Just use it."</p>
+		<code>&lt;form method="dialog"&gt;</code>
+	</div>
+</div>
+
+<baseline-status featureId="dialog"></baseline-status>
+
+<script>
+	document.getElementById('openDialog').addEventListener('click', () => {
+		document.getElementById('topLayerDialog').showModal();
+	});
+</script>
+
+<style>
+	.dialog-demo {
+		position: relative;
+	}
+	.fake-overlay {
+		position: fixed;
+		top: 2rem;
+		left: 50%;
+		transform: translateX(-50%);
+		padding: var(--spacing-md);
+		background-color: var(--color-accent);
+		color: var(--color-background);
+		border-radius: var(--border-radius-md);
+		z-index: 999999999;
+		font-weight: bold;
+	}
+	.dialog-demo button {
+		background-color: var(--color-primary);
+		color: var(--color-text);
+		border: none;
+		padding: var(--spacing-xs) var(--spacing-sm);
+		border-radius: var(--border-radius-sm);
+		cursor: pointer;
+	}
+	.dialog-demo dialog {
+		padding: var(--spacing-md) var(--spacing-lg);
+		border-radius: var(--border-radius-md);
+		border: 1px solid var(--color-text-light);
+		background-color: var(--color-background);
+		color: var(--color-text);
+	}
+	.dialog-demo dialog::backdrop {
+		background-color: rgba(0, 0, 0, 0.7);
+	}
+	.comparison {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		gap: 1rem;
+		max-width: 40rem;
+		margin: 1rem auto;
+		text-align: left;
+		font-size: var(--font-size-sm);
+	}
+	.comparison div {
+		padding: 1rem;
+		border-radius: var(--border-radius-md);
+		border: 1px solid var(--color-text-light);
+	}
+	.comparison .old {
+		opacity: 0.6;
+	}
+	.comparison .old h5 {
+		text-decoration: line-through;
+	}
+</style>
+
+<nav-component to="./zero-js-frameworks.html"></nav-component>

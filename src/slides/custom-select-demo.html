@@ -1,0 +1,64 @@
+<h4 class="accent">Customizable &lt;select&gt;</h4>
+
+<code-highlight language="css">
+  select, ::picker(select) {
+    appearance: base-select;
+  }
+  option::checkmark {
+    color: var(--color-accent);
+  }
+</code-highlight>
+
+<div class="select-demo fragment">
+	<select>
+		<option value="">Pick a CSS feature</option>
+		<option value="has">:has()</option>
+		<option value="if">if()</option>
+		<option value="scope">@scope</option>
+		<option value="layer">@layer</option>
+		<option value="starting">@starting-style</option>
+	</select>
+</div>
+
+<p class="fragment light">Full CSS control over dropdowns. Zero JavaScript.</p>
+
+<baseline-status featureId="customizable-select"></baseline-status>
+
+<style>
+	.select-demo {
+		margin: 1rem auto;
+	}
+	.select-demo select,
+	.select-demo ::picker(select) {
+		appearance: base-select;
+	}
+	.select-demo select {
+		font-size: var(--font-size-md);
+		padding: 0.5rem 1rem;
+		border-radius: var(--border-radius-md);
+		border: 1px solid var(--color-text-light);
+		background: var(--color-background);
+		color: var(--color-text);
+		min-width: 15rem;
+	}
+	.select-demo ::picker(select) {
+		border-radius: var(--border-radius-md);
+		border: 1px solid var(--color-text-light);
+		background: var(--color-background);
+		padding: 0.5rem;
+	}
+	.select-demo option {
+		padding: 0.5rem 1rem;
+		border-radius: var(--border-radius-sm);
+		transition: var(--transition-fast);
+		color: white;
+	}
+	.select-demo option:hover {
+		background: var(--color-primary);
+	}
+	.select-demo option::checkmark {
+		color: var(--color-accent);
+	}
+</style>
+
+<nav-component to="./popover-intro.html"></nav-component>

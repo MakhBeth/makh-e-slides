@@ -7,7 +7,7 @@ export const CodeHighlight = {
 
 	render(code: string, language = "javascript"): string {
 		const highlightedCode = this.highlightCode(code, language);
-		return `<pre><code class="hljs language-${language}">${highlightedCode}</code></pre>`;
+		return `<pre><code class="hljs" data-highlighted="yes">${highlightedCode}</code></pre>`;
 	},
 };
 

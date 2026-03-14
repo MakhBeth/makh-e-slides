@@ -1,0 +1,70 @@
+<h4 class="accent">::details-content</h4>
+
+<code-highlight language="css">
+  details {
+    interpolate-size: allow-keywords;
+  }
+  ::details-content {
+    block-size: 0;
+    overflow-y: clip;
+    transition:
+      block-size 0.3s ease,
+      content-visibility 0.3s ease allow-discrete;
+  }
+  details[open]::details-content {
+    block-size: auto;
+  }
+</code-highlight>
+
+<div class="details-demo fragment">
+	<details>
+		<summary>Click me — I animate!</summary>
+		<div class="inner">
+			<p>This content smoothly expands and collapses with pure CSS. No JavaScript, no libraries, no hacks.</p>
+		</div>
+	</details>
+	<details>
+		<summary>Another one</summary>
+		<div class="inner">
+			<p>Previously you needed JavaScript to measure height and animate it. Now it's just CSS.</p>
+		</div>
+	</details>
+</div>
+
+<baseline-status featureId="details-content"></baseline-status>
+
+<style>
+	.details-demo details {
+		max-width: 30rem;
+		margin: 0.5rem auto;
+		text-align: left;
+		border: 1px solid var(--color-text-light);
+		border-radius: var(--border-radius-md);
+		overflow: hidden;
+	}
+	.details-demo summary {
+		padding: 0.75rem 1rem;
+		cursor: pointer;
+		font-weight: bold;
+		background: oklch(from var(--color-background) calc(l + 0.05) c h);
+	}
+	.details-demo {
+		interpolate-size: allow-keywords;
+	}
+	.details-demo ::details-content {
+		block-size: 0;
+		overflow-y: clip;
+		transition:
+			block-size 0.3s ease,
+			content-visibility 0.3s ease allow-discrete;
+	}
+	.details-demo details[open]::details-content {
+		block-size: auto;
+	}
+	.details-demo .inner {
+		padding: 0.75rem 1rem;
+		background: oklch(from var(--color-background) calc(l + 0.03) c h);
+	}
+</style>
+
+<nav-component to="./dropdown-problem.html"></nav-component>

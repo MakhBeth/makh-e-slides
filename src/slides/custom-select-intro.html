@@ -1,0 +1,22 @@
+<h1 class="accent">Method 1</h1>
+<h2>Customizable <code>&lt;select&gt;</code></h2>
+
+<p><code>appearance: base-select</code> unlocks full CSS control over native selects.</p>
+
+<ul class="fragment">
+	<li><code>::picker(select)</code> — the dropdown popup</li>
+	<li><code>::picker-icon</code> — the arrow indicator</li>
+	<li><code>::checkmark</code> — the selected item marker</li>
+</ul>
+
+<p class="fragment light">Finally: styled dropdowns without JavaScript. The browser handles all the interaction.</p>
+
+<style>
+	ul {
+		font-size: var(--font-size-lg);
+		max-width: 40rem;
+		margin: 1rem auto;
+	}
+</style>
+
+<nav-component to="./custom-select-demo.html"></nav-component>

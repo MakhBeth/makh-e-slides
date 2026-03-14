@@ -1,0 +1,28 @@
+<h1 class="accent">Offline First</h1>
+
+<p>The site should work even offline or with an unstable network.</p>
+
+<ul class="fragment">
+	<li><strong>Service Workers</strong> — intercept requests, serve from cache</li>
+	<li><strong>Cache API</strong> — store responses for offline use</li>
+	<li><strong>PWA</strong> — installable, resilient, native-like</li>
+</ul>
+
+<div class="fragment">
+	<p class="light">Even simple strategies make a huge difference:</p>
+	<ul>
+		<li><code>&lt;link rel="preload"&gt;</code> — critical resources first</li>
+		<li><code>&lt;link rel="prefetch"&gt;</code> — next page, ready before the click</li>
+		<li>Stale-while-revalidate — show cached, update in background</li>
+	</ul>
+</div>
+
+<style>
+	ul {
+		font-size: var(--font-size-lg);
+		max-width: 45rem;
+		margin: 1rem auto;
+	}
+</style>
+
+<nav-component to="./green-performance.html"></nav-component>

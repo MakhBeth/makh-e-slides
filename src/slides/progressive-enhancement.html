@@ -1,0 +1,50 @@
+<h1 class="accent">Progressive Enhancement</h1>
+
+<p>Start with HTML. Layer CSS. Then JavaScript.</p>
+
+<div class="layers fragment">
+	<div class="layer layer-html">HTML — content & structure</div>
+	<div class="layer layer-css">CSS — presentation & interaction</div>
+	<div class="layer layer-js">JS — enhanced behavior</div>
+</div>
+
+<div class="fragment">
+	<h3>vs Graceful Degradation</h3>
+	<p class="light">Build the full experience first, then handle fallbacks for older/limited environments.</p>
+</div>
+
+<p class="fragment accent">At the very least: graceful degradation.<br />The goal: progressive enhancement.</p>
+
+<style>
+	.layers {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		gap: 0.25rem;
+		margin: 1.5rem auto;
+	}
+	.layer {
+		padding: 0.75rem 2rem;
+		border-radius: var(--border-radius-md);
+		font-size: var(--font-size-md);
+		font-weight: bold;
+		width: 100%;
+		max-width: 30rem;
+	}
+	.layer-html {
+		background: var(--color-primary);
+		color: var(--color-text);
+	}
+	.layer-css {
+		background: var(--color-secondary);
+		color: var(--color-background);
+		max-width: 25rem;
+	}
+	.layer-js {
+		background: var(--color-accent);
+		color: var(--color-background);
+		max-width: 20rem;
+	}
+</style>
+
+<nav-component to="./checklist.html"></nav-component>

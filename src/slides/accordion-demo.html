@@ -1,0 +1,50 @@
+<h4 class="accent">Native Accordion</h4>
+
+<code-highlight language="html">
+&lt;details name="accordion"&gt;
+  &lt;summary&gt;Section 1&lt;/summary&gt;
+  &lt;p&gt;Content here&lt;/p&gt;
+&lt;/details&gt;
+&lt;details name="accordion"&gt;
+  &lt;summary&gt;Section 2&lt;/summary&gt;
+  &lt;p&gt;More content&lt;/p&gt;
+&lt;/details&gt;
+</code-highlight>
+
+<div class="demo fragment">
+	<details name="accordion-demo">
+		<summary>Section 1</summary>
+		<p>This is fully accessible content. No JavaScript required.</p>
+	</details>
+	<details name="accordion-demo">
+		<summary>Section 2</summary>
+		<p>Keyboard navigable out of the box. Tab, Enter, Space — it all works.</p>
+	</details>
+	<details name="accordion-demo">
+		<summary>Section 3</summary>
+		<p>The <code>name</code> attribute ensures only one section is open at a time.</p>
+	</details>
+</div>
+
+<baseline-status featureId="details-name"></baseline-status>
+
+<style>
+	.demo {
+		max-width: 35rem;
+		margin: 1rem auto;
+		text-align: left;
+	}
+	details {
+		font-size: var(--font-size-md);
+		padding: 0.75rem 1rem;
+		border: 1px solid var(--color-text-light);
+		border-radius: var(--border-radius-md);
+		margin-bottom: 0.5rem;
+	}
+	summary {
+		cursor: pointer;
+		font-weight: bold;
+	}
+</style>
+
+<nav-component to="./accordion-animated-intro.html"></nav-component>

@@ -1,0 +1,21 @@
+<h1 class="accent">Native Modals</h1>
+<h2>The <code>&lt;dialog&gt;</code> element</h2>
+
+<p>Modals without JavaScript libraries. The browser does the heavy lifting.</p>
+
+<ul class="fragment">
+	<li><strong>Top layer</strong> — above everything, no z-index needed</li>
+	<li><strong>No portals</strong> — no need to teleport DOM nodes</li>
+	<li><code>&lt;form method="dialog"&gt;</code> — close without JS</li>
+	<li><code>closedby</code> — control how users dismiss it</li>
+</ul>
+
+<style>
+	ul {
+		font-size: var(--font-size-lg);
+		max-width: 40rem;
+		margin: 1rem auto;
+	}
+</style>
+
+<nav-component to="./dialog-demo.html"></nav-component>

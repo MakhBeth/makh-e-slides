@@ -1,31 +1,11 @@
-<h1 class="accent">
-	<span>Let's build an accessible <s>Front-End</s> <mark>component</mark>!</span>
-</h1>
-<h2 class="light">
-	Milan<sup><small>(?)</small></sup
-	>, 14 October 2025
-</h2>
+<h1 class="accent">Frontend Resilience</h1>
+<h2 class="light">Milano, 30 March 2026</h2>
 
 <style>
 	h1 {
+		font-size: clamp(3rem, 10vw, 8rem);
 		text-wrap: balance;
-	}
-	s::before,
-	s::after {
-		clip-path: inset(100%);
-		clip: rect(1px, 1px, 1px, 1px);
-		height: 1px;
-		overflow: hidden;
-		position: absolute;
-		white-space: nowrap;
-		width: 1px;
-	}
-	s::before {
-		content: " [start of stricken text] ";
-	}
-	s::after {
-		content: " [end of stricken text] ";
 	}
 </style>
 
-<nav-component to="./fun-fact.html" no-back></nav-component>
+<nav-component to="./broken-dropdown.html" no-back></nav-component>
