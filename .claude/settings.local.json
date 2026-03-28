@@ -15,7 +15,9 @@
       "WebFetch(domain:github.com)",
       "Bash(gh api:*)",
       "Bash(gh search:*)",
-      "WebFetch(domain:api.webstatus.dev)"
+      "WebFetch(domain:api.webstatus.dev)",
+      "Bash(cp /Users/davidedipumpo/Desktop/\"Screenshot 2026-03-28 alle 13.19.22.png\" /Users/davidedipumpo/Projects/makh-e-slides/public/thanks.png)",
+      "Bash(cp /Users/davidedipumpo/Desktop/\"Screenshot 2026-03-28 alle 13.19.13.png\" /Users/davidedipumpo/Projects/makh-e-slides/public/kudos.png)"
     ]
   }
 }
