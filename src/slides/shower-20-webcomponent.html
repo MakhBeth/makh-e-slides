@@ -1,0 +1,56 @@
+<h1 class="accent">Web Component: dal vivo</h1>
+<p class="light">Stesso previewer, fuori dal configuratore. E lo stiliamo <em>da fuori</em> (light DOM).</p>
+
+<div class="wc-stage">
+	<shower-previewer></shower-previewer>
+</div>
+
+<script src="/shower/v2-transform.wc.js"></script>
+
+<style>
+	h1 {
+		font-size: clamp(2rem, 5vw, 3.2rem);
+		margin-bottom: 0.25rem;
+	}
+	.wc-stage {
+		width: 100%;
+		max-width: 1200px;
+		height: 74vh;
+		margin: 0.5rem auto 0;
+		background: #fff;
+		border-radius: 0.5rem;
+		color: #111;
+		overflow: hidden;
+	}
+	shower-previewer {
+		display: block;
+		width: 100%;
+		height: 100%;
+	}
+
+	/* ── CSS override dall'esterno (possibile perché light DOM) ──
+	   menu di controllo a SINISTRA, doccia a DESTRA */
+	shower-previewer .sample {
+		display: flex;
+		flex-direction: row;
+		align-items: stretch;
+		gap: 1rem;
+		height: 100%;
+	}
+	shower-previewer .controls {
+		flex: 0 0 320px;
+		overflow: auto;
+		padding: 0.5rem;
+	}
+	shower-previewer .controls fieldset {
+		padding: 4px 8px;
+		margin: 2px 0;
+	}
+	shower-previewer .wrapper {
+		flex: 1 1 auto !important;
+		width: auto !important;
+		height: 100% !important;
+	}
+</style>
+
+<nav-component to="./shower-30-svg.html"><a href="./shower-30-svg.html">›</a></nav-component>

@@ -1,0 +1,35 @@
+<h1 class="accent">Ciao, sono Davide 👋</h1>
+
+<img class="panda" src="/panda-social.png" alt="Il mio avatar: un pandino disegnato a mano" />
+
+<p class="light">Davide Di Pumpo, sviluppatore frontend.</p>
+
+<div class="qr">
+	<img src="/qr-linkedin.svg" alt="QR code al profilo LinkedIn di Davide Di Pumpo" />
+	<span class="light">LinkedIn: <code>davide-di-pumpo</code></span>
+</div>
+
+<style>
+	.panda {
+		width: clamp(180px, 28vw, 340px);
+		height: auto;
+		margin: 0.5rem auto 1rem;
+	}
+	.qr {
+		display: inline-flex;
+		flex-direction: column;
+		align-items: center;
+		gap: 0.5rem;
+		margin-top: 0.5rem;
+	}
+	.qr img {
+		width: clamp(120px, 14vw, 180px);
+		height: auto;
+		background: #fff;
+		padding: 0.5rem;
+		border-radius: 0.5rem;
+		margin: 0;
+	}
+</style>
+
+<nav-component to="./intro-20-freelance.html"><a href="./intro-20-freelance.html">›</a></nav-component>
