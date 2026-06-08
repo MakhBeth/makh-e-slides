@@ -1,10 +1,32 @@
 <h1 class="accent">THREE.js</h1>
 
+<video
+	class="fragment threejs-video"
+	controls
+	loop
+	playsinline
+	preload="metadata"
+	aria-label="Animazione 3D in THREE.js"
+>
+	<source src="/threejs/demo-video.mp4" type="video/mp4" />
+</video>
+
 <style>
 	h1 {
-		font-size: clamp(3rem, 16vw, 9rem);
+		font-size: clamp(2.5rem, 11vw, 6rem);
 		letter-spacing: 0.05em;
+		margin-bottom: 0.8rem;
+	}
+	.threejs-video {
+		display: block;
+		max-width: min(90vw, 1000px);
+		max-height: 62vh;
+		width: auto;
+		height: auto;
+		margin: 0 auto;
+		border-radius: 0.5rem;
+		box-shadow: 0 6px 30px rgba(0, 0, 0, 0.3);
 	}
 </style>
 
-<nav-component to="./intro-60-performance.html"><a href="./intro-60-performance.html">›</a></nav-component>
+<nav-component to="./intro-55-threejs-demo.html"><a href="./intro-55-threejs-demo.html">›</a></nav-component>
