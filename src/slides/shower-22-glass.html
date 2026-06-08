@@ -1,0 +1,29 @@
+<h1 class="accent">Il vetro</h1>
+<p class="light">
+	Trasparenza = <code>fill-opacity</code>. Satinato = quanto <strong>sfochi</strong>
+	ciò che sta dietro.
+</p>
+
+<code-highlight language="xml">&lt;!-- vetro tinto: l'opacità del riempimento È la trasparenza scelta --&gt;
+&lt;polygon
+  :fill="options.glass.color.code"
+  :fill-opacity="(options.glass.color.transparency ?? 0) / 100" /&gt;
+
+&lt;!-- satinato: sfoca ciò che si vede DIETRO il vetro --&gt;
+&lt;filter id="satinationBlur"&gt;
+  &lt;feGaussianBlur :stdDeviation="satination * 5" /&gt;
+&lt;/filter&gt;</code-highlight>
+
+<style>
+	h1 {
+		font-size: clamp(2rem, 5vw, 3.2rem);
+		margin-bottom: 0.25rem;
+	}
+	pre {
+		max-width: 1100px;
+		margin: 1rem auto 0;
+		font-size: clamp(0.9rem, 1.6vw, 1.4rem);
+	}
+</style>
+
+<nav-component to="./shower-24-gradient.html"><a href="./shower-24-gradient.html">›</a></nav-component>

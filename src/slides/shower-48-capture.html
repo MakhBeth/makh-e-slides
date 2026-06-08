@@ -1,0 +1,29 @@
+<h1 class="accent">Da SVG a JPEG, in pagina</h1>
+<p class="light">
+	L'SVG porta i suoi <code>&lt;style&gt;</code> con sé: si serializza, si disegna su un
+	<code>&lt;canvas&gt;</code> e diventa la <strong>thumbnail del carrello</strong>. Niente server.
+</p>
+
+<code-highlight language="typescript">// captureShowerPreview.ts
+const clonedSvg = svg.cloneNode(true)
+clonedSvg.querySelectorAll("#debug").forEach((el) => el.remove())
+
+const dataUrl = svgToDataUrl(clonedSvg)    // data:image/svg+xml,… (stili inclusi)
+const img     = await loadImage(dataUrl)
+drawSvgOnCanvas(ctx, img, width, height)   // l'SVG finisce sul canvas
+
+canvas.toBlob((blob) => upload(blob), "image/jpeg", 0.7)</code-highlight>
+
+<style>
+	h1 {
+		font-size: clamp(2rem, 5vw, 3.2rem);
+		margin-bottom: 0.25rem;
+	}
+	pre {
+		max-width: 1100px;
+		margin: 1rem auto 0;
+		font-size: clamp(0.78rem, 1.35vw, 1.15rem);
+	}
+</style>
+
+<nav-component to="./last-99-qr.html"><a href="./last-99-qr.html">›</a></nav-component>

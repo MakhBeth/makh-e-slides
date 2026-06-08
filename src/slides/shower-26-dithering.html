@@ -1,0 +1,30 @@
+<h1 class="accent">Il dithering</h1>
+<p class="light">
+	Un piccolo JPEG di rumore <strong>moltiplicato</strong> sopra l'SVG: grana
+	"fotografica" al posto del vettoriale piatto.
+</p>
+
+<code-highlight language="css">.noise-overlay {
+  position: absolute;
+  inset: 0;
+  background-image: var(--noise-texture);   /* un piccolo JPEG di rumore */
+  background-size: 10% 10%;
+  background-repeat: repeat;
+  opacity: 0.2;
+  mask: radial-gradient(circle, black 50%, transparent 70%);  /* vignetta */
+  mix-blend-mode: multiply;   /* moltiplica i pixel → scurisce a chiazze */
+}</code-highlight>
+
+<style>
+	h1 {
+		font-size: clamp(2rem, 5vw, 3.2rem);
+		margin-bottom: 0.25rem;
+	}
+	pre {
+		max-width: 1100px;
+		margin: 1rem auto 0;
+		font-size: clamp(0.9rem, 1.6vw, 1.4rem);
+	}
+</style>
+
+<nav-component to="./shower-30-svg.html"><a href="./shower-30-svg.html">›</a></nav-component>

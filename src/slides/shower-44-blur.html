@@ -1,0 +1,35 @@
+<h1 class="accent">Luci e ombre: solo blur</h1>
+<p class="light">
+	Una <strong>famiglia di filtri</strong> generata in un loop, e un po' di bianco sfocato:
+	il riflesso sul bordo del piatto e la goccia d'acqua.
+</p>
+
+<code-highlight language="xml">&lt;!-- blur1…blur10 generati in un solo loop --&gt;
+&lt;filter v-for="i in 10" :id="`blur${i + 1}`"&gt;
+  &lt;feGaussianBlur :stdDeviation="3 * i + 1" /&gt;
+&lt;/filter&gt;
+
+&lt;!-- la goccia d'acqua: un cerchio bianco sfocato --&gt;
+&lt;circle r="4" fill="white" filter="url(#blur3)" /&gt;</code-highlight>
+
+<code-highlight language="css">/* il riflesso sul bordo del piatto: stroke bianco + blur */
+.showerTray .light {
+  stroke: rgba(255, 255, 255, 1);
+  stroke-width: 4;
+  fill: none;
+  filter: url(#blur2);
+}</code-highlight>
+
+<style>
+	h1 {
+		font-size: clamp(2rem, 5vw, 3.2rem);
+		margin-bottom: 0.25rem;
+	}
+	pre {
+		max-width: 1100px;
+		margin: 0.6rem auto 0;
+		font-size: clamp(0.78rem, 1.35vw, 1.15rem);
+	}
+</style>
+
+<nav-component to="./shower-46-mask.html"><a href="./shower-46-mask.html">›</a></nav-component>

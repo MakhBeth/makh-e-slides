@@ -1,0 +1,34 @@
+<h1 class="accent">Gradienti &amp; mattoni</h1>
+<p class="light">
+	I profili non sono "grigio": una rampa di luci/ombre da <strong>un solo colore</strong>
+	(OKLCH). E il muro è un <code>&lt;pattern&gt;</code> di due gradienti.
+</p>
+
+<code-highlight language="xml">&lt;!-- profilo metallico = rampa derivata da un solo --fittings-color --&gt;
+&lt;linearGradient id="profileGradient" x1="0%" x2="100%"&gt;
+  &lt;stop offset="0%"   stop-color="oklch(from var(--fittings-color) calc(l * 0.8) c h)"/&gt;
+  &lt;stop offset="45%"  stop-color="oklch(from var(--fittings-color) max(0.3, calc(l * 1.08)) c h)"/&gt;
+  &lt;stop offset="100%" stop-color="oklch(from var(--fittings-color) calc(l * 0.88) c h)"/&gt;
+&lt;/linearGradient&gt;
+
+&lt;!-- il muro di mattoni: un &lt;pattern&gt; di due gradienti alternati --&gt;
+&lt;pattern id="brickPattern" width="0.2" height="0.1" patternUnits="objectBoundingBox"&gt;
+  &lt;rect x="0"   y="0"   width="100" height="100" fill="url(#brickGradient1)"/&gt;
+  &lt;rect x="100" y="0"   width="100" height="100" fill="url(#brickGradient2)"/&gt;
+  &lt;rect x="0"   y="100" width="100" height="100" fill="url(#brickGradient2)"/&gt;
+  &lt;rect x="100" y="100" width="100" height="100" fill="url(#brickGradient1)"/&gt;
+&lt;/pattern&gt;</code-highlight>
+
+<style>
+	h1 {
+		font-size: clamp(2rem, 5vw, 3.2rem);
+		margin-bottom: 0.25rem;
+	}
+	pre {
+		max-width: 1100px;
+		margin: 1rem auto 0;
+		font-size: clamp(0.8rem, 1.4vw, 1.2rem);
+	}
+</style>
+
+<nav-component to="./shower-26-dithering.html"><a href="./shower-26-dithering.html">›</a></nav-component>

@@ -1,0 +1,30 @@
+<h1 class="accent">Lo skew, di nuovo</h1>
+<p class="light">
+	La v1 era <strong>tutta</strong> <code>skewY</code>. Qui lo skew resta solo sui dettagli
+	(muro, maniglie, blocchi), per farli combaciare con l'angolo del vetro.
+</p>
+
+<code-highlight language="css">/* il muro si inclina dell'angolo del lato */
+.wall.left   { transform: skewY(var(--angle-left-deg)) rotateY(180deg); }
+
+/* la maniglia segue, ma più morbida */
+.handle.left { transform: skewY(calc(var(--angle-left-deg) * 0.2)); }
+
+/* i blocchi compensano anche l'angolo isometrico di base */
+.blocks-container.right {
+  transform: skewY(calc(var(--angle-right-deg) * -1 + 1deg * var(--base-skew-angle)));
+}</code-highlight>
+
+<style>
+	h1 {
+		font-size: clamp(2rem, 5vw, 3.2rem);
+		margin-bottom: 0.25rem;
+	}
+	pre {
+		max-width: 1100px;
+		margin: 1rem auto 0;
+		font-size: clamp(0.8rem, 1.4vw, 1.2rem);
+	}
+</style>
+
+<nav-component to="./shower-36-color.html"><a href="./shower-36-color.html">›</a></nav-component>

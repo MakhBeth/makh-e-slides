@@ -1,0 +1,32 @@
+<h1 class="accent">Un colore → tutto il metallo</h1>
+<p class="light">
+	Da <strong>un solo colore</strong> scelto dall'utente derivi luci, ombre e riempimenti
+	con i <em>relative colors</em> OKLCH, e un <code>@supports</code> come fallback.
+</p>
+
+<code-highlight language="css">:root { --fittings-color: #c0c0c0; }   /* l'unico colore in input */
+
+.thick {
+  fill: var(--fittings-color);                       /* fallback */
+  @supports (color: oklch(from red l c h)) {
+    fill: oklch(from var(--fittings-color) clamp(0.5, calc(l * 1.5), 2) c h);  /* luce */
+  }
+}
+
+.filling {
+  fill: oklch(from var(--fittings-color) clamp(0.55, calc(l * 0.8), 0) c h);   /* ombra */
+}</code-highlight>
+
+<style>
+	h1 {
+		font-size: clamp(2rem, 5vw, 3.2rem);
+		margin-bottom: 0.25rem;
+	}
+	pre {
+		max-width: 1100px;
+		margin: 1rem auto 0;
+		font-size: clamp(0.8rem, 1.4vw, 1.2rem);
+	}
+</style>
+
+<nav-component to="./shower-38-limiti.html"><a href="./shower-38-limiti.html">›</a></nav-component>

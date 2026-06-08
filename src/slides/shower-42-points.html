@@ -1,13 +1,24 @@
-<h1 class="accent">v4: la versione di oggi</h1>
+<h1 class="accent">Tutti i punti, dal vivo</h1>
 <p class="light">
-	Stesso motore, <strong>estratto in libreria</strong> (<code>components/</code>), testato, con
-	<strong>pareti inclinate</strong>. Sempre web component, sempre dal vivo.
+	Ogni vertice della doccia è un <strong>punto proiettato</strong> dalla camera.
+	Stessa v4 di prima, con il debug acceso: ecco cosa calcola davvero.
 </p>
 
 <div class="wc-stage">
 	<shower-previewer></shower-previewer>
 </div>
 
+<!-- Accende i debug points PRIMA che il web component monti:
+     il componente legge window.location.search in onMounted -->
+<script>
+	(() => {
+		const url = new URL(window.location.href)
+		if (!url.searchParams.has("showerPreviewerDebugPoints")) {
+			url.searchParams.set("showerPreviewerDebugPoints", "")
+			window.history.replaceState(null, "", url)
+		}
+	})()
+</script>
 <script src="/shower/v4-modern.wc.js"></script>
 
 <style>
@@ -57,4 +68,4 @@
 	}
 </style>
 
-<nav-component to="./shower-42-points.html"><a href="./shower-42-points.html">›</a></nav-component>
+<nav-component to="./shower-44-blur.html"><a href="./shower-44-blur.html">›</a></nav-component>
