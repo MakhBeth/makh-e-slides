@@ -1,0 +1,47 @@
+<h1 class="accent">E ora si testa</h1>
+<p class="light">
+	La matematica è uscita dal CSS ed è diventata JS: il <code>calc()</code> che non potevi
+	provare oggi è una <strong>piramide di test</strong>.
+</p>
+
+<p class="fragment livello">
+	<strong class="accent">1 · Unit, sulle funzioni pure.</strong>
+	<code>calculatePoint</code>, <code>pickVisibleSide</code>, <code>normalizeDoorsWidth</code>:
+	proiezione e geometria estratte <strong>senza una riga di Vue</strong>. 18 test Vitest, in isolamento.
+</p>
+<p class="fragment livello">
+	<strong class="accent">2 · Snapshot, quasi gratis.</strong>
+	L'output è <strong>SVG serializzabile</strong> (lo stesso fatto che dà export WC e thumbnail JPEG):
+	si confronta l'<code>outerHTML</code> con <code>toMatchFileSnapshot()</code>. 9 configurazioni
+	congelate: sloped, vetro, lato nascosto, porta singola…
+</p>
+<p class="fragment livello">
+	<strong class="accent">3 · e2e, stretto di proposito.</strong>
+	Playwright, browser vero: copre l'unica cosa che lo unit <em>pinna via</em> — lo scaling
+	live del clip-path del vetro col container reale. Uno smoke, non una seconda suite.
+</p>
+
+<p class="fragment payoff light">
+	Dati ≠ rappresentazione: ogni livello prova la <strong>rappresentazione</strong> senza mai toccare i dati.
+</p>
+
+<style>
+	h1 {
+		font-size: clamp(2rem, 5vw, 3.2rem);
+		margin-bottom: 0.25rem;
+	}
+	.livello {
+		max-width: 1000px;
+		margin: 0.9rem auto;
+		font-size: clamp(0.95rem, 2vw, 1.5rem);
+		text-wrap: balance;
+	}
+	.payoff {
+		max-width: 900px;
+		margin: 1.4rem auto 0;
+		font-size: clamp(1rem, 2.2vw, 1.6rem);
+		text-wrap: balance;
+	}
+</style>
+
+<nav-component to="./last-99-qr.html"><a href="./last-99-qr.html">›</a></nav-component>

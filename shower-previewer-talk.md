@@ -522,3 +522,24 @@ Tutte verificate nel codice `ShowerPreviewer` (`1a7e54a28`). Da trasformare in u
 ### C. Pulizia/ottimizzazione
 - [ ] Comprimere le GIF (`gifsicle -O3 --lossy=80`).
 - [ ] Eventuale screenshot dump pre-2025 (zanzariere) per la slide "pre-storia".
+
+---
+
+## ✅ Slide bonus "E ora si testa" — `shower-50-test.html` FATTO (2026-06-08)
+
+Inserita nel chain bonus: `shower-48-capture` → **`shower-50-test`** → `last-99-qr`. Paga il seme di
+`shower-38-limiti` ("un `calc()` non lo testi: la matematica va estratta in JS"). Concetto: **piramide dei test**,
+zero demo live (sono test, non render).
+
+**Fatti verificati** nel repo `configurator` (worktree principale, `components/src/ShowerPreviewer/`,
+verificato 2026-06-08 — i conteggi possono driftare, riverificare prima del talk):
+
+| Livello | Cosa | File | Numeri |
+|---------|------|------|--------|
+| **Unit (funzioni pure)** | `calculatePoint`, `pickVisibleSide`, `normalizeDoorsWidth` — proiezione/geometria/normalizzazione, **zero dipendenze Vue**. Vitest. | `useShowerPreviewMath.test.ts` | 18 test (12 slope geometry + 6 option normalization). Worktree `v4-modern`: 15. |
+| **Snapshot (SVG)** | `toMatchFileSnapshot()` sull'`svg.element.outerHTML` serializzato. `@vue/test-utils` + `happy-dom`, `ResizeObserver` stubbato → `containerWidth=800` deterministico. | `ShowerPreviewerComponent.test.ts` + `__snapshots__/*.svg` | 9 snapshot config (sloped/visible/reverted/hidden-right/single-door/art, mirrored-glass-mask, red-glass-knob, custom). Worktree `v4-modern`: 8 (manca `*-reverted`). |
+| **e2e** | Playwright, smoke "Default configuration snapshot" su `/configurator-app/previewer?freezeCamera=1`, browser vero, traversa lo Shadow DOM per `#shower-preview-svg`. Esiste **apposta** per coprire lo scaling **live** del clip-path col `containerWidth` reale (cosa che lo unit pinna via). | `e2e/tests/shower-previewer-snapshots.spec.ts` | 1 test. |
+
+**Angolo chiave**: lo snapshot è quasi gratis perché il render è **SVG serializzabile** — lo stesso fatto che
+abilita export web component e cattura JPEG (vedi `shower-48-capture`). L'e2e è **stretto di proposito**: la
+coverage completa vive negli snapshot unit. Tutti i livelli provano la *rappresentazione* senza toccare i *dati*.

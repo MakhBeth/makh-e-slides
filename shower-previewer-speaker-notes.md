@@ -88,6 +88,20 @@ Le 4 ere del previewer sono tutte montate **dal vivo** nel deck come web compone
 
 ---
 
+## Bonus · `shower-50-test.html` — "E ora si testa" ⏱ ~2–3 min (dopo le figate, prima dei contatti)
+
+🎯 Pagare il seme di v1-limiti ("la matematica va estratta in JS per poterla provare") e richiudere il filo *dati ≠ rappresentazione* sul versante test. Slide bonus: se il tempo stringe, una frase e via.
+
+- Aggancio: "Ricordate il limite del CSS — un `calc()` non lo testi? Estratta la matematica in JS, è diventata una **piramide di test**."
+- **1 · Unit, funzioni pure**: "`calculatePoint`, `pickVisibleSide`, `normalizeDoorsWidth`: proiezione e geometria **senza una riga di Vue**. 18 test Vitest, in isolamento." (`components/src/ShowerPreviewer/useShowerPreviewMath.test.ts`)
+- **2 · Snapshot quasi gratis** ⭐ (il punto non-ovvio): "L'output è **SVG serializzabile** — lo stesso fatto che dà export web component e thumbnail JPEG. Quindi snapshot = confrontare l'`outerHTML` con `toMatchFileSnapshot()`. 9 configurazioni congelate." (`ShowerPreviewerComponent.test.ts` + `__snapshots__/*.svg`, `happy-dom`, `ResizeObserver` stubbato a `containerWidth=800`)
+- **3 · e2e stretto di proposito**: "Playwright, browser vero, **un** solo smoke — copre l'unica cosa che lo unit pinna via: lo scaling **live** del clip-path del vetro col container reale. La coverage vera vive negli snapshot unit." (`e2e/tests/shower-previewer-snapshots.spec.ts`)
+- Chiusura del beat: "Ogni livello prova la **rappresentazione** senza toccare i dati. È lo stesso disaccoppiamento di tutto il talk."
+
+🎬 Niente demo live qui (sono test, non render): è una slide di concetti, fragments che salgono dal basso. → contatti.
+
+---
+
 ## Appendice — se avanza tempo / Q&A
 
 - **Slide bonus "Le figate CSS"** (da costruire): Relative Colors, gradiente specchiato iridescente, noise + `mix-blend-mode: multiply`, vignette via `mask: radial-gradient`, `clip-path: url(#glass-path)`, SVG `feGaussianBlur`, `drop-shadow()`.
