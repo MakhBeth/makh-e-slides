@@ -41,7 +41,7 @@
 		height: 100%;
 	}
 	shower-previewer .controls {
-		flex: 0 0 320px;
+		flex: 0 0 240px;
 		overflow: auto;
 		padding: 0.5rem;
 	}
@@ -53,6 +53,23 @@
 		flex: 1 1 auto !important;
 		width: auto !important;
 		height: 100% !important;
+	}
+
+	/* Allineamento input e label */
+	shower-previewer .controls label {
+		display: block !important;
+		text-align: left !important;
+		margin-bottom: 0.25rem !important;
+	}
+	shower-previewer .controls input[type="number"],
+	shower-previewer .controls input[type="range"] {
+		width: 100% !important;
+		margin-bottom: 0.5rem !important;
+		box-sizing: border-box !important;
+	}
+	shower-previewer .controls input[type="checkbox"] {
+		margin-right: 0.5rem !important;
+		margin-bottom: 0.5rem !important;
 	}
 </style>
 
