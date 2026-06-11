@@ -4,7 +4,13 @@
       "WebFetch(domain:github.com)",
       "Bash(git ls-tree:*)",
       "Bash(git checkout:*)",
-      "Bash(git stash:*)"
+      "Bash(git stash:*)",
+      "Bash(git commit -m \"$(cat <<''EOF''\nAdd three QR codes to final thank-you slide\n\n- Add slides deck QR code (makhbeth.github.io/css-shower)\n- Add third QR code from screenshot\n- Add LinkedIn QR code (davide-di-pumpo)\n- Adjust layout to display all three QR codes side by side\n\n🤖 Generated with [Claude Code](https://claude.com/claude-code)\n\nCo-Authored-By: Claude <noreply@anthropic.com>\nEOF\n)\")",
+      "Bash(git push origin css-shower)",
+      "Bash(npm run deploy)",
+      "Read(//Users/davidedipumpo/Projects/makhbeth.github.io/**)",
+      "Bash(git reset --hard HEAD)",
+      "Bash(curl -s https://makhbeth.github.io/css-shower/last-99-qr.html)"
     ],
     "deny": [],
     "ask": []
