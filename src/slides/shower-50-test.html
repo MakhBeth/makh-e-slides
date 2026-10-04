@@ -1,28 +1,17 @@
-<h1 class="accent">E ora si testa</h1>
+<h1 class="accent">La matematica è uscita dal CSS</h1>
 <p class="light">
-	La matematica è uscita dal CSS ed è diventata JS: il <code>calc()</code> che non potevi
-	provare oggi è una <strong>piramide di test</strong>.
+	Il <code>calc()</code> non lo potevi provare. Una funzione che restituisce punti sì.
 </p>
 
 <p class="fragment livello">
-	<strong class="accent">1 · Unit, sulle funzioni pure.</strong>
-	<code>calculatePoint</code>, <code>pickVisibleSide</code>, <code>normalizeDoorsWidth</code>:
-	proiezione e geometria estratte <strong>senza una riga di Vue</strong>. 18 test Vitest, in isolamento.
+	Ogni vertice che avete appena visto è un <strong>numero</strong> che esce da
+	<code>useShowerPreviewMath(inputs)</code>.
 </p>
 <p class="fragment livello">
-	<strong class="accent">2 · Snapshot, quasi gratis.</strong>
-	L'output è <strong>SVG serializzabile</strong> (lo stesso fatto che dà export WC e thumbnail JPEG):
-	si confronta l'<code>outerHTML</code> con <code>toMatchFileSnapshot()</code>. 9 configurazioni
-	congelate: sloped, vetro, lato nascosto, porta singola…
+	E l'output finale è <strong>SVG</strong>: testo, serializzabile, confrontabile.
 </p>
-<p class="fragment livello">
-	<strong class="accent">3 · e2e, stretto di proposito.</strong>
-	Playwright, browser vero: copre l'unica cosa che lo unit <em>pinna via</em> — lo scaling
-	live del clip-path del vetro col container reale. Uno smoke, non una seconda suite.
-</p>
-
 <p class="fragment payoff light">
-	Dati ≠ rappresentazione: ogni livello prova la <strong>rappresentazione</strong> senza mai toccare i dati.
+	Dati ≠ rappresentazione. È quello che ci ha portato fin qui… ed è quello che ci fa testare.
 </p>
 
 <style>
@@ -32,16 +21,16 @@
 	}
 	.livello {
 		max-width: 1000px;
-		margin: 0.9rem auto;
-		font-size: clamp(0.95rem, 2vw, 1.5rem);
+		margin: 1.2rem auto;
+		font-size: clamp(1rem, 2.2vw, 1.6rem);
 		text-wrap: balance;
 	}
 	.payoff {
 		max-width: 900px;
-		margin: 1.4rem auto 0;
+		margin: 1.6rem auto 0;
 		font-size: clamp(1rem, 2.2vw, 1.6rem);
 		text-wrap: balance;
 	}
 </style>
 
-<nav-component to="./last-100-takeaway.html"><a href="./last-100-takeaway.html">›</a></nav-component>
+<nav-component to="./st-10-laboratorio.html"><a href="./st-10-laboratorio.html">›</a></nav-component>

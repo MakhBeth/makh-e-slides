@@ -1,0 +1,48 @@
+<h1 class="accent">Cosa vede solo il browser</h1>
+
+<ul class="vede">
+	<li class="fragment"><strong>Layout</strong><span>il clip-path del vetro scala con la larghezza <em>reale</em> del container (in happy-dom l'abbiamo fissata a 800)</span></li>
+	<li class="fragment"><strong>Paint order</strong><span>chi è disegnato sopra a chi: l'SVG testuale non lo dice a colpo d'occhio</span></li>
+	<li class="fragment"><strong>Pixel</strong><span>ombre, maschere, blur: il colore finale esiste solo dopo il rendering</span></li>
+</ul>
+
+<p class="fragment light">
+	Quindi <strong>pochi e2e, stretti di proposito</strong>. E un componente fatto per farsi testare:
+	<code>/previewer?freezeCamera=1</code> blocca la camera che segue il mouse.
+</p>
+
+<style>
+	h1 {
+		font-size: clamp(2rem, 5vw, 3.2rem);
+		margin-bottom: 0.5rem;
+	}
+	.vede {
+		list-style: none;
+		padding: 0;
+		margin: 1rem auto;
+		max-width: 1000px;
+		display: grid;
+		gap: 1rem;
+		text-align: left;
+	}
+	.vede li {
+		display: grid;
+		grid-template-columns: 9rem 1fr;
+		gap: 1rem;
+		align-items: baseline;
+		font-size: clamp(0.95rem, 1.9vw, 1.35rem);
+	}
+	.vede strong {
+		color: var(--color-accent);
+	}
+	.vede span {
+		color: var(--color-text-light);
+	}
+	p.fragment {
+		max-width: 950px;
+		margin: 1.25rem auto 0;
+		text-wrap: balance;
+	}
+</style>
+
+<nav-component to="./st-34-nicchia.html"><a href="./st-34-nicchia.html">›</a></nav-component>

@@ -1,0 +1,36 @@
+<h1 class="accent">Contare i pixel gialli</h1>
+<p class="light">L'e2e non guarda il codice: guarda <strong>lo schermo</strong>.</p>
+
+<code-highlight language="typescript">// l'ordine di disegno, non un offset di coordinate
+expect(await overlay.evaluate((el) => el.parentElement?.lastElementChild === el)).toBe(true)
+expect(await overlay.evaluate((el) => el.closest("[mask]"))).toBeNull()
+
+const screenshot = await preview.screenshot()
+const yellowColumns = await page.evaluate(async (base64) => {
+  // disegno lo screenshot su un canvas e conto le colonne giallo pieno
+  if (r > 245 &amp;&amp; g > 245 &amp;&amp; b &lt; 10) columns.add(x)
+  …
+})
+
+// qualche pixel sopravvissuto non basta: la linea dev'essere gialla quasi tutta
+expect(yellowColumns).toBeGreaterThan(lineWidth * 0.9)</code-highlight>
+
+<p class="fragment light">
+	Ripetuto per <strong>rettangolare</strong>, <strong>rettangolare con piatto</strong>, <strong>inclinata</strong>.
+	Un test, tre docce, il browser vero.
+</p>
+
+<style>
+	h1 {
+		font-size: clamp(2rem, 5vw, 3.2rem);
+		margin-bottom: 0.25rem;
+	}
+	pre {
+		max-width: 1150px;
+		margin: 0.75rem auto;
+		font-size: clamp(0.7rem, 1.2vw, 1rem);
+		text-align: left;
+	}
+</style>
+
+<nav-component to="./st-38-demogorgone.html"><a href="./st-38-demogorgone.html">›</a></nav-component>

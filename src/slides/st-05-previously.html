@@ -1,0 +1,44 @@
+<h1 class="accent">Nelle puntate precedenti…</h1>
+<p class="light">Un anno e mezzo di docce, in quattro ere.</p>
+
+<ol class="eras">
+	<li><strong>v1 · skew</strong><span>due <code>&lt;rect&gt;</code> e uno <code>skewY(30deg)</code></span></li>
+	<li><strong>v2 · transform</strong><span>la doccia cresce, tutto guidato da <code>--skew-angle</code></span></li>
+	<li><strong>v3 · SVG</strong><span>i punti si calcolano in JS</span></li>
+	<li><strong>v4 · oggi</strong><span>estratto in libreria, pareti inclinate</span></li>
+</ol>
+
+<p class="fragment light">La matematica è passata da <code>calc()</code> a <strong>funzioni</strong>. Tenetelo a mente.</p>
+
+<style>
+	h1 {
+		font-size: clamp(2rem, 5vw, 3.2rem);
+		margin-bottom: 0.25rem;
+	}
+	.eras {
+		list-style: none;
+		padding: 0;
+		margin: 2rem auto;
+		max-width: 1100px;
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+		gap: 1rem;
+	}
+	.eras li {
+		border: 1px solid var(--color-text-light);
+		border-radius: 0.5rem;
+		padding: 1rem;
+		display: grid;
+		gap: 0.5rem;
+	}
+	.eras strong {
+		color: var(--color-accent);
+		font-size: var(--font-size-lg);
+	}
+	.eras span {
+		font-size: var(--font-size-sm);
+		color: var(--color-text-light);
+	}
+</style>
+
+<nav-component to="./shower-10-v1-skew.html"><a href="./shower-10-v1-skew.html">›</a></nav-component>

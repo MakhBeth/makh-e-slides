@@ -1,0 +1,39 @@
+<h1 class="accent">Una prop, una factory</h1>
+<p class="light">
+	Il componente ha <strong>un solo ingresso</strong>: <code>inputs</code>. Quindi ogni test parte da qui.
+</p>
+
+<code-highlight language="typescript">const makeBaseInputs = (overrides = {}): ShowerPreviewInputs.Encoded => ({
+  panelShape: "rectangular",
+  sides: 2,
+  width:  { left: 800, right: 800 },
+  height: { left: 2000, right: 2000, internal: 2000 },
+  showerTray: { exist: true, height: 150 },
+  doors: { position: "left", quantity: 1, width: 500, /* … */ },
+  ...overrides
+})</code-highlight>
+
+<p class="fragment light">
+	Nessuno store, nessun router, nessuna API. Lo stesso disaccoppiamento che rendeva possibile il
+	web component rende i test <strong>banali da scrivere</strong>.
+</p>
+
+<style>
+	h1 {
+		font-size: clamp(2rem, 5vw, 3.2rem);
+		margin-bottom: 0.25rem;
+	}
+	pre {
+		max-width: 1000px;
+		margin: 1rem auto;
+		font-size: clamp(0.8rem, 1.4vw, 1.2rem);
+		text-align: left;
+	}
+	p.fragment {
+		max-width: 900px;
+		margin: 0 auto;
+		text-wrap: balance;
+	}
+</style>
+
+<nav-component to="./st-14-unit.html"><a href="./st-14-unit.html">›</a></nav-component>

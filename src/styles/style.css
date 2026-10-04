@@ -419,3 +419,46 @@ h5,
 h6 {
 	text-wrap: balance;
 }
+
+/* Strangers Showers: card capitolo in stile titoli della serie */
+.chapter {
+	min-height: 70vh;
+	display: grid;
+	place-content: center;
+	gap: 1rem;
+	text-align: center;
+}
+.chapter .chapter-number {
+	font-family: Georgia, "Times New Roman", serif;
+	font-size: clamp(1rem, 2.4vw, 1.6rem);
+	letter-spacing: 0.4em;
+	text-transform: uppercase;
+	color: var(--color-text-light);
+	margin: 0;
+}
+.chapter .chapter-title,
+.st-title {
+	font-family: Georgia, "Times New Roman", serif;
+	font-weight: 700;
+	text-transform: uppercase;
+	letter-spacing: 0.04em;
+	color: transparent;
+	-webkit-text-stroke: 2px oklch(60% 0.24 27);
+	text-shadow:
+		0 0 6px oklch(60% 0.24 27 / 0.9),
+		0 0 24px oklch(55% 0.24 27 / 0.6),
+		0 0 60px oklch(50% 0.24 27 / 0.4);
+	margin: 0;
+}
+.chapter .chapter-title {
+	font-size: clamp(2.2rem, 7vw, 5.5rem);
+	line-height: 1.05;
+}
+.chapter .chapter-sub {
+	margin: 0;
+	font-size: var(--font-size-lg);
+	color: var(--color-text-light);
+}
+.st-red {
+	color: oklch(65% 0.22 27);
+}

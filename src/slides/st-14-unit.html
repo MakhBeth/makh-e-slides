@@ -1,0 +1,52 @@
+<h1 class="accent">Si testano i punti, non i pixel</h1>
+
+<code-highlight language="typescript">it("sloped: maxHeight uses height.internal + tray", () => {
+  const inputs = ref(makeBaseInputs({
+    panelShape: "sloped",
+    height: { left: 1500, right: 1500, internal: 2000 }
+  }))
+  const { dimensions } = useShowerPreviewMath(inputs)
+  expect(dimensions.value.maxHeight.value).toBe(2000 + 150)
+})
+
+it("sloped valley: front-centre seam drops to internal height", …)
+it("topWidth is clamped down to width when larger", …)
+it("rail spans the door panel top edge with 13mm end margins", …)</code-highlight>
+
+<div class="stats">
+	<p class="fragment"><strong>37</strong><span>test sulla geometria</span></p>
+	<p class="fragment"><strong>0</strong><span>componenti montati</span></p>
+	<p class="fragment"><strong>~20 ms</strong><span>per girarli tutti</span></p>
+</div>
+
+<style>
+	h1 {
+		font-size: clamp(2rem, 5vw, 3.2rem);
+		margin-bottom: 0.25rem;
+	}
+	pre {
+		max-width: 1100px;
+		margin: 0.75rem auto;
+		font-size: clamp(0.75rem, 1.3vw, 1.1rem);
+		text-align: left;
+	}
+	.stats {
+		display: flex;
+		justify-content: center;
+		gap: 3rem;
+	}
+	.stats p {
+		display: grid;
+		margin: 0;
+	}
+	.stats strong {
+		font-size: var(--font-size-3xl);
+		color: var(--color-accent);
+		line-height: 1;
+	}
+	.stats span {
+		color: var(--color-text-light);
+	}
+</style>
+
+<nav-component to="./st-20-lucine.html"><a href="./st-20-lucine.html">›</a></nav-component>

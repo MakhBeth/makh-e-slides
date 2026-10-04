@@ -1,0 +1,62 @@
+<h1 class="accent">Funziona sul mio browser™</h1>
+
+<div class="compare">
+	<figure>
+		<img src="/strangers/kitchen-sink/two-sides-sloped-art.svg" alt="Doccia con pareti inclinate, resa correttamente" />
+		<figcaption>Chrome di oggi</figcaption>
+	</figure>
+	<figure>
+		<img id="black-slope" alt="La stessa doccia con il gradiente delle pareti inclinate diventato nero" />
+		<figcaption class="st-red">Chrome dell'ufficio del cliente</figcaption>
+	</figure>
+</div>
+
+<code-highlight language="javascript">testEl.style.color = "oklch(from red l c h)"
+return testEl.style.color !== ""   // ✅ true… ma l'SVG non lo sa disegnare
+// → stop-color torna al valore iniziale: black</code-highlight>
+
+<p class="fragment light">Nessun test l'aveva visto. <strong>Come si testa una cosa che si vede?</strong></p>
+
+<!-- Stessa snapshot, con gli stop del gradiente inclinato forzati a nero (come faceva Chrome vecchio, #831) -->
+<script type="module">
+	const src = "/strangers/kitchen-sink/two-sides-sloped-art.svg"
+	const svg = await (await fetch(src)).text()
+	const broken = svg.replace(/(id="slopeGradient"[\s\S]*?<\/linearGradient>)/, (gradient) =>
+		gradient.replace(/(<stop offset="(?!0%)[^"]*" style="stop-color: )[^;]*;/g, "$1black;"),
+	)
+	document.getElementById("black-slope").src = URL.createObjectURL(new Blob([broken], { type: "image/svg+xml" }))
+</script>
+
+<style>
+	h1 {
+		font-size: clamp(2rem, 5vw, 3.2rem);
+		margin-bottom: 0.25rem;
+	}
+	.compare {
+		display: flex;
+		justify-content: center;
+		gap: 2rem;
+	}
+	.compare figure {
+		margin: 0;
+	}
+	.compare img {
+		height: 38vh;
+		aspect-ratio: 1;
+		background: #fff;
+		border-radius: 0.5rem;
+		margin: 0;
+	}
+	figcaption {
+		margin-top: 0.4rem;
+		font-size: var(--font-size-sm);
+	}
+	pre {
+		max-width: 900px;
+		margin: 0.75rem auto 0;
+		font-size: clamp(0.75rem, 1.3vw, 1.1rem);
+		text-align: left;
+	}
+</style>
+
+<nav-component to="./intro-10-whoami.html"><a href="./intro-10-whoami.html">›</a></nav-component>

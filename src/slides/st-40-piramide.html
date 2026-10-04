@@ -1,0 +1,42 @@
+<h1 class="accent">La piramide della doccia</h1>
+
+<ol class="piramide">
+	<li class="fragment l4"><strong>Un umano + Chrome 118</strong><span>il Demogorgone</span></li>
+	<li class="fragment l3"><strong>2 e2e</strong><span>layout, paint order, pixel</span></li>
+	<li class="fragment l2"><strong>14 docce congelate + 33 test mirati sull'SVG</strong><span>il muro di lucine</span></li>
+	<li class="fragment l1"><strong>37 unit sulla geometria</strong><span>il laboratorio</span></li>
+</ol>
+
+<p class="fragment light">Ogni livello prova la <strong>rappresentazione</strong>. Nessuno tocca i <strong>dati</strong>.</p>
+
+<style>
+	h1 {
+		font-size: clamp(2rem, 5vw, 3.2rem);
+		margin-bottom: 0.5rem;
+	}
+	.piramide {
+		list-style: none;
+		padding: 0;
+		margin: 1rem auto;
+		display: grid;
+		justify-items: center;
+		gap: 0.4rem;
+	}
+	.piramide li {
+		display: grid;
+		padding: 0.6rem 1rem;
+		border-radius: 0.4rem;
+		background: oklch(30% 0.08 var(--hue));
+		border: 1px solid oklch(70% 0.15 var(--hue));
+	}
+	.piramide span {
+		font-size: var(--font-size-sm);
+		color: var(--color-text-light);
+	}
+	.l4 { width: min(30%, 340px); --hue: 27; }
+	.l3 { width: min(48%, 540px); --hue: 300; }
+	.l2 { width: min(70%, 780px); --hue: 90; }
+	.l1 { width: min(92%, 1020px); --hue: 160; }
+</style>
+
+<nav-component to="./last-100-takeaway.html"><a href="./last-100-takeaway.html">›</a></nav-component>

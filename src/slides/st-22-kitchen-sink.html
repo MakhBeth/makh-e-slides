@@ -1,0 +1,76 @@
+<h1 class="accent">Il kitchen sink</h1>
+<p class="light">14 configurazioni congelate. Queste sono le <strong>snapshot vere</strong>, i file <code>.svg</code> del repo.</p>
+
+<ul class="wall">
+	<li><img src="/strangers/kitchen-sink/custom-configuration.svg" alt="Snapshot custom-configuration" loading="lazy" /><span>custom-configuration</span></li>
+	<li><img src="/strangers/kitchen-sink/niche-sliding-art.svg" alt="Snapshot niche-sliding-art" loading="lazy" /><span>niche-sliding-art</span></li>
+	<li><img src="/strangers/kitchen-sink/niche-sliding-flush.svg" alt="Snapshot niche-sliding-flush" loading="lazy" /><span>niche-sliding-flush</span></li>
+	<li><img src="/strangers/kitchen-sink/red-glass-knob-handles-blocks.svg" alt="Snapshot red-glass-knob-handles-blocks" loading="lazy" /><span>red-glass-knob-handles-blocks</span></li>
+	<li><img src="/strangers/kitchen-sink/single-side-profile-blocks.svg" alt="Snapshot single-side-profile-blocks" loading="lazy" /><span>single-side-profile-blocks</span></li>
+	<li><img src="/strangers/kitchen-sink/sliding-two-doors-center.svg" alt="Snapshot sliding-two-doors-center" loading="lazy" /><span>sliding-two-doors-center</span></li>
+	<li><img src="/strangers/kitchen-sink/sliding-two-doors-left.svg" alt="Snapshot sliding-two-doors-left" loading="lazy" /><span>sliding-two-doors-left</span></li>
+	<li><img src="/strangers/kitchen-sink/two-sides-mirrored-glass-mask.svg" alt="Snapshot two-sides-mirrored-glass-mask" loading="lazy" /><span>two-sides-mirrored-glass-mask</span></li>
+	<li><img src="/strangers/kitchen-sink/two-sides-sliding.svg" alt="Snapshot two-sides-sliding" loading="lazy" /><span>two-sides-sliding</span></li>
+	<li><img src="/strangers/kitchen-sink/two-sides-sloped-art.svg" alt="Snapshot two-sides-sloped-art" loading="lazy" /><span>two-sides-sloped-art</span></li>
+	<li><img src="/strangers/kitchen-sink/two-sides-sloped-hidden-right.svg" alt="Snapshot two-sides-sloped-hidden-right" loading="lazy" /><span>two-sides-sloped-hidden-right</span></li>
+	<li><img src="/strangers/kitchen-sink/two-sides-sloped-reverted.svg" alt="Snapshot two-sides-sloped-reverted" loading="lazy" /><span>two-sides-sloped-reverted</span></li>
+	<li><img src="/strangers/kitchen-sink/two-sides-sloped-single-door.svg" alt="Snapshot two-sides-sloped-single-door" loading="lazy" /><span>two-sides-sloped-single-door</span></li>
+	<li><img src="/strangers/kitchen-sink/two-sides-sloped-visible.svg" alt="Snapshot two-sides-sloped-visible" loading="lazy" /><span>two-sides-sloped-visible</span></li>
+</ul>
+
+<style>
+	h1 {
+		font-size: clamp(2rem, 5vw, 3.2rem);
+		margin-bottom: 0.25rem;
+	}
+	.wall {
+		list-style: none;
+		padding: 0;
+		margin: 0.75rem auto 0;
+		max-width: 1400px;
+		display: grid;
+		grid-template-columns: repeat(7, 1fr);
+		gap: 0.6rem;
+	}
+	@media (max-width: 900px) {
+		.wall {
+			grid-template-columns: repeat(4, 1fr);
+		}
+	}
+	.wall li {
+		display: grid;
+		gap: 0.25rem;
+		animation: blink 4s ease-in-out infinite;
+		animation-delay: calc(var(--i, 0) * 0.37s);
+	}
+	.wall img {
+		width: 100%;
+		aspect-ratio: 1;
+		margin: 0;
+		background: #fff;
+		border-radius: 0.4rem;
+		box-shadow: 0 0 0 2px oklch(80% 0.15 var(--hue, 90) / 0.7), 0 0 18px oklch(80% 0.15 var(--hue, 90) / 0.5);
+	}
+	.wall span {
+		font-size: var(--font-size-xxs);
+		color: var(--color-text-light);
+		word-break: break-word;
+	}
+	.wall li:nth-child(3n + 1) { --hue: 27; }
+	.wall li:nth-child(3n + 2) { --hue: 140; }
+	.wall li:nth-child(3n) { --hue: 240; }
+	.wall li:nth-child(4n + 1) { --i: 1; }
+	.wall li:nth-child(4n + 2) { --i: 5; }
+	.wall li:nth-child(4n + 3) { --i: 3; }
+	@keyframes blink {
+		0%, 100% { filter: brightness(1); }
+		50% { filter: brightness(0.75); }
+	}
+	@media (prefers-reduced-motion: reduce) {
+		.wall li {
+			animation: none;
+		}
+	}
+</style>
+
+<nav-component to="./st-24-harness.html"><a href="./st-24-harness.html">›</a></nav-component>

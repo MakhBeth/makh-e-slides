@@ -1,0 +1,38 @@
+<h1 class="accent">Friends don't lie</h1>
+<h2 class="light">…ma le snapshot sì, se le aggiorni a occhi chiusi</h2>
+
+<ol class="timeline">
+	<li class="fragment"><strong>Prima</strong> Le snapshot nascono in <strong>Playwright</strong>: 8 docce, browser vero, lente.</li>
+	<li class="fragment"><strong>#786</strong> Commit: <code>updates snapshots</code>. Fine del messaggio. 🙈</li>
+	<li class="fragment"><strong>#787</strong> La CI fallisce: build di dev e di prod generano hash <code>data-v-*</code> diversi → si normalizza.</li>
+	<li class="fragment"><strong>#824</strong> Giugno 2026: si spostano in <strong>Vitest</strong>. Baseline <em>nuove</em>, non copie: senza layout il disegno cambia davvero.</li>
+	<li class="fragment"><strong>#831</strong> <em>"picking up the slope-gradient change from the previous commit, which had not been re-rendered"</em>. Le lucine erano rimaste indietro.</li>
+</ol>
+
+<style>
+	h1 {
+		font-size: clamp(2rem, 5vw, 3.2rem);
+		margin-bottom: 0;
+	}
+	h2 {
+		font-size: var(--font-size-lg);
+		margin-top: 0.25rem;
+	}
+	.timeline {
+		list-style: none;
+		padding: 0;
+		margin: 1.25rem auto 0;
+		max-width: 1000px;
+		text-align: left;
+		display: grid;
+		gap: 0.8rem;
+		font-size: clamp(0.9rem, 1.8vw, 1.3rem);
+	}
+	.timeline strong:first-child {
+		display: inline-block;
+		min-width: 5.5ch;
+		color: var(--color-accent);
+	}
+</style>
+
+<nav-component to="./st-28-diff.html"><a href="./st-28-diff.html">›</a></nav-component>

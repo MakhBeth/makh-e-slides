@@ -1,0 +1,54 @@
+<h1 class="accent">La linea gialla scomparsa</h1>
+<p class="light">
+	Doccia a nicchia, senza piatto. Metti il focus su "larghezza": il segnalatore giallo
+	<strong>finisce sotto le ombre del pavimento</strong>.
+</p>
+
+<div class="two">
+	<div class="fragment">
+		<h2>#995 · il cerotto</h2>
+		<code-highlight language="html">&lt;line class="focus left width"
+  :style="options.sides === 1 &amp;&amp; !options.showerTray.exist
+    ? { transform: 'translateY(-50px)' }
+    : undefined" /&gt;</code-highlight>
+		<p class="light">Sposto la linea di 50px. Si vede… finché qualcuno non cambia le ombre.</p>
+	</div>
+	<div class="fragment">
+		<h2>#996 · la cura</h2>
+		<code-highlight language="html">&lt;svg id="shower-preview-svg"&gt;
+  &lt;Shower … /&gt;
+  &lt;!-- sopra muri, ombre e maschere --&gt;
+  &lt;MeasurementHighlights … /&gt;
+&lt;/svg&gt;</code-highlight>
+		<p class="light">Nessuna coordinata magica: i segnalatori vengono <strong>disegnati per ultimi</strong>.</p>
+	</div>
+</div>
+
+<style>
+	h1 {
+		font-size: clamp(2rem, 5vw, 3.2rem);
+		margin-bottom: 0.25rem;
+	}
+	.two {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		gap: 2rem;
+		max-width: 1300px;
+		margin: 1rem auto 0;
+		text-align: left;
+	}
+	.two h2 {
+		font-size: var(--font-size-lg);
+		color: var(--color-accent);
+		margin: 0 0 0.5rem;
+	}
+	.two pre {
+		font-size: clamp(0.7rem, 1.2vw, 1rem);
+		margin: 0;
+	}
+	.two p {
+		font-size: var(--font-size-sm);
+	}
+</style>
+
+<nav-component to="./st-36-pixel.html"><a href="./st-36-pixel.html">›</a></nav-component>

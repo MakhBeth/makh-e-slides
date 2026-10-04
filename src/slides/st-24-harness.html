@@ -1,0 +1,45 @@
+<h1 class="accent">Come si congela una doccia</h1>
+<p class="light">Vitest + happy-dom. Che però <strong>non ha layout</strong>: tutto quello che dipende dal browser va fissato.</p>
+
+<code-highlight language="typescript">const renderSvg = async (inputs: Inputs) => {
+  const wrapper = mount(ShowerPreviewerComponent, { props: { inputs } })
+  await nextTick()
+
+  // niente layout → fisso io la larghezza e sveglio il ResizeObserver (stub)
+  Object.defineProperty(container, "clientWidth", { value: 800 })
+  observerCallbacks.forEach((cb) => cb())
+  await nextTick()
+
+  return normalizeSvg(wrapper.find("#shower-preview-svg").element.outerHTML)
+}
+
+for (const { snapshot, inputs } of cases) {
+  it(snapshot, async () => {
+    await expect(await renderSvg(inputs)).toMatchFileSnapshot(`./__snapshots__/${snapshot}`)
+  })
+}</code-highlight>
+
+<p class="fragment light small">
+	Camera ferma (nessun evento puntatore), immagini come <code>data:</code> URL (niente fetch),
+	hash <code>data-v-*</code> e commenti ripuliti.
+</p>
+
+<style>
+	h1 {
+		font-size: clamp(2rem, 5vw, 3.2rem);
+		margin-bottom: 0.25rem;
+	}
+	pre {
+		max-width: 1100px;
+		margin: 0.75rem auto;
+		font-size: clamp(0.7rem, 1.2vw, 1rem);
+		text-align: left;
+	}
+	.small {
+		max-width: 900px;
+		margin: 0 auto;
+		font-size: var(--font-size-sm);
+	}
+</style>
+
+<nav-component to="./st-26-migrazione.html"><a href="./st-26-migrazione.html">›</a></nav-component>
