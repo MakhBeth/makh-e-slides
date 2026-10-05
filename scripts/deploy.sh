@@ -5,7 +5,7 @@ set -eu
 # Usage: ./scripts/deploy.sh
 
 REPO_DIR="$(cd "$(dirname "$0")/.." && pwd)"
-PAGES_DIR="/Users/davidedipumpo/Projects/makhbeth.github.io"
+PAGES_DIR="${PAGES_DIR:-/Users/davidedipumpo/Projects/makhbeth.github.io}"
 BUILD_OUT="$REPO_DIR/src/dist"
 
 BRANCH="$(git -C "$REPO_DIR" branch --show-current)"
