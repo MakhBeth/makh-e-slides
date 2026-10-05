@@ -1,4 +1,4 @@
-# Strangers Showers — scaletta
+# Stranger Showers — scaletta
 
 > *Come si testa una cosa che si vede.*
 > Derivato da "Farsi una doccia col CSS" (branch `css-shower`). Stesso protagonista
