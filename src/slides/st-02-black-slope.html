@@ -17,7 +17,7 @@ return testEl.style.color !== ""   // ✅ true… ma l'SVG non lo sa disegnare
 
 <p class="fragment light">Nessun test l'aveva visto. <strong>Come si testa una cosa che si vede?</strong></p>
 
-<!-- Stessa snapshot, con gli stop del gradiente inclinato forzati a nero (come faceva Chrome vecchio, #831) -->
+<!-- Stessa snapshot, con gli stop del gradiente inclinato forzati a nero (come faceva Chrome vecchio, fix del 9 giu 2026) -->
 <script type="module">
 	const src = "/strangers/kitchen-sink/two-sides-sloped-art.svg"
 	const svg = await (await fetch(src)).text()

@@ -28,7 +28,7 @@ Durata: ~30-35 min. File slide: `src/slides/st-*.html` (nuove) + intro/shower ri
 Si parte dal bug, prima del whoami.
 
 - `st-00-cold-open` — card capitolo + "il cliente apre la doccia inclinata… ed è nera".
-- `st-02-black-slope` — **#831** (giu 2026): il feature detection
+- `st-02-black-slope` — **9 giu 2026**: il feature detection
   `oklch(from red l c h)` dà un falso positivo su Chrome vecchio → `stop-color` torna
   al valore iniziale: **nero**. Fix: usare la detection RGB (`rgb(from …)`), che su quei
   browser dice correttamente `false`. Visual: la stessa doccia, a destra con gli stop
@@ -61,7 +61,7 @@ css-vars, color, limiti, skew-di-nuovo, blur, oklch, mask, capture.
 - `st-12-factory` — **una sola prop** (`inputs`) ⇒ una sola factory: `makeBaseInputs(overrides)`.
   Il disaccoppiamento dati/rappresentazione del talk CSS qui torna utile per i test.
 - `st-14-unit` — esempi reali: `maxHeight` rettangolare vs inclinata, `topBreak`,
-  valle invertita (#831, seconda parte: "rest sloped panels on the tray").
+  valle invertita (fix del 9 giu 2026, seconda parte: "rest sloped panels on the tray").
   **37 test, zero righe di Vue montate.** Si testano punti e misure, non pixel.
 
 ## Capitolo Tre — Il muro di lucine (kitchen sink, ~8 min)
@@ -75,14 +75,14 @@ Il muro di Joyce: guardi tutto insieme e vedi quale lampadina lampeggia.
   `ResizeObserver`, `clientWidth` fissato a **800**, camera ferma, immagini come `data:` URL,
   `toMatchFileSnapshot`.
 - `st-26-migrazione` — la storia:
-  1. nascono come e2e Playwright (8 `.svg`);
-  2. **#786** "updates snapshots" — *Friends don't lie… ma le snapshot sì, se le aggiorni a occhi chiusi*;
-  3. **#787** la CI fallisce: hash `data-v-*` diversi tra dev e prod → normalizzazione;
-  4. **#824** (giu 2026) migrazione a Vitest. Nota onesta: **baseline nuove**, non copie
+  1. ago 2025: nascono come e2e Playwright;
+  2. **11 mag 2026** "updates snapshots" — *Friends don't lie… ma le snapshot sì, se le aggiorni a occhi chiusi*;
+  3. **11 mag 2026** (stesso giorno) la CI fallisce: hash `data-v-*` diversi tra dev e prod → normalizzazione;
+  4. **3 giu 2026** migrazione a Vitest. Nota onesta: **baseline nuove**, non copie
      (happy-dom non ha layout). Stessa cosa per il DXF, lì byte-identical.
-  5. Bonus: #831 rigenera le snapshot "picking up the slope-gradient change from the previous
+  5. Bonus: 9 giu 2026, il fix rigenera le snapshot "picking up the slope-gradient change from the previous
      commit, which had not been re-rendered" → snapshot in ritardo sul codice.
-- `st-28-diff` — **#996**: 4 righe cambiate in tutte e 14 le snapshot. Il diff diventa
+- `st-28-diff` — **10 set 2026**: 2-4 righe cambiate in tutte e 14 le snapshot. Il diff diventa
   lo strumento di code review: vedi esattamente *cosa* è cambiato nel disegno.
 
 ## Capitolo Quattro — Il Sottosopra (e2e, ~6 min)
@@ -91,10 +91,10 @@ Il muro di Joyce: guardi tutto insieme e vedi quale lampadina lampeggia.
 - `st-32-cosa-vede` — cosa happy-dom non vede: **layout** (clip-path scalato sul container
   vero), **paint order**, **pixel**. Un e2e solo, stretto di proposito. `?freezeCamera=1`:
   progettare il componente pensando a come testarlo.
-- `st-34-nicchia` — **#995 → #996** (set 2026): nella doccia a nicchia il segnalatore giallo
+- `st-34-nicchia` — **9 → 10 set 2026**: nella doccia a nicchia il segnalatore giallo
   della larghezza spariva sotto le ombre del pavimento.
-  - #995: sposto le coordinate ("lift clear of floor fading") → workaround.
-  - #996: il fix vero è il **paint order** SVG (estratto `MeasurementHighlights.vue`, disegnato per ultimo).
+  - 9 set: sposto le coordinate ("lift clear of floor fading") → workaround.
+  - 10 set: il fix vero è il **paint order** SVG (estratto `MeasurementHighlights.vue`, disegnato per ultimo).
 - `st-36-pixel` — il test: screenshot del container, conta le colonne di pixel gialli,
   pretende > 90% della linea. *"SVG paint order, rather than a coordinate offset"*.
 
@@ -121,4 +121,4 @@ Il muro di Joyce: guardi tutto insieme e vedi quale lampadina lampeggia.
 - QR del deck da rigenerare.
 - Tono Stranger Things: card capitolo in rosso, stile titoli della serie (font di sistema serif,
   niente font proprietari).
-- Valutare se mostrare il diff reale di #996 come immagine invece che come codice.
+- Valutare se mostrare il diff reale del 10 set 2026 come immagine invece che come codice.
