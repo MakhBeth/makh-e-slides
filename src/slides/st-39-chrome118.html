@@ -1,4 +1,5 @@
-<h1 class="accent">Funziona sul mio browser™</h1>
+<h1 class="accent">La doccia nera</h1>
+<p class="light intro">Il cliente in ufficio usa <strong>Chrome 118</strong>. La parete inclinata diventa nera.</p>
 
 <div class="compare">
 	<figure>
@@ -15,9 +16,13 @@
 return testEl.style.color !== ""   // ✅ true… ma l'SVG non lo sa disegnare
 // → stop-color torna al valore iniziale: black</code-highlight>
 
-<p class="fragment light">Nessun test l'aveva visto. <strong>Come si testa una cosa che si vede?</strong></p>
+<p class="fragment light">
+	Nessuno dei tre livelli poteva vederlo: girano tutti su un browser moderno. Il test qui è <strong>ad hoc</strong>:
+	<code>chrome118.ts</code> apre Chrome 118 (Puppeteer 21.4.0) e <strong>ci guardi tu</strong>.
+	Si usa quando il cliente si lamenta, non a ogni push.
+</p>
 
-<!-- Stessa snapshot, con gli stop del gradiente inclinato forzati a nero (come faceva Chrome vecchio, fix del 9 giu 2026) -->
+<!-- Ricostruzione: stessa snapshot, con gli stop del gradiente inclinato forzati a nero (come faceva Chrome vecchio, fix del 9 giu 2026) -->
 <script type="module">
 	const src = "/strangers/kitchen-sink/two-sides-sloped-art.svg"
 	const svg = await (await fetch(src)).text()
@@ -32,6 +37,15 @@ return testEl.style.color !== ""   // ✅ true… ma l'SVG non lo sa disegnare
 		font-size: clamp(2rem, 5vw, 3.2rem);
 		margin-bottom: 0.25rem;
 	}
+	.intro {
+		margin: 0 auto 0.5rem;
+	}
+	p.fragment {
+		max-width: 1000px;
+		margin: 0.5rem auto 0;
+		font-size: var(--font-size-sm);
+		text-wrap: balance;
+	}
 	.compare {
 		display: flex;
 		justify-content: center;
@@ -41,7 +55,7 @@ return testEl.style.color !== ""   // ✅ true… ma l'SVG non lo sa disegnare
 		margin: 0;
 	}
 	.compare img {
-		height: 38vh;
+		height: 34vh;
 		aspect-ratio: 1;
 		background: #fff;
 		border-radius: 0.5rem;
@@ -59,4 +73,4 @@ return testEl.style.color !== ""   // ✅ true… ma l'SVG non lo sa disegnare
 	}
 </style>
 
-<nav-component to="./intro-10-whoami.html"><a href="./intro-10-whoami.html">›</a></nav-component>
+<nav-component to="./st-40-piramide.html"><a href="./st-40-piramide.html">›</a></nav-component>

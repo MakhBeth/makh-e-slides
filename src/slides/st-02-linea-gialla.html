@@ -1,0 +1,57 @@
+<h1 class="accent">Dov'è la linea?</h1>
+<p class="light">Doccia a nicchia, un lato, senza piatto. La linea gialla della larghezza dovrebbe stare <strong>qui</strong>:</p>
+
+<div class="stage">
+	<img src="/strangers/kitchen-sink/single-side-profile-blocks.svg" alt="Doccia a nicchia senza piatto doccia" />
+	<!-- stesso viewBox della snapshot: il tratteggio segue il bordo inferiore del vetro -->
+	<svg viewBox="0 0 3791 3791" aria-hidden="true">
+		<line x1="2379" y1="3541" x2="1255" y2="3132" />
+	</svg>
+</div>
+
+<p class="fragment light">C'è. È disegnata. È nel DOM. Ma sta <strong>sotto le ombre del pavimento</strong>.</p>
+<p class="fragment"><strong>Come si testa una cosa che si vede?</strong></p>
+
+<style>
+	h1 {
+		font-size: clamp(2rem, 5vw, 3.2rem);
+		margin-bottom: 0.25rem;
+	}
+	.stage {
+		position: relative;
+		width: 46vh;
+		aspect-ratio: 1;
+		margin: 0.5rem auto;
+	}
+	.stage img,
+	.stage svg {
+		position: absolute;
+		inset: 0;
+		width: 100%;
+		height: 100%;
+		margin: 0;
+		border-radius: 0.5rem;
+	}
+	.stage img {
+		background: #fff;
+	}
+	.stage line {
+		stroke: oklch(65% 0.22 27);
+		stroke-width: 16;
+		stroke-dasharray: 40 30;
+		animation: pulse 1.6s ease-in-out infinite;
+	}
+	@keyframes pulse {
+		50% { opacity: 0.25; }
+	}
+	@media (prefers-reduced-motion: reduce) {
+		.stage line {
+			animation: none;
+		}
+	}
+	p {
+		margin: 0.5rem auto;
+	}
+</style>
+
+<nav-component to="./intro-10-whoami.html"><a href="./intro-10-whoami.html">›</a></nav-component>

@@ -23,18 +23,16 @@ Durata: ~30-35 min. File slide: `src/slides/st-*.html` (nuove) + intro/shower ri
 
 ---
 
-## Capitolo Uno — La doccia nera (cold open, ~3 min)
+## Capitolo Uno — La linea gialla scomparsa (cold open, ~3 min)
 
-Si parte dal bug, prima del whoami.
+Si parte da un bug **che oggi è coperto da un test**, prima del whoami.
 
-- `st-00-cold-open` — card capitolo + "il cliente apre la doccia inclinata… ed è nera".
-- `st-02-black-slope` — **9 giu 2026**: il feature detection
-  `oklch(from red l c h)` dà un falso positivo su Chrome vecchio → `stop-color` torna
-  al valore iniziale: **nero**. Fix: usare la detection RGB (`rgb(from …)`), che su quei
-  browser dice correttamente `false`. Visual: la stessa doccia, a destra con gli stop
-  del gradiente forzati a nero (ricostruzione: è la snapshot `two-sides-sloped-art.svg` con gli stop riscritti in JS, non uno screenshot di Chrome 118).
-- Domanda che apre il talk: **nessun test l'aveva visto. Come si testa una cosa che si vede?**
-  (La risposta completa arriva nel Capitolo Cinque.)
+- `st-00-cold-open` — card capitolo: il cliente mette il focus su «larghezza»… e la linea gialla non c'è.
+- `st-02-linea-gialla` — la snapshot vera `single-side-profile-blocks.svg` (nicchia, un lato, senza piatto)
+  con un tratteggio rosso dove dovrebbe essere la linea. Non è uno screenshot del bug: indica solo dove guardare.
+  "C'è, è disegnata, è nel DOM… ma sta sotto le ombre del pavimento."
+- Domanda che apre il talk: **come si testa una cosa che si vede?**
+  La risposta arriva nel Capitolo Quattro (cerotto del 9 set → paint order del 10 set → e2e che conta i pixel gialli).
 
 ## Recap — Nelle puntate precedenti (~8 min)
 
@@ -98,13 +96,16 @@ Il muro di Joyce: guardi tutto insieme e vedi quale lampadina lampeggia.
 - `st-36-pixel` — il test: screenshot del container, conta le colonne di pixel gialli,
   pretende > 90% della linea. *"SVG paint order, rather than a coordinate offset"*.
 
-## Capitolo Cinque — Il Demogorgone (~3 min)
+## Capitolo Cinque — L'eccezione (~3 min)
 
-- `st-38-demogorgone` — torniamo al cold open. Chi l'ha preso il bug di Chrome vecchio?
-  Nessuno dei tre livelli. Il cliente in ufficio usa **Chrome 118**: nel repo c'è
-  `chrome118.ts` (Puppeteer 21.4.0) apposta. La cima della piramide è ancora un umano
-  davanti a un browser vecchio.
-- `st-40-piramide` — la piramide riassunta.
+- `st-38-eccezione` — card capitolo: e quando il bug non è nel codice, ma nel browser del cliente?
+- `st-39-chrome118` — **la doccia nera** (9 giu 2026): il feature detection `oklch(from red l c h)` dà un
+  falso positivo su Chrome vecchio → `stop-color` torna al valore iniziale: **nero**. Fix: detection RGB.
+  Visual: ricostruzione (snapshot `two-sides-sloped-art.svg` con gli stop riscritti in JS, non uno screenshot).
+- Nessuno dei tre livelli poteva vederlo: girano tutti su un browser moderno. Il test è **ad hoc**:
+  `chrome118.ts` apre Chrome 118 (Puppeteer 21.4.0) e ci guardi tu. Si usa quando il cliente si lamenta,
+  non a ogni push.
+- `st-40-piramide` — la piramide, con in cima "test ad hoc: Chrome 118 + un umano".
 
 ## Finale (~2 min)
 

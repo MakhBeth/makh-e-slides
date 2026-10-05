@@ -428,6 +428,9 @@ h6 {
 	gap: 1rem;
 	text-align: center;
 }
+.chapter > * {
+	justify-self: center;
+}
 .chapter .chapter-number {
 	font-family: Georgia, "Times New Roman", serif;
 	font-size: clamp(1rem, 2.4vw, 1.6rem);
@@ -455,7 +458,9 @@ h6 {
 	line-height: 1.05;
 }
 .chapter .chapter-sub {
-	margin: 0;
+	margin: 0 auto;
+	max-width: 60ch;
+	text-wrap: balance;
 	font-size: var(--font-size-lg);
 	color: var(--color-text-light);
 }
