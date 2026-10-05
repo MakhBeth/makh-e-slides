@@ -7,10 +7,19 @@
 </h1>
 
 <div class="tagline">
-	<p class="up">Come si testa una cosa che si vede</p>
+	<p class="up">Come si testa ciò che si vede</p>
 	<p class="down" aria-label="Come si testa cosa non si vede">Come si testa cosa non si vede</p>
 </div>
 </div>
+
+<script type="module">
+	const up = document.querySelector(".tagline .up")
+	const down = document.querySelector(".tagline .down")
+	const fit = () => down.style.setProperty("--fit", up.offsetWidth / down.offsetWidth)
+	await document.fonts.ready
+	fit()
+	new ResizeObserver(fit).observe(up)
+</script>
 
 <style>
 	.title-wrap {
@@ -71,7 +80,12 @@
 		background: var(--red);
 		box-shadow: var(--glow);
 	}
+	.tagline {
+		display: grid;
+		justify-items: center;
+	}
 	.tagline p {
+		width: max-content;
 		margin: 0;
 		line-height: 1;
 		font-size: var(--font-size-xl);
@@ -82,7 +96,8 @@
 	}
 	/* il Sottosopra: la stessa frase, capovolta come un riflesso */
 	.tagline .down {
-		transform: scaleY(-1);
+		/* --fit la calcola lo script: stessa larghezza della riga sopra */
+		transform: scale(var(--fit, 1), -1);
 		/* nessuna discendente: le due righe si toccano sulla linea di base */
 		margin-top: -0.24em;
 		color: oklch(60% 0.2 27);
