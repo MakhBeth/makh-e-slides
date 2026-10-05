@@ -8,7 +8,7 @@
 
 <div class="tagline">
 	<p class="up">Come si testa una cosa che si vede</p>
-	<p class="down" aria-label="Come si testa ciò che non vedi">Come si testa ciò che non vedi</p>
+	<p class="down" aria-label="Come si testa cosa non si vede">Come si testa cosa non si vede</p>
 </div>
 </div>
 
@@ -73,6 +73,7 @@
 	}
 	.tagline p {
 		margin: 0;
+		line-height: 1;
 		font-size: var(--font-size-xl);
 		font-weight: 700;
 	}
@@ -82,6 +83,8 @@
 	/* il Sottosopra: la stessa frase, capovolta come un riflesso */
 	.tagline .down {
 		transform: scaleY(-1);
+		/* nessuna discendente: le due righe si toccano sulla linea di base */
+		margin-top: -0.24em;
 		color: oklch(60% 0.2 27);
 		opacity: 0.75;
 		filter: blur(0.4px);
