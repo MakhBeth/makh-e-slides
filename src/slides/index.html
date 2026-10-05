@@ -1,11 +1,90 @@
-<h1 class="st-title title">Strangers<br />Showers</h1>
-<h2 class="light">Come si testa una cosa che si vede</h2>
+<div class="title-wrap">
+<h1 class="logo" aria-label="Strangers Showers">
+	<span class="row1" aria-hidden="true"
+		><span class="big">S</span><span class="small">TRANGER</span><span class="big">S</span></span
+	>
+	<span class="row2" aria-hidden="true"><span class="bar"></span><span class="word">SHOWERS</span><span class="bar"></span></span>
+</h1>
+
+<div class="tagline">
+	<p class="up">Come si testa una cosa che si vede</p>
+	<p class="down" aria-label="Come si testa ciò che non vedi">Come si testa ciò che non vedi</p>
+</div>
+</div>
 
 <style>
-	.title {
-		font-size: clamp(3rem, 11vw, 8rem);
+	.title-wrap {
+		display: grid;
+		justify-items: center;
+		text-align: center;
+	}
+	.logo {
+		--red: oklch(60% 0.24 27);
+		--glow:
+			0 0 6px oklch(60% 0.24 27 / 0.9),
+			0 0 24px oklch(55% 0.24 27 / 0.6),
+			0 0 60px oklch(50% 0.24 27 / 0.4);
+		display: inline-grid;
+		font-family: Georgia, "Times New Roman", serif;
+		font-weight: 700;
+		font-size: clamp(2.5rem, 9vw, 7rem);
 		line-height: 1;
-		margin-bottom: 1.5rem;
+		margin: 0 auto 2rem;
+	}
+	.logo .row1,
+	.logo .word {
+		color: transparent;
+		-webkit-text-stroke: 2px var(--red);
+		text-shadow: var(--glow);
+	}
+	.row1 {
+		display: flex;
+		align-items: center;
+	}
+	.row1 .big {
+		font-size: 1.35em;
+	}
+	/* la riga sopra le lettere piccole, da S a S */
+	.row1 .small {
+		position: relative;
+		padding-top: 0.08em;
+	}
+	.row1 .small::before {
+		content: "";
+		position: absolute;
+		inset: -0.06em 0 auto;
+		height: 3px;
+		background: var(--red);
+		box-shadow: var(--glow);
+	}
+	/* SHOWERS più piccolo, con le barre ai lati che arrivano alla larghezza di STRANGERS */
+	.row2 {
+		display: flex;
+		align-items: center;
+		gap: 0.25em;
+		font-size: 0.62em;
+		margin-top: 0.12em;
+	}
+	.row2 .bar {
+		flex: 1;
+		height: 3px;
+		background: var(--red);
+		box-shadow: var(--glow);
+	}
+	.tagline p {
+		margin: 0;
+		font-size: var(--font-size-xl);
+		font-weight: 700;
+	}
+	.tagline .up {
+		color: var(--color-text);
+	}
+	/* il Sottosopra: la stessa frase, capovolta come un riflesso */
+	.tagline .down {
+		transform: scaleY(-1);
+		color: oklch(60% 0.2 27);
+		opacity: 0.75;
+		filter: blur(0.4px);
 	}
 </style>
 
