@@ -101,8 +101,30 @@
 		/* nessuna discendente: le due righe si toccano sulla linea di base */
 		margin-top: -0.24em;
 		color: oklch(60% 0.2 27);
-		opacity: 0.75;
+		text-shadow: 0 0 8px oklch(60% 0.24 27 / 0.7);
 		filter: blur(0.4px);
+		/* riflesso: pieno sulla linea di base, sfuma verso alpha 0.7 (il box è capovolto: "to top" = verso il basso a schermo) */
+		mask-image: linear-gradient(to top, rgb(0 0 0 / 0.85), rgb(0 0 0 / 0.7));
+		animation: upside-down-flicker 5s steps(1, end) infinite;
+	}
+	/* lucine che sfarfallano, irregolari */
+	@keyframes upside-down-flicker {
+		0%, 100% { opacity: 1; }
+		8% { opacity: 0.35; }
+		10% { opacity: 1; }
+		12% { opacity: 0.5; }
+		14% { opacity: 1; }
+		47% { opacity: 0.7; }
+		49% { opacity: 1; }
+		71% { opacity: 0.3; }
+		72% { opacity: 1; }
+		73% { opacity: 0.45; }
+		76% { opacity: 1; }
+	}
+	@media (prefers-reduced-motion: reduce) {
+		.tagline .down {
+			animation: none;
+		}
 	}
 </style>
 
