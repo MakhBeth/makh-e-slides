@@ -24,12 +24,16 @@ return testEl.style.color !== ""   // ✅ true… ma l'SVG non lo sa disegnare
 
 <!-- Ricostruzione: stessa snapshot, con gli stop del gradiente inclinato forzati a nero (come faceva Chrome vecchio, fix del 9 giu 2026) -->
 <script type="module">
-	const src = "/strangers/kitchen-sink/two-sides-sloped-art.svg"
-	const svg = await (await fetch(src)).text()
-	const broken = svg.replace(/(id="slopeGradient"[\s\S]*?<\/linearGradient>)/, (gradient) =>
-		gradient.replace(/(<stop offset="(?!0%)[^"]*" style="stop-color: )[^;]*;/g, "$1black;"),
-	)
-	document.getElementById("black-slope").src = URL.createObjectURL(new Blob([broken], { type: "image/svg+xml" }))
+	// fetch non passa dal rewrite di Vite: il prefisso del deploy va aggiunto a mano
+	const src = `${import.meta.env.BASE_URL}strangers/kitchen-sink/two-sides-sloped-art.svg`
+	fetch(src)
+		.then((res) => res.text())
+		.then((svg) => {
+			const broken = svg.replace(/(id="slopeGradient"[\s\S]*?<\/linearGradient>)/, (gradient) =>
+				gradient.replace(/(<stop offset="(?!0%)[^"]*" style="stop-color: )[^;]*;/g, "$1black;"),
+			)
+			document.getElementById("black-slope").src = URL.createObjectURL(new Blob([broken], { type: "image/svg+xml" }))
+		})
 </script>
 
 <style>
