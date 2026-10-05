@@ -96,9 +96,9 @@ Il muro di Joyce: guardi tutto insieme e vedi quale lampadina lampeggia.
 - `st-36-pixel` — il test: screenshot del container, conta le colonne di pixel gialli,
   pretende > 90% della linea. *"SVG paint order, rather than a coordinate offset"*.
 
-## Capitolo Cinque — L'eccezione (~3 min)
+## Capitolo Cinque — Il Demogorgone (l'eccezione) (~3 min)
 
-- `st-38-eccezione` — card capitolo: e quando il bug non è nel codice, ma nel browser del cliente?
+- `st-38-demogorgone` — card capitolo "Il Demogorgone": l'eccezione. E quando il bug non è nel codice, ma nel browser del cliente?
 - `st-39-chrome118` — **la doccia nera** (9 giu 2026): il feature detection `oklch(from red l c h)` dà un
   falso positivo su Chrome vecchio → `stop-color` torna al valore iniziale: **nero**. Fix: detection RGB.
   Visual: ricostruzione (snapshot `two-sides-sloped-art.svg` con gli stop riscritti in JS, non uno screenshot).
