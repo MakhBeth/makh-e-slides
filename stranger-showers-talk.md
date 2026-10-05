@@ -1,4 +1,7 @@
-# Stranger Showers — scaletta
+# Strangers’ Showers — scaletta
+
+> **Il titolo:** *Strangers’ Showers*, le docce degli estranei: quelle dei clienti, che non vedi mai.
+> Il richiamo a *Stranger Things* resta nel suono e nel logo.
 
 > *Come si testa una cosa che si vede.*
 > Derivato da "Farsi una doccia col CSS" (branch `css-shower`). Stesso protagonista

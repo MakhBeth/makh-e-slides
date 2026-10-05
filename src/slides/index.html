@@ -1,7 +1,7 @@
 <div class="title-wrap">
-<h1 class="logo" aria-label="Stranger Showers">
+<h1 class="logo" aria-label="Strangers’ Showers">
 	<span class="row1" aria-hidden="true"
-		><span class="big">S</span><span class="small">TRANGE</span><span class="big">R</span></span
+		><span class="big">S</span><span class="small">TRANGER</span><span class="big">S</span><span class="apos">’</span></span
 	>
 	<span class="row2" aria-hidden="true"><span class="bar"></span><span class="word">SHOWERS</span><span class="bar"></span></span>
 </h1>
@@ -49,10 +49,16 @@
 		display: flex;
 		align-items: center;
 	}
+	/* apostrofo alto come le lettere piccole, appoggiato alla loro linea superiore */
+	.row1 .apos {
+		align-self: flex-start;
+		margin-top: 0.12em;
+		margin-left: 0.04em;
+	}
 	.row1 .big {
 		font-size: 1.35em;
 	}
-	/* la riga sopra le lettere piccole, da S a R */
+	/* la riga sopra le lettere piccole, da S a S */
 	.row1 .small {
 		position: relative;
 		padding-top: 0.08em;
@@ -65,7 +71,7 @@
 		background: var(--red);
 		box-shadow: var(--glow);
 	}
-	/* SHOWERS più piccolo, con le barre ai lati che arrivano alla larghezza di STRANGER */
+	/* SHOWERS più piccolo, con le barre ai lati che arrivano alla larghezza di STRANGERS’ */
 	.row2 {
 		display: flex;
 		align-items: center;
